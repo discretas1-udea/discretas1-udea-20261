@@ -1,0 +1,9 @@
+{
+	"name": "Jekyll Site",
+	"image": "mcr.microsoft.com/devcontainers/jekyll:2-bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {}
+	},
+	"forwardPorts": [4000],
+	"postCreateCommand": "bundle install"
+}
