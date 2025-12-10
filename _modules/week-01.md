@@ -1,11 +1,12 @@
 ---
 title: Semana 1
+topic: Logica proposicional
 ---
 
 Feb 10
 : **Clase**{: .label .label-purple }[Presentación](#)
-  : *Presentación del curso y evaluación* [**pdf**{: .label .label-green }]({{ site.baseurl }}/assets/pdfs/clase01_12-08-2025.pdf)
+  : *Presentación del curso y evaluación* [**pdf**{: .label .label-red }]({{ site.baseurl }}/assets/pdfs/clase01_12-08-2025.pdf) **pptx**{: .label .label-green }
 
 Feb 12
 : **Clase**{: .label .label-purple }[Lógica proposicional - Parte 1](#)
-  : *Logica proposicional, tipos de enunciados, proposiciones, tipos de proposiciones* **pdf**{: .label .label-green }
+  : *Logica proposicional, tipos de enunciados, proposiciones, tipos de proposiciones* **pdf**{: .label .label-red }
