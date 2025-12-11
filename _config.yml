@@ -75,3 +75,12 @@ compress_html:
 liquid:
   error_mode: strict
   strict_filters: true
+
+# Math configuration
+math: mathjax
+
+# Kramdown configuration
+markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax

@@ -1,5 +1,5 @@
 ---
-title: Semana 4
+title: Semana 5
 topic: Logica proposicional
 ---
 
