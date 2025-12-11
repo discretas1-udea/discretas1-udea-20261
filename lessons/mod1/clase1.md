@@ -1,3 +1,10 @@
+---
+layout: default
+title: Introducción a la Lógica Proposicional
+parent: Lógica Proposicional
+nav_order: 1                   
+---
+
 # Notas de Clase: Introducción a la Lógica Proposicional
 
 * **Asignatura:** Matemáticas Discretas 1
@@ -175,8 +182,6 @@ Finalmente, tenemos la siguiente proposición:
 <p align="center">
   $$ \neg D $$
 </p>
-
-![Transparencia IA](https://img.shields.io/badge/Este%20material%20incluye%20apoyo%20de%20IA-Responsabilidad_Acad%C3%A9mica-blue?style=flat)
 
 {: .note }
 > **Declaración de uso responsable de IA:**  
