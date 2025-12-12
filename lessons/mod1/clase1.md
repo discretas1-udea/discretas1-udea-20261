@@ -1,184 +1,132 @@
 ---
 layout: default
-title: Clase 01 - Introducción a la Lógica Proposicional
+title: Clase 01 - Fundamentos de Lógica Proposicional
 parent: Lógica Proposicional
 nav_order: 1
 ---
 
 ![Built with AI](https://img.shields.io/badge/Built%20with-AI-blue.svg)
 
-# Clase 01 - Introducción a la Lógica Proposicional
+# Clase 01 - Fundamentos de Lógica Proposicional
 
 {: .no_toc }
 
-## 1. Introducción: Comunicación y Lenguaje
+Esta sesión introduce el objeto de estudio de la Lógica Proposicional, diferenciando el lenguaje natural de las estructuras formales que rigen el razonamiento matemático.
 
-La comunicación humana se basa en la intención y el uso de símbolos (alfabeto) para construir enunciados.
+## Tabla de Contenidos
 
-### Estructura Básica (Lenguaje Natural)
+{: .no_toc .text-delta }
 
-En español, la unidad mínima con sentido es la oración, compuesta por:
+1. TOC
+{:toc}
 
-* **Sujeto:** Quien realiza la acción.
-* **Predicado:** La acción (verbo) y complemento.
+---
 
-**Ejemplo:** *Dino es el perro de los Picapiedra*
+## 1. El Lenguaje y la Necesidad de la Lógica
 
-* **Sujeto**: Dino
-* **Predicado**: es el perro de los Picapiedra
+La comunicación humana utiliza símbolos (alfabeto) para construir enunciados. Sin embargo, el **Lenguaje Natural (Español)** es inherentemente ambiguo (ej. ironía, contexto). La Lógica surge como la disciplina que busca la **exactitud** y la **eliminación de la ambigüedad**.
 
-### Clasificación de los Enunciados
+### Estructura del Lenguaje Natural
 
-No todo lo que decimos sirve para las matemáticas. Los enunciados se clasifican según su intención comunicativa:
+En gramática, la unidad mínima con sentido es la oración:
 
-|Tipo| Inteción |Ejemplo|
-|---|---|---|
-|Enunciado declarativo| Informar o afirmar algo| <ul><li>Pedro es el esposo de Vilma</li><li>Dino no es el perro de los Marmol</li></ul> |
-|Enunciado interrogativo| Preguntar o solicitar información| <ul><li>¿Dino es el perro de los Picapiedra?</li><li>¿Que hora es?</li></ul>|
-|Enunciado exclamativo| Expresar una emoción o sentitimiento intenso| <ul><li>¡Qué linda mujer!</li><li>¡Eres un angel!</li></ul>|
-|Enunciado imperativo| Dar ordener, insistir, ruegos| <ul><li>Por favor, limpia tu habitacion</li><li>Tomate la colada</li></ul>|
-|Enunciado dudativo| Expresar duda o posibilidad| <ul><li>Quizas llueva en la noche</li><li>Puede que la misión tenga exito</li></ul>|
-|Enunciado desiderativo| Expresar deseos| <ul><li>Ojala haya paz en el mundo</li><li>Ojalá que nadie muera de hambre</li></ul>|
+* **Sujeto:** Quien ejecuta la acción.
+* **Predicado:** La acción (verbo) y su complemento.
 
-El mayor problema del Lenguaje Natural es que es **ambiguo*
+> **Ejemplo:** *Dino es el perro de los Picapiedra*
+>
+> * **Sujeto**: Dino
+> * **Predicado**: es el perro de los Picapiedra
 
-## 2. Lógica Matemática
+### Clasificación de Enunciados
 
-Las matemáticas son una ciencia exacta que busca argumentar y demostrar hechos sin ambigüedad mediante el uso de un lenguaje simbólico.
+No todos los enunciados son aptos para el análisis lógico. Se clasifican según su intención comunicativa:
 
-### La Proposición
+| Tipo | Intención Comunicativa | Ejemplo | Propiedad Lógica |
+| :--- | :--- | :--- | :---: |
+| **Declarativo** | Informar o afirmar un hecho. | "Pedro es el esposo de Vilma." | **Apto** |
+| Interrogativo | Preguntar o solicitar información. | "¿Dino es el perro de los Mármol?" | No Apto |
+| Imperativo | Ordenar o solicitar una acción. | "¡Estudia para el examen!" | No Apto |
+| Exclamativo | Expresar emoción o sorpresa. | "¡Qué día tan caluroso!" | No Apto |
 
-Es la unidad mínima del lenguaje matemático.
+---
 
-{: .highlight }
-> **Definición:**  
-> Una **Proposición** es enunciado declarativo que puede ser **Falso (F)** o **Verdadero (V)**, pero no ambos a la vez.
+## 2. El Concepto Fundamental: La Proposición
 
-El **valor de verdad** de una proposición es el valor que se le asigna a ella, es decir, si es verdadera ($V$, $1$, True) o falsa ($F$, $0$, False).
+La lógica se enfoca exclusivamente en los **Enunciados Declarativos** que cumplen una condición estricta.
 
-Para la representación de proposiciones se usan variables proposionales, generalmente $p$, $q$, $r$, $s$, etc.
+### 2.1 Definición y Principio de Bivalencia
 
-**Ejemplos:**
+Una **Proposición Lógica** es todo enunciado declarativo al cual se le puede asignar, sin ambigüedad, un único **Valor de Verdad** (Axioma de Bivalencia).
 
-* Sea $p$ la proposición "Dino es el perro de los Picapiedra". Entonces $p$ es una proposición.
-* Sea $P$ la proposición "Hoy amaneció lloviendo". Si es cierto decirmos que el valor de verdad de $P$ es $V$, es decir, $P=V$.
-* Sea $Q$ la proposición "Nacional le ganó a Sao Pablo". Si Nacional perdió con Sao Pablo decimos que el valor de verdad de $Q$ es $F$, es decir, $Q=F$.
+> **Axioma de Bivalencia:** Un enunciado debe ser **Verdadero ($V$)** o **Falso ($F$)**, pero nunca ambos a la vez, ni ninguno.
+{: .important }
 
-## 3. Tipos de Proposiciones y Operadores
+### 2.2 Clasificación de Proposiciones
 
-La lógica utiliza un razonamiento formal, es decir, a partir de hechos (premisas) se argumenta y se llega a conclusiones.
+| Tipo | Descripción | Ejemplo |
+| :--- | :--- | :--- |
+| **Simple (Atómica)** | Es la unidad mínima. No tiene conectores lógicos internos. | $P$: "Hoy estudio Discretas 1." |
+| **Compuesta (Molecular)** | Formada por dos o más proposiciones simples unidas por **Operadores Lógicos**. | $R$: "Hoy estudio Discretas 1 **y** hago deporte." |
 
-### Clasificación de las proposiciones
+---
 
-Según su forma, las proposiciones se clasifican en:
+## 3. Introducción a la Formalización
 
-|Tipo| Inteción |Ejemplo|
-|---|---|---|
-|Proposición simple| Son proposiciones que no se pueden descomponer en otras proposiciones| Sea $p$ la proposición "Dino es el perro de los Picapiedra". Entonces $p$ es una proposición simple.|
-|Proposición compuesta| Son proposiciones que se pueden descomponer en otras proposiciones| Sea $p$ la proposición "Hoy estudio Discretas" y $q$ la proposición "hago deporte", entonces "Hoy estudio Discretas **y** hago deporte" es una proposición compuesta la cual se denota como $p \land q$.|
+El objetivo de la lógica es transformar frases del lenguaje natural en **Expresiones Lógicas** mediante un proceso de traducción.
 
-### Operadores Lógicos (Conectores)
+### 3.1 Los Operadores Lógicos (Conectores)
 
-Así como en aritmética usamos $+$, $-$, $\times$, en lógica usamos conectores para operar con valores de verdad.
+Los operadores son los símbolos que establecen la relación entre las proposiciones simples. Se presentan aquí de forma preliminar:
 
-| Operación | Símbolo | Significado | Lógica |
-| :--- | :---: | :--- | :--- |
-| **Negación** | $\neg$ (o $\sim$) | No | Invierte el valor |
-| **Conjunción** | $\land$ | Y | $P \land Q$ |
-| **Disyunción** | $\lor$ | O | $P \lor Q$ |
-| **O Exclusivo** | $\oplus$ | O ... o... | Uno u otro, no ambos |
-| **Condicional** | $\to$ | Si ... entonces ... | Causa y efecto |
-| **Bicondicional**| $\leftrightarrow$ | ... si y solo si... | Equivalencia |
+| Operador | Nombre | Símbolo | Lectura Común |
+| :--- | :--- | :---: | :--- |
+| **Negación** | No | $\neg$ | "No $P$" |
+| **Conjunción** | Y | $\land$ | "$P$ y $Q$" |
+| **Disyunción** | O Inclusiva | $\lor$ | "$P$ o $Q$" |
+| **Condicional** | Si... entonces... | $\rightarrow$ | "Si $P$, entonces $Q$" |
+| **Bicondicional** | Si y solo si | $\leftrightarrow$ | "$P$ si y solo si $Q$" |
 
-## 4. Formalización (Traducción)
+### 3.2 Proceso de Traducción
 
-### Traducción de Lenguaje Natural a Expresión Lógica
+Para formalizar una oración, se sigue este método de tres pasos:
 
-A continuación se presentan los pasos para convertir Lenguaje Natural a Expresión Lógica:
+1. **Identificar conectores lógicos** (ej. "o", "y", "si... entonces...").
+2. **Identificar y asignar variables** a las proposiciones simples.
+3. **Armar la expresión lógica** según la estructura gramatical.
 
-1. **Identificación de Conectores Lógicos** El primer paso consiste en analizar el enunciado para detectar los operadores que vinculan las ideas. Es necesario distinguir las partículas gramaticales que funcionan como operadores lógicos (negación, conjunción, disyunción, condicional, bicondicional).
-   * *Referencia*: Se deben buscar términos como "y", "o", "si... entonces", "no".
-2. **Identificación y Simbolización de Proposiciones Simples**: Se deben aislar las unidades mínimas de sentido (proposiciones atómicas) que componen el enunciado complejo. A cada proposición simple se le asigna una variable proposicional, usualmente denotada con letras minúsculas o mayúsculas del alfabeto (ej. $p$, $q$, $r$, $m$, $n$).
-3. **Construcción de la Expresión Lógica**: Finalmente, se procede a construir la fórmula matemática. Esto implica reescribir el enunciado original sustituyendo el texto por las variables asignadas y los símbolos lógicos correspondientes, respetando la jerarquía y estructura sintáctica del argumento.
+---
 
-### Ejemplos
+## 4. Ejercicios Resueltos de Formalización
 
-Obtenga las expresiones lógicas de los siguientes enunciados:
+A continuación, se aplican los pasos de formalización a enunciados comunes:
 
-1. "Estudias o trabajas"
-2. "El Chapulín es un superhéroe y es Mexicano"
-3. "Si estudias con juicio, ganarás la materia"
-4. "Dino no es el perro de los Picapiedra"
+#### Ejercicio 1: Disyunción
 
-### Solución
+**Enunciado:** "Estudias o trabajas"
 
-#### Ejercicio 1
+1. **Conector:** "o" ($\lor$).
+2. **Variables:**
+    * $P$: "Estudias"
+    * $Q$: "Trabajas"
+3. **Expresión Lógica:** $$P \lor Q$$
 
-Aplicando los pasos anteriores, obtenemos:
+#### Ejercicio 2: Conjunción
 
-<p align="center">
-  "Estudias <b>o</b> trabajas"
-</p>
+**Enunciado:** "El Chapulín es un superhéroe y es Mexicano"
 
-1. **Identificación de conectores**: Tenemos el "o" que es equivalente a la disyunción ($\lor$).
-2. **Proposiciones simple**:
-   * **$P$**: "Estudias"
-   * **$Q$**: "Trabajas"
-3. **Expresión lógica**:
+1. **Conector:** "y" ($\land$).
+2. **Variables:**
+    * $P$: "El Chapulín es un superhéroe"
+    * $Q$: "El Chapulín es Mexicano"
+3. **Expresión Lógica:** $$P \land Q$$
 
-<p align="center">
-  $$ P \lor Q $$
-</p>
+#### Ejercicio 3: Condicional (Implicación)
 
-#### Ejercicio 2
+**Enunciado:** "Si estudias con juicio, ganarás la materia"
 
-A partir de la siguiente proposición:
-
-<p align="center">
-  "El Chapulín es un superhéroe y es Mexicano"
-</p>
-
-1. **Identificación de conectores**: Tenemos el "y" que es equivalente a la conjunción ($\land$).
-2. **Proposiciones simple**:
-   * **$P$**: "El Chapulín es un superhéroe"
-   * **$Q$**: "El Chapulín es Mexicano"
-3. **Expresión lógica**:
-
-<p align="center">
-  $$ P \land Q $$
-</p>
-
-#### Ejercicio 3
-
-Para este ejercicio, tenemos la siguiente proposición:
-
-<p align="center">
-  "Si estudias con juicio, ganarás la materia"
-</p>
-
-1. **Identificación de conectores**: Tenemos el "si... entonces..." que es equivalente a la conjunción ($\to$).
-2. **Proposiciones simple**:
-   * **$m$**: "Estudias con juicio"
-   * **$n$**: "Ganarás la materia"
-3. **Expresión lógica**:
-
-<p align="center">
-  $$ m \to n $$
-</p>
-
-#### Ejercicio 4
-
-Finalmente, tenemos la siguiente proposición:
-
-<p align="center">
-  "Dino no es el perro de los Picapiedra"
-</p>
-
-1. **Identificación de conectores**: Tenemos el "no" que es equivalente a la negación ($\neg$).
-2. **Proposiciones simple**:
-   * **$D$**: "Dino es el perro de los Picapiedra"
-3. **Expresión lógica**:
-
-<p align="center">
-  $$ \neg D $$
-</p>
+1. **Conector:** "Si... entonces..." ($\rightarrow$).
+2. **Variables:**
+    * $m$: "Estudias con juicio" (Antecedente)
+    * $n$: "Ganarás la materia" (Consecuente)
+3. **Expresión Lógica:** $$m \rightarrow n$$
