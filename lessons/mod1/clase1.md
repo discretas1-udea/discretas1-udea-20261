@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Introducción a la Lógica Proposicional
+title: Clase 01 - Introducción a la Lógica Proposicional
 parent: Lógica Proposicional
-nav_order: 1                   
+nav_order: 1
 ---
 
-# Notas de Clase: Introducción a la Lógica Proposicional
+![Built with AI](https://img.shields.io/badge/Built%20with-AI-blue.svg)
 
-* **Asignatura:** Matemáticas Discretas 1
-* **Clase:** 1
-* **Tema:** Del Lenguaje Natural al Lenguaje Matemático
+# Clase 01 - Introducción a la Lógica Proposicional
+
+{: .no_toc }
 
 ## 1. Introducción: Comunicación y Lenguaje
 
@@ -182,10 +182,3 @@ Finalmente, tenemos la siguiente proposición:
 <p align="center">
   $$ \neg D $$
 </p>
-
-{: .note }
-> **Declaración de uso responsable de IA:**  
->
-> * Parte del contenido presente en este documento fue elaborado o refinado con apoyo de herramientas de Inteligencia Artificial.  
-> * El profesor realizó revisión, verificación y ajustes para garantizar la precisión, pertinencia académica y alineación con los objetivos del curso.  
-> * Esta declaración se incluye para asegurar prácticas de transparencia y uso ético de tecnologías emergentes.
