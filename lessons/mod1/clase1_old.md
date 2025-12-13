@@ -175,3 +175,101 @@ Finalmente, tenemos la siguiente proposición:
 <p align="center">
   $$ \neg D $$
 </p>
+
+***********************************
+***********************************
+
+## 2. Definición de Equivalencia Lógica
+
+### 2.1 Concepto de Equivalencia
+
+Dos proposiciones, $P$ y $Q$, son **lógicamente equivalentes** si poseen la misma tabla de verdad. En otras palabras, sin importar el valor de verdad de sus variables componentes, siempre tienen el mismo resultado final.
+
+**Notación:**
+$$P \equiv Q$$
+o
+$$P \Leftrightarrow Q$$
+
+> **Principio de Sustitución:** Una vez que se establece una equivalencia, una proposición puede ser sustituida por su equivalente en cualquier fórmula lógica sin alterar la validez del argumento.
+{: .note }
+
+---
+
+## 3. Leyes Fundamentales del Álgebra de Proposiciones
+
+Este conjunto de axiomas rige la simplificación lógica y es análogo a las propiedades algebraicas (conmutativa, asociativa, distributiva).
+
+### 3.1 Leyes de Dominación y de Identidad
+
+Estas leyes definen el comportamiento de las constantes $V$ (Verdadero) y $F$ (Falso).
+
+| Nombre de la Ley | Conjunción ($\land$) | Disyunción ($\lor$) |
+| :--- | :---: | :---: |
+| **Dominación** | $$p \land F \equiv F$$|$$p \lor V \equiv V$$ |
+| **Identidad** | $$p \land V \equiv p$$|$$p \lor F \equiv p$$ |
+| **Idempotencia** | $$p \land p \equiv p$$|$$p \lor p \equiv p$$ |
+
+### 3.2 Leyes de De Morgan (Negación de Compuestos)
+
+Estas leyes son esenciales para negar proposiciones moleculares, transformando las conjunciones en disyunciones (y viceversa) e invirtiendo el valor de las variables.
+
+1. **Negación de Conjunción:**
+    $$\neg(p \land q) \equiv \neg p \lor \neg q$$
+2. **Negación de Disyunción:**
+    $$\neg(p \lor q) \equiv \neg p \land \neg q$$
+
+### 3.3 Leyes de Absorción
+
+Permiten simplificar expresiones donde una proposición se relaciona con una expresión que la contiene.
+
+1. $$p \lor (p \land q) \equiv p$$
+2. $$p \land (p \lor q) \equiv p$$
+
+### 3.4 Leyes Asociativas y Conmutativas
+
+Al igual que en álgebra, permiten reordenar o reagrupar proposiciones si se usa el mismo operador.
+
+* **Conmutativa:** $$p \lor q \equiv q \lor p$$y$$p \land q \equiv q \land p$$
+* **Asociativa:** $$(p \land q) \land r \equiv p \land (q \land r)$$
+
+---
+
+## 4. Leyes de Transformación de Operadores
+
+Estas leyes son las "reglas de traducción" que nos permiten eliminar el condicional y el bicondicional, facilitando su manipulación con el álgebra.
+
+### 4.1 Ley del Condicional
+
+Permite expresar la implicación ($\rightarrow$) solo con negación ($\neg$) y disyunción ($\lor$).
+
+$$p \rightarrow q \equiv \neg p \lor q$$
+
+### 4.2 Ley del Bicondicional
+
+Permite descomponer la equivalencia ($\leftrightarrow$) en dos condicionales interconectados.
+
+$$p \leftrightarrow q \equiv (p \rightarrow q) \land (q \rightarrow p)$$
+
+---
+
+## 5. Ejercicio Resuelto de Simplificación
+
+**Problema:** Simplificar la expresión lógica $$\neg(p \lor \neg q) \lor (\neg p \land q)$$
+
+**Desarrollo Paso a Paso:**
+
+1. **Expresión Original:**
+    $$\neg(p \lor \neg q) \lor (\neg p \land q)$$
+
+2. **Aplicar De Morgan (al primer paréntesis):**
+    $$\neg p \land \neg(\neg q) \lor (\neg p \land q)$$
+
+3. **Aplicar Doble Negación:** $\neg(\neg q) \equiv q$
+    $$(\neg p \land q) \lor (\neg p \land q)$$
+
+4. **Aplicar Idempotencia:** $A \lor A \equiv A$ (donde $A = \neg p \land q$)
+    $$\neg p \land q$$
+
+**Resultado Final:** La expresión simplificada es $$\neg p \land q$$
+
+---
