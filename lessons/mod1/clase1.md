@@ -26,9 +26,9 @@ Esta sesión introduce el objeto de estudio de la Lógica Proposicional, diferen
 
 Cuando nos comunicamos, los seres humanos lo hacemos a traves del lenguaje. Gracias a este, los seres humanos podemos transmitir cualquier cosa como ideas, conceptos y sentimientos por medio de mensajes.
 
-El intercambio de mensajes en el acto comunicativo tiene una intención (o propósito) y es de acuerto a esta que se estructura el mensaje. Por ejemplo, cuando alguien dice "Dino es el perro de los Picapiedra", el mensaje tiene la intención de informar o afirmar un hecho; sin embargo, cuando lo que se dice es ¿Dino es el perro de los Picapiedra? la intención busca preguntar o solicitar información.
+El intercambio de mensajes en el acto comunicativo tiene una intención (o propósito) y es de acuerto a esta que se estructura el mensaje. Por ejemplo, cuando alguien dice "Dino es el perro de los Picapiedra", el mensaje tiene la intención de informar o afirmar un hecho; sin embargo, cuando lo que dice es "¿Dino es el perro de los Picapiedra?" la intención busca preguntar o solicitar información.
 
-Para construir mensaje empleamos oraciones. Una oración es la unidad minima provista de sentifo y sigunificado la cual, desde el punto de vista sintactico esta formada por la unión de un sujeto y un predicado:
+Para construir mensajes empleamos oraciones. Una oración es la unidad minima provista de sentido y significado la cual, desde el punto de vista sintactico esta formada por la unión de un sujeto y un predicado (**Oración = Sujeto + Predicado**):
 
 ```mermaid
 graph TD
@@ -76,7 +76,51 @@ graph TD
     style w7 fill:#fff,stroke:#333,stroke-dasharray: 5 5
 ```
 
+Cuando se construyen oraciones como la anteriormente analizada, se deben tener en cuenta un conjunto de reglas que establecen el orden y la forma en que se deben combinar las palabras para construir oraciones correctas, esta reglas se conocen como **Sintaxis**. Comprender la sintaxis es escencial por que define el marco general que determina la validez y el sentido de lo que intentamos decir.
+
+ToDo:
+- [ ] Hablar de la sintaxis, semantica y pracmatica.
+- [ ] Hablar de la riqueza del lenguaje.
+- [ ] Empezar a hablar de la necesidad de restringir.
+- [ ] Volver a los enunciados y a sus tipos.
+- [ ] Restingir el caso a la parte de las proposiciones.
+- [ ] Empezar a hablar de Matematicas como lengua exacta..
+- [ ] Terminar hanlando de la logica.
+  
+  
 La comunicación humana utiliza símbolos (alfabeto) para construir enunciados. Sin embargo, el **Lenguaje Natural (Español)** es inherentemente ambiguo (ej. ironía, contexto). La Lógica surge como la disciplina que busca la **exactitud** y la **eliminación de la ambigüedad**.
+
+```mermaid
+graph BT
+    %% Definición de Nodos
+    Sintaxis[("1. Sintaxis<br/>(Estructura / Forma)<br/>¿Es correcto?")]
+    Semantica[("2. Semántica<br/>(Significado / Lógica)<br/>¿Tiene sentido?")]
+    Pragmatica[("3. Pragmática<br/>(Contexto / Intención)<br/>¿Es adecuado?")]
+
+    %% Relaciones (De abajo hacia arriba: Base -> Abstracción)
+    Sintaxis -->|Soporta| Semantica
+    Semantica -->|Habilita| Pragmatica
+
+    %% Notas explicativas laterales (Simulando anotaciones)
+    Note1[/"Ej: 'int edad = 10;'<br/>Compila bien"/]
+    Note2[/"Ej: Asignar número a variable int<br/>Lógica válida"/]
+    Note3[/"Ej: Usar esa variable para<br/>calcular descuento<br/>Objetivo real"/]
+
+    %% Conexiones con las notas
+    Sintaxis -.- Note1
+    Semantica -.- Note2
+    Pragmatica -.- Note3
+
+    %% Estilos
+    style Sintaxis fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style Semantica fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    style Pragmatica fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    
+    %% Estilo de las notas
+    style Note1 fill:#fff,stroke:#999,stroke-dasharray: 5 5
+    style Note2 fill:#fff,stroke:#999,stroke-dasharray: 5 5
+    style Note3 fill:#fff,stroke:#999,stroke-dasharray: 5 5
+```
 
 ### Estructura del Lenguaje Natural
 
