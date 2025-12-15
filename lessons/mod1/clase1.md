@@ -24,6 +24,66 @@ Esta sesión introduce el objeto de estudio de la Lógica Proposicional, diferen
 
 ## 1. El Lenguaje y la Necesidad de la Lógica
 
+Cuando nos comunicamos, los seres humanos lo hacemos a traves del lenguaje. Gracias a este, los seres humanos podemos transmitir cualquier cosa como ideas, conceptos y sentimientos por medio de mensajes.
+
+El intercambio de mensajes en el acto comunicativo tiene una intención (o propósito) y es de acuerto a esta que se estructura el mensaje. Por ejemplo, cuando alguien dice "Dino es el perro de los Mármol", el mensaje tiene la intención de informar o afirmar un hecho; sin embargo, cuando lo que se dice es ¿Dino es el perro de los Mármol? la intención busca preguntar o solicitar información.
+
+Para construir mensaje empleamos oraciones. Una oración es la unidad minima provista de sentifo y sigunificado la cual, desde el punto de vista sintactico esta formada por la unión de un sujeto y un predicado:
+
+```mermaid
+graph TD
+    O[O - Oración] --> SN1[SN - Sujeto]
+    O --> SV[SV - Predicado]
+
+    SN1 --> N1[N - Núcleo]
+    SN1 --> Adj[Adj - Adjetivo]
+    SN1 --> Num[Num - Número]
+    
+    N1 --> w1("Matemáticas")
+    Adj --> w2("Discretas")
+    Num --> w3("1")
+
+    SV --> V[V - Verbo]
+    SV --> SN2[SN - Atributo]
+    
+    V --> w4("es")
+
+    SN2 --> Det[Det]
+    SN2 --> N2[N - Núcleo]
+    SN2 --> SPrep1[SPrep - Compl. Nombre]
+    
+    Det --> w5("una")
+    N2 --> w6("materia")
+
+    SPrep1 --> Prep1[Prep]
+    SPrep1 --> SN3[SN - Término]
+    
+    Prep1 --> w7("de")
+    
+    SN3 --> N3[N - Núcleo]
+    SN3 --> SPrep2[SPrep - Compl. Nombre]
+    
+    N3 --> w8("Ingeniería")
+    
+    SPrep2 --> Prep2[Prep]
+    SPrep2 --> SN4[SN - Término]
+    
+    Prep2 --> w9("de")
+    SN4 --> N4[N - Núcleo]
+    N4 --> w10("Sistemas")
+
+    style w1 fill:#fff,stroke:#333,stroke-dasharray: 5 5
+    style w2 fill:#fff,stroke:#333,stroke-dasharray: 5 5
+    style w3 fill:#fff,stroke:#333,stroke-dasharray: 5 5
+    style w4 fill:#fff,stroke:#333,stroke-dasharray: 5 5
+    style w5 fill:#fff,stroke:#333,stroke-dasharray: 5 5
+    style w6 fill:#fff,stroke:#333,stroke-dasharray: 5 5
+    style w7 fill:#fff,stroke:#333,stroke-dasharray: 5 5
+    style w8 fill:#fff,stroke:#333,stroke-dasharray: 5 5
+    style w9 fill:#fff,stroke:#333,stroke-dasharray: 5 5
+    style w10 fill:#fff,stroke:#333,stroke-dasharray: 5 5
+```
+
 La comunicación humana utiliza símbolos (alfabeto) para construir enunciados. Sin embargo, el **Lenguaje Natural (Español)** es inherentemente ambiguo (ej. ironía, contexto). La Lógica surge como la disciplina que busca la **exactitud** y la **eliminación de la ambigüedad**.
 
 ### Estructura del Lenguaje Natural
@@ -84,6 +144,7 @@ Los operadores son los símbolos que establecen la relación entre las proposici
 | **Negación** | No | $\neg$ | "No $P$" |
 | **Conjunción** | Y | $\land$ | "$P$ y $Q$" |
 | **Disyunción** | O Inclusiva | $\lor$ | "$P$ o $Q$" |
+| **O exclusivo** | O exclusivo | $\oplus$ | "$P$ o $Q$" |
 | **Condicional** | Si... entonces... | $\rightarrow$ | "Si $P$, entonces $Q$" |
 | **Bicondicional** | Si y solo si | $\leftrightarrow$ | "$P$ si y solo si $Q$" |
 
