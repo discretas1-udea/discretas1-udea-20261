@@ -87,7 +87,8 @@ ToDo:
 - [ ] Empezar a hablar de Matematicas como lengua exacta..
 - [ ] Terminar hanlando de la logica.
   
-  
+
+
 La comunicación humana utiliza símbolos (alfabeto) para construir enunciados. Sin embargo, el **Lenguaje Natural (Español)** es inherentemente ambiguo (ej. ironía, contexto). La Lógica surge como la disciplina que busca la **exactitud** y la **eliminación de la ambigüedad**.
 
 ```mermaid
