@@ -24,11 +24,9 @@ Esta sesión introduce el objeto de estudio de la Lógica Proposicional, diferen
 
 ## 1. El Lenguaje y la Necesidad de la Lógica
 
-Cuando nos comunicamos, los seres humanos lo hacemos a traves del lenguaje. Gracias a este, los seres humanos podemos transmitir cualquier cosa como ideas, conceptos y sentimientos por medio de mensajes.
+Cuando nos comunicamos, los seres humanos lo hacemos a **través** del lenguaje. Gracias a este, podemos transmitir cualquier **cosa**, como ideas, conceptos y sentimientos, por medio de mensajes.
 
-El intercambio de mensajes en el acto comunicativo tiene una intención (o propósito) y es de acuerto a esta que se estructura el mensaje. Por ejemplo, cuando alguien dice "Dino es el perro de los Picapiedra", el mensaje tiene la intención de informar o afirmar un hecho; sin embargo, cuando lo que dice es "¿Dino es el perro de los Picapiedra?" la intención busca preguntar o solicitar información.
-
-Para construir mensajes empleamos oraciones. Una oración es la unidad minima provista de sentido y significado la cual, desde el punto de vista sintactico esta formada por la unión de un sujeto y un predicado (**Oración = Sujeto + Predicado**):
+Para construir mensajes empleamos oraciones. Una oración es la unidad **mínima** provista de significado y sentido. Desde el punto de vista **sintáctico**, está formada por la unión de un sujeto y un predicado (**Oración = Sujeto + Predicado**):
 
 ```mermaid
 graph TD
@@ -76,7 +74,15 @@ graph TD
     style w7 fill:#fff,stroke:#333,stroke-dasharray: 5 5
 ```
 
-Cuando se construyen oraciones como la anteriormente analizada, se deben tener en cuenta un conjunto de reglas que establecen el orden y la forma en que se deben combinar las palabras para construir oraciones correctas, esta reglas se conocen como **Sintaxis**. Comprender la sintaxis es escencial por que define el marco general que determina la validez y el sentido de lo que intentamos decir.
+Cuando se construyen oraciones como la anteriormente analizada, se deben tener en cuenta un conjunto de reglas que establecen el orden y la forma en que se deben combinar las palabras para construir oraciones correctas, esta reglas se conocen como **sintaxis**. Comprender la sintaxis es escencial por que define el marco general que determina la validez y el sentido de lo que intentamos decir.
+
+Además de la sintaxis, todo lo que decimos tiene un significado, el cual es abordado por la **semantica**. Cuando decimos o escribimos algo, estamos relacionando un concepto mental con una representación simbolica que permite que lo que transmitamos pueda ser entendido por alguien más.
+
+Por otro lado, todo lo que decimos tiene un sentido practico el cual, mas alla del significado real (lo dicho en el diccionario) depende del contexto lo cual hace, que lo dicho no necesariamente lo literal si no práctico (algo dicho entre lineas). Esto ultimo, lo aborda la **Pragmatica**.
+
+Teniendo en cuenta estas tres dimensiones (sintactica, semantica y pragmatica), el intercambio de mensajes en el acto comunicativo tiene una intención (o propósito) y es de acuerto a esta que se estructura el mensaje. Por ejemplo, cuando alguien dice "Dino es el perro de los Picapiedra", el mensaje tiene la intención de informar o afirmar un hecho; sin embargo, cuando lo que dice es "¿Dino es el perro de los Picapiedra?" la intención busca preguntar o solicitar información.
+
+
 
 ToDo:
 - [ ] Hablar de la sintaxis, semantica y pracmatica.
