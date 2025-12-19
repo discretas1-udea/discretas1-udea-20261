@@ -24,7 +24,7 @@ Esta sesión introduce el objeto de estudio de la Lógica Proposicional, diferen
 
 ## 1. El Lenguaje y su importancia
 
-Cuando nos comunicamos, los seres humanos lo hacemos a **través** del lenguaje. Gracias a este, podemos transmitir cualquier **cosa**, como ideas, conceptos y sentimientos, por medio de mensajes.
+Cuando nos comunicamos, los seres humanos lo hacemos a **través** del lenguaje. Gracias a este, podemos transmitir cualquier idea, concepto o sentimiento por medio de mensajes.
 
 Para construir mensajes empleamos oraciones. Una oración es la unidad **mínima** provista de significado y sentido. Desde el punto de vista **sintáctico**, está formada por la unión de un sujeto y un predicado (**Oración = Sujeto + Predicado**):
 
@@ -78,7 +78,7 @@ Al construir oraciones, se debe tener en cuenta un conjunto de reglas que establ
 
 Además de la sintaxis, todo lo que decimos tiene un significado abordado por la **semántica**. Al escribir, relacionamos un concepto mental con una representación simbólica para que el mensaje sea interpretable por otros.
 
-Por otro lado, el lenguaje posee un sentido práctico que va más allá del diccionario y depende del contexto; esto hace que lo dicho no sea siempre literal, sino que contenga significados "entre líneas". Esta dimensión es abordada por la **pragmática**.
+Por otro lado, el lenguaje posee un sentido práctico que depende del contexto; esto hace que lo dicho no sea siempre literal, sino que contenga significados "entre líneas". Esta dimensión es abordada por la **pragmática**.
 
 ```mermaid
 graph BT
@@ -112,11 +112,14 @@ graph BT
     style Note3 fill:#fff,stroke:#999,stroke-dasharray: 5 5
 ```
 
-A pesar de su riqueza, el lenguaje humano es inherentemente ambiguo; un mismo mensaje puede admitir múltiples interpretaciones, lo que suele derivar en confusiones. Asimismo, el objetivo de un enunciado puede transformarse radicalmente según la intención comunicativa, incluso si las palabras empleadas son idénticas. Por ejemplo, mientras que la afirmación "Dino es el perro de los Picapiedra" cumple una función informativa, la variante "¿Dino es el perro de los Picapiedra?" desplaza el propósito hacia una solicitud de información.
 
-En la antigua Grecia, uno de los usos mayores usos del lenguaje consistia en la **persuación** (influir, convencer o conmover a una audiencia). Para poder aprovechar el lenguaje de la mejor manera posible, esta la **Retorica** cuyo objetivo es estudiar y utilizar el lenguaje como una herramienta para la **persuación** y los maestros en esta rama eran los sofistas griegos. Sin embargo, para el objetivo de la retorica anteponia la **efectividad** sobre la **verdad** gracias al uso de recursos cuyo fin era explotar la ambiguedad propia del lenguaje. Por lo tanto, el lenguaje se volvio una herramienta de poder instrumentalizada al servicio del mejor postor. Aristóteles quería que el pensamiento humano tuviera reglas tan claras como las de las matemáticas para lo cual invento la lógica cuyo objetivo era formalizar el pensamiento para llegar a la verdad.
+A pesar de su riqueza, el lenguaje humano es inherentemente **ambiguo**; un mismo mensaje puede admitir múltiples interpretaciones, lo que suele derivar en confusiones. Asimismo, el objetivo de un enunciado puede transformarse según la intención comunicativa, incluso si las palabras son idénticas. Por ejemplo, mientras que la afirmación *"Dino es el perro de los Picapiedra"* cumple una función informativa, la variante *"¿Dino es el perro de los Picapiedra?"* busca solicitar información.
 
-Teniendo en cuenta la intención comunicativa, la siguiente tabla muestra algunos tipos de enunciados:
+Históricamente, en la antigua Grecia, uno de los mayores usos del lenguaje consistía en la **persuasión** (influir o convencer a una audiencia). Para potenciar esta capacidad surge la **Retórica**, cuyo objetivo es utilizar el lenguaje como herramienta de convencimiento. Los maestros en esta rama eran los sofistas griegos; sin embargo, la retórica anteponía la **efectividad** sobre la **verdad**, explotando la **ambigüedad** propia del lenguaje.
+
+Ante esta instrumentalización, Aristóteles buscó que el pensamiento humano tuviera reglas tan claras como las de las matemáticas. Para ello, **inventó la lógica**, cuyo propósito era formalizar el razonamiento para alcanzar la verdad de manera objetiva.
+
+Teniendo en cuenta la intención comunicativa, la siguiente tabla clasifica los tipos de enunciados:
 
 |Tipo |Intención Comunicativa |Ejemplo | 
 |---|---|---|
@@ -125,7 +128,7 @@ Teniendo en cuenta la intención comunicativa, la siguiente tabla muestra alguno
 |Imperativo	| Ordenar o solicitar una acción.|"¡Estudia para el examen!"|
 |Exclamativo | Expresar emoción o sorpresa.| "¡Qué día tan caluroso!"|
 
-De la tabla anterior, no todos los enunciados pueden son aptos para determinar son verdaderos o no, por lo tanto una primera restricción que debe ser realizada en pro de la exactitud consiste en restringir los enunciados validos a los declarativos los cuales son conocidos como **proposiciones**. En las siguientes secciones se ahondaran en estos enunciados y en la manera como, tal y como tenia en mente Aristoteles, mediante el uso de los enunciados declarativos se puede establecer un sistema formal siguiendo unas reglas claras las cuales pueden ser expresadas empleando el lenguaje Matematico. 
+De la tabla anterior, no todos los enunciados son aptos para determinar su veracidad. Por lo tanto, una primera restricción en pro de la exactitud consiste en limitar los enunciados válidos a los declarativos, conocidos como **proposiciones**. En las siguientes secciones se **ahondará** en estos enunciados y en la manera en que, tal como planteó Aristóteles, permiten establecer un sistema formal bajo reglas claras expresadas en lenguaje **matemático**.
 
 ---
 
