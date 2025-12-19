@@ -22,7 +22,7 @@ Esta sesión introduce el objeto de estudio de la Lógica Proposicional, diferen
 
 ---
 
-## 1. El Lenguaje y la Necesidad de la Lógica
+## 1. El Lenguaje y su importancia
 
 Cuando nos comunicamos, los seres humanos lo hacemos a **través** del lenguaje. Gracias a este, podemos transmitir cualquier **cosa**, como ideas, conceptos y sentimientos, por medio de mensajes.
 
@@ -74,44 +74,27 @@ graph TD
     style w7 fill:#fff,stroke:#333,stroke-dasharray: 5 5
 ```
 
-Cuando se construyen oraciones como la anteriormente analizada, se deben tener en cuenta un conjunto de reglas que establecen el orden y la forma en que se deben combinar las palabras para construir oraciones correctas, esta reglas se conocen como **sintaxis**. Comprender la sintaxis es escencial por que define el marco general que determina la validez y el sentido de lo que intentamos decir.
+Al construir oraciones, se debe tener en cuenta un conjunto de reglas que establecen el orden y la forma en que se combinan las palabras; estas reglas se conocen como **sintaxis**. Comprenderla es esencial porque define el marco general que determina la validez de lo que intentamos expresar.
 
-Además de la sintaxis, todo lo que decimos tiene un significado, el cual es abordado por la **semantica**. Cuando decimos o escribimos algo, estamos relacionando un concepto mental con una representación simbolica que permite que lo que transmitamos pueda ser entendido por alguien más.
+Además de la sintaxis, todo lo que decimos tiene un significado abordado por la **semántica**. Al escribir, relacionamos un concepto mental con una representación simbólica para que el mensaje sea interpretable por otros.
 
-Por otro lado, todo lo que decimos tiene un sentido practico el cual, mas alla del significado real (lo dicho en el diccionario) depende del contexto lo cual hace, que lo dicho no necesariamente lo literal si no práctico (algo dicho entre lineas). Esto ultimo, lo aborda la **Pragmatica**.
-
-Teniendo en cuenta estas tres dimensiones (sintactica, semantica y pragmatica), el intercambio de mensajes en el acto comunicativo tiene una intención (o propósito) y es de acuerto a esta que se estructura el mensaje. Por ejemplo, cuando alguien dice "Dino es el perro de los Picapiedra", el mensaje tiene la intención de informar o afirmar un hecho; sin embargo, cuando lo que dice es "¿Dino es el perro de los Picapiedra?" la intención busca preguntar o solicitar información.
-
-
-
-ToDo:
-- [ ] Hablar de la sintaxis, semantica y pracmatica.
-- [ ] Hablar de la riqueza del lenguaje.
-- [ ] Empezar a hablar de la necesidad de restringir.
-- [ ] Volver a los enunciados y a sus tipos.
-- [ ] Restingir el caso a la parte de las proposiciones.
-- [ ] Empezar a hablar de Matematicas como lengua exacta..
-- [ ] Terminar hanlando de la logica.
-  
-
-
-La comunicación humana utiliza símbolos (alfabeto) para construir enunciados. Sin embargo, el **Lenguaje Natural (Español)** es inherentemente ambiguo (ej. ironía, contexto). La Lógica surge como la disciplina que busca la **exactitud** y la **eliminación de la ambigüedad**.
+Por otro lado, el lenguaje posee un sentido práctico que va más allá del diccionario y depende del contexto; esto hace que lo dicho no sea siempre literal, sino que contenga significados "entre líneas". Esta dimensión es abordada por la **pragmática**.
 
 ```mermaid
 graph BT
     %% Definición de Nodos
-    Sintaxis[("1. Sintaxis<br/>(Estructura / Forma)<br/>¿Es correcto?")]
-    Semantica[("2. Semántica<br/>(Significado / Lógica)<br/>¿Tiene sentido?")]
-    Pragmatica[("3. Pragmática<br/>(Contexto / Intención)<br/>¿Es adecuado?")]
+    Sintaxis[("1. Sintaxis<br/>(Estructura / Gramática)<br/>¿Está bien construida?")]
+    Semantica[("2. Semántica<br/>(Significado literal)<br/>¿Qué significan las palabras?")]
+    Pragmatica[("3. Pragmática<br/>(Uso / Contexto)<br/>¿Cuál es la intención?")]
 
-    %% Relaciones (De abajo hacia arriba: Base -> Abstracción)
-    Sintaxis -->|Soporta| Semantica
-    Semantica -->|Habilita| Pragmatica
+    %% Relaciones (Base -> Abstracción)
+    Sintaxis -->|Organiza la| Semantica
+    Semantica -->|Se adapta a la| Pragmatica
 
-    %% Notas explicativas laterales (Simulando anotaciones)
-    Note1[/"Ej: 'int edad = 10;'<br/>Compila bien"/]
-    Note2[/"Ej: Asignar número a variable int<br/>Lógica válida"/]
-    Note3[/"Ej: Usar esa variable para<br/>calcular descuento<br/>Objetivo real"/]
+    %% Notas explicativas (Ejemplo lingüístico: "Hace frío aquí")
+    Note1[/"Ej: 'Hace frío aquí'<br/>Sujeto impersonal + Verbo + Adv.<br/>Gramática correcta."/]
+    Note2[/"Ej: La temperatura en este<br/>lugar es baja.<br/>Significado del diccionario."/]
+    Note3[/"Ej: 'Cierra la ventana'<br/>o 'Préstame un abrigo'.<br/>Intención del mensaje."/]
 
     %% Conexiones con las notas
     Sintaxis -.- Note1
@@ -129,28 +112,20 @@ graph BT
     style Note3 fill:#fff,stroke:#999,stroke-dasharray: 5 5
 ```
 
-### Estructura del Lenguaje Natural
+A pesar de su riqueza, el lenguaje humano es inherentemente ambiguo; un mismo mensaje puede admitir múltiples interpretaciones, lo que suele derivar en confusiones. Asimismo, el objetivo de un enunciado puede transformarse radicalmente según la intención comunicativa, incluso si las palabras empleadas son idénticas. Por ejemplo, mientras que la afirmación "Dino es el perro de los Picapiedra" cumple una función informativa, la variante "¿Dino es el perro de los Picapiedra?" desplaza el propósito hacia una solicitud de información.
 
-En gramática, la unidad mínima con sentido es la oración:
+En la antigua Grecia, uno de los usos mayores usos del lenguaje consistia en la **persuación** (influir, convencer o conmover a una audiencia). Para poder aprovechar el lenguaje de la mejor manera posible, esta la **Retorica** cuyo objetivo es estudiar y utilizar el lenguaje como una herramienta para la **persuación** y los maestros en esta rama eran los sofistas griegos. Sin embargo, para el objetivo de la retorica anteponia la **efectividad** sobre la **verdad** gracias al uso de recursos cuyo fin era explotar la ambiguedad propia del lenguaje. Por lo tanto, el lenguaje se volvio una herramienta de poder instrumentalizada al servicio del mejor postor. Aristóteles quería que el pensamiento humano tuviera reglas tan claras como las de las matemáticas para lo cual invento la lógica cuyo objetivo era formalizar el pensamiento para llegar a la verdad.
 
-* **Sujeto:** Quien ejecuta la acción.
-* **Predicado:** La acción (verbo) y su complemento.
+Teniendo en cuenta la intención comunicativa, la siguiente tabla muestra algunos tipos de enunciados:
 
-> **Ejemplo:** *Dino es el perro de los Picapiedra*
->
-> * **Sujeto**: Dino
-> * **Predicado**: es el perro de los Picapiedra
+|Tipo |Intención Comunicativa |Ejemplo | 
+|---|---|---|
+|Declarativo | Informar o afirmar un hecho. | "Pedro es el esposo de Vilma." |
+|Interrogativo | Preguntar o solicitar información. | "¿Dino es el perro de los Mármol?"|
+|Imperativo	| Ordenar o solicitar una acción.|"¡Estudia para el examen!"|
+|Exclamativo | Expresar emoción o sorpresa.| "¡Qué día tan caluroso!"|
 
-### Clasificación de Enunciados
-
-No todos los enunciados son aptos para el análisis lógico. Se clasifican según su intención comunicativa:
-
-| Tipo | Intención Comunicativa | Ejemplo | Propiedad Lógica |
-| :--- | :--- | :--- | :---: |
-| **Declarativo** | Informar o afirmar un hecho. | "Pedro es el esposo de Vilma." | **Apto** |
-| Interrogativo | Preguntar o solicitar información. | "¿Dino es el perro de los Mármol?" | No Apto |
-| Imperativo | Ordenar o solicitar una acción. | "¡Estudia para el examen!" | No Apto |
-| Exclamativo | Expresar emoción o sorpresa. | "¡Qué día tan caluroso!" | No Apto |
+De la tabla anterior, no todos los enunciados pueden son aptos para determinar son verdaderos o no, por lo tanto una primera restricción que debe ser realizada en pro de la exactitud consiste en restringir los enunciados validos a los declarativos los cuales son conocidos como **proposiciones**. En las siguientes secciones se ahondaran en estos enunciados y en la manera como, tal y como tenia en mente Aristoteles, mediante el uso de los enunciados declarativos se puede establecer un sistema formal siguiendo unas reglas claras las cuales pueden ser expresadas empleando el lenguaje Matematico. 
 
 ---
 
