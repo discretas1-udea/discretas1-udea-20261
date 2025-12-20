@@ -385,7 +385,7 @@ Traduzca los siguientes enunciados a lenguaje formal:
    "Me gustan los perros o me gustan los gatos, pero no ambos"
    {: .text-center }
 
-   1. **Conector principal**: "o" ($\lor$).
+   1. **Conector principal**: "o" exclusivo ($\oplus$).
    2. **Proposiciones atómicas**:
       * **$p$**: "Me gustan los perros"
       * **$q$**: "Me gustan los gatos"
