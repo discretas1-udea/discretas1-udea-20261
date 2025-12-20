@@ -331,5 +331,5 @@ A continuación, se aplican los pasos de formalización a enunciados comunes:
 3. **Expresión Lógica**:
    
    $$
-   (p \land q) \rightarrow r
+   (p \land q) \rightarrow \neg r
    $$
