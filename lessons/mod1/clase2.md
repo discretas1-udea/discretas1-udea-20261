@@ -8,13 +8,11 @@ nav_order: 2
 ![Built with AI](https://img.shields.io/badge/Built%20with-AI-blue.svg)
 
 # Clase 02 - Operadores Lógicos y Tablas de Verdad
-
 {: .no_toc }
 
 Esta sesión profundiza en la semántica de los operadores lógicos, estableciendo las reglas para determinar el valor de verdad de proposiciones compuestas y la construcción de tablas de verdad.
 
 ## Tabla de Contenidos
-
 {: .no_toc .text-delta }
 
 1. TOC
@@ -22,28 +20,29 @@ Esta sesión profundiza en la semántica de los operadores lógicos, establecien
 
 ---
 
-## 1. Repaso Clase Anterior
-
+## Repaso Clase Anterior
 {: .no_toc }
 
 Para entender los operadores de hoy, necesitamos tener frescos tres conceptos fundamentales de la clase pasada. Utiliza este cuadro para recordar:
 
-### 1.1. La Regla de Oro de la Proposición
+### La Regla de Oro de la Proposición
 
 Una **Proposición** no es cualquier frase. Para serlo, debe cumplir estrictamente el **Principio de Bivalencia**:
 > "Debe poder clasificarse como **Verdadera** ($V$) o **Falsa** ($F$), pero nunca ambas a la vez, ni ninguna."
 
+No todos los enunciados son proposiciones. Veamos:
 * **No son proposiciones:** Preguntas ("¿Qué hora es?"), Órdenes ("¡Siéntese!"), Exclamaciones o Deseos ("Ojalá llueva").
 * **Sí son proposiciones:** Afirmaciones sobre hechos ("Hoy es martes", "Dino es un perro").
 
-### 1.2. El Objetivo del Curso
+### El Objetivo del Curso
 
-¿Por qué nos complicamos con símbolos?
+**¿Por qué nos complicamos con símbolos?**: La transición del lenguaje cotidiano al lógico es necesaria por una razón fundamental: la precisión.
+1. **El lenguaje natural es ambiguo**: Palabras como "vela" ("vela" puede ser de barco o de cera). cambian su significado según el contexto, lo que puede generar errores de interpretación. 
+2. **El lenguaje lógico es exacto**: Elimina la duda al traducir ideas en fórmulas matemáticas como $p \land q$.
 
-* **Lenguaje Natural (Español):** Es ambiguo y depende del contexto (ej. "Vela" puede ser de barco o de cera).
-* **Lenguaje Lógico (Matemático):** Es exacto. Buscamos traducir lo ambiguo a fórmulas precisas ($p \land q$).
+Gracias a esta abstracción, es posible representar y operar sobre problemas reales de forma estructurada. Al aplicar el rigor de las matemáticas, dejamos de lado las interpretaciones subjetivas para enfocarnos en la verificación lógica de la verdad.
 
-### 1.3. Elementos de la Formalización
+### Elementos de la Formalización
 
 La lógica proposicional opera mediante la **formalización**, un proceso que traduce el lenguaje natural (intrínsecamente ambiguo y semántico) a un lenguaje simbólico (exacto y sintáctico).
 
@@ -55,7 +54,7 @@ La lógica proposicional opera mediante la **formalización**, un proceso que tr
 
 ---
 
-## 2. Sistematización de Operadores Lógicos
+## Sistematización de Operadores Lógicos
 
 Los conectores lógicos son las herramientas fundamentales que nos permiten construir proposiciones complejas a partir de proposiciones simples.
 
@@ -70,11 +69,11 @@ Los conectores lógicos son las herramientas fundamentales que nos permiten cons
 
 ---
 
-## 3. Axiomas de Verdad
+## Axiomas de Verdad
 
 Para operar lógicamente, debemos conocer cómo se comporta cada operador frente a los valores de verdad: Verdadero ($V$) y Falso ($F$).
 
-### 3.1 La Conjunción ($p \land q$)
+### La Conjunción ($p \land q$)
 
 Es un operador restrictivo. La proposición compuesta solo es verdadera cuando **ambas componentes son verdaderas**.
 
@@ -82,7 +81,7 @@ $$V \land V = V$$
 
 *En cualquier otro caso (si hay al menos una falsedad), el resultado es $F$.*
 
-### 3.2 La Disyunción ($p \lor q$)
+### La Disyunción ($p \lor q$)
 
 Es un operador inclusivo. La proposición es verdadera si **al menos una** de las componentes es verdadera.
 
@@ -90,7 +89,7 @@ $$F \lor F = F$$
 
 *Solo es falsa cuando ambas proposiciones son falsas.*
 
-### 3.3 El Condicional ($p \rightarrow q$)
+### El Condicional ($p \rightarrow q$)
 
 Es fundamental comprender la relación de **Antecedente $\to$ Consecuente**.
 
@@ -106,14 +105,14 @@ $$V \rightarrow F = F$$
 * "$p$ es suficiente para $q$"
 * "$q$ es necesario para $p$"
 
-### 2.4 El Bicondicional ($p \leftrightarrow q$)
+### El Bicondicional ($p \leftrightarrow q$)
 
 Representa una equivalencia de valores. Es verdadera cuando ambas proposiciones comparten el mismo valor de verdad.
 
 $$V \leftrightarrow V = V$$
 $$F \leftrightarrow F = V$$
 
-### 3.5 Ejemplos de repaso
+### Ejemplos de repaso
 
 Teniendo en cuenta la teoria anterior, resuelva los siguientes ejemplos:
 
@@ -217,7 +216,7 @@ Teniendo en cuenta la teoria anterior, resuelva los siguientes ejemplos:
 
 ---
 
-## 4. Jerarquía de Operadores
+## Jerarquía de Operadores
 
 Cuando nos enfrentamos a una expresión compleja sin signos de agrupación suficientes, debemos respetar el siguiente orden de precedencia para evitar ambigüedades:
 
@@ -229,11 +228,11 @@ Cuando nos enfrentamos a una expresión compleja sin signos de agrupación sufic
 
 ---
 
-## 5. Construcción de Tablas de Verdad
+## Construcción de Tablas de Verdad
 
 Una tabla de verdad es una herramienta gráfica que se utiliza para analizar todos los posibles valores de verdad de los enunciados lógicos que la componen, a fin de determinar la validez de un enunciado o argumento junto con todos sus posibles resultados.
 
-### 5.1. Tabla de verdad para los operadores lógicos fundamentales
+### Tabla de verdad para los operadores lógicos fundamentales
 
 A continuación, se presenta la tabla de verdad unificada para dos proposiciones cualesquiera $p$ y $q$, mostrando el comportamiento de todos los operadores lógicos fundamentales vistos en esta sesión:
 
@@ -244,7 +243,7 @@ A continuación, se presenta la tabla de verdad unificada para dos proposiciones
 | **F** | **V** | V | F | V | **V** | V | F |
 | **F** | **F** | V | F | **F** | F | V | V |
 
-### 5.2. Metodología: Construcción de Tablas de Verdad
+### Metodología: Construcción de Tablas de Verdad
 
 Para construir una tabla de verdad de manera sistemática y minimizar errores, se recomienda seguir estrictamente este algoritmo de 6 pasos:
 
@@ -280,7 +279,7 @@ El número de filas ($N$) de la tabla depende del número de variables proposici
 
 $$N = 2^n$$
 
-### 5.3. Ejemplo resuelto
+### Ejemplo resuelto
 
 Construya una tabla de verdad para analizar todos los resultados posibles para la  proposición para la expresión:
 
@@ -308,7 +307,7 @@ $$
 
 ---
 
-## 6. Clasificación de las proposiciones
+## Clasificación de las proposiciones
 
 Las proposiciones pueden clasificarse en tres tipos:
 
