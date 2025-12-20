@@ -333,3 +333,24 @@ A continuación, se aplican los pasos de formalización a enunciados comunes:
    $$
    (p \land q) \rightarrow \neg r
    $$
+
+
+## Actividad
+
+A continuación, exploraremos la conexión de lo que hemos visto hasta el momento con la cotidianidad y la tecnologia. El objetivo de esta materia mas alla de una comprensión introductoria de la Lógica y los numeros como parte de un plan academico dentro del microcurriculo es fomentar el **Pensamiento Critico** y la **Curiosidad**. A continuación lo invitamos a que revise los siguientes dos videos:
+
+### Video 1 - Esta herramienta te ayudará a mejorar tu pensamiento crítico
+
+Video sobre el **Método Sócratico** el cual es la base fundamental para tener penamiento crítico.
+
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7C3XUy3BYug?si=-qN2gYdYgYigivOa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+### Video 2 - Documental The Thinking Game
+
+Este documental muestra el recorrido de **DeepMind** en la creación de sistemas de inteligencia artificial capaces de aprender y razonar. Aqui se explora los desafíos científicos, éticos y humanos detrás del desarrollo de la IA. A través de ejemplos como AlphaGo, reflexiona sobre qué significa "pensar" para una máquina. Invita a debatir los límites, riesgos y responsabilidades del uso de la inteligencia artificial.
+
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d95J8yzvjbQ?si=E5xCapAN1h-fvTva" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
