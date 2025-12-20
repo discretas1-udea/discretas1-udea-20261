@@ -239,18 +239,21 @@ graph LR
 {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
 </div>
 
-#### Paso 1. Detecte la estructura lógica (conectores)
+**Paso 1. Detecte la estructura lógica (conectores)**
+
 1. Subraye las palabras que indiquen relación lógica:  
    **no**, **y**, **o**, **si… entonces…**, **si y solo si**, **a menos que**, **solo si**, etc.
 2. Determine cuál es el **conector principal** (el que "manda" en toda la frase).
 3. Si hay más de un conector, use **paréntesis** para reflejar la agrupación correcta.
 
-#### Paso 2. Defina proposiciones simples asociandolas a variables
+**Paso 2. Defina proposiciones simples asociandolas a variables**
+
 1. Separe la frase en **proposiciones atómicas** (enunciados declarativos sin conectores internos).
 2. Asigne una letra a cada una (por ejemplo, $(P, Q, R)$) y escriba su significado.
 3. Verifique que cada proposición atómica tenga **valor de verdad** (sea claramente verdadera o falsa).
 
-#### Paso 3. Construya la fórmula y verifique
+**Paso 3. Construya la fórmula y verifique**
+
 1. Sustituya cada proposición atómica por su variable.
 2. Reemplace los conectores por sus símbolos:  
    $(\neg, \land, \lor, \oplus, \rightarrow, \leftrightarrow )$
@@ -263,77 +266,211 @@ graph LR
 
 ## Ejemplos resueltos
 
-A continuación, se aplican los pasos de formalización a enunciados comunes:
+Traduzca los siguientes enunciados a lenguaje formal:
 
-### Ejemplo 1: Disyunción
-
-**Enunciado**: 
-
-"Estudias o trabajas"
-{: .text-center }
-
-1. **Conector principal**: "o" ($\lor$).
-2. **Proposiciones atomicas**:
-    * **$P$**: "Estudias"
-    * **$Q$**: "Trabajas"
-3. **Expresión Lógica:** 
+1. **Enunciado en lenguaje natural**: "La Chimoltrufia es mayor que el Chompiras"
    
-   $$
-   P \lor Q
-   $$
+   **Solución**: 
 
-### Ejemplo 2: Conjunción
+   **Enunciado**: 
 
-**Enunciado**: 
+   "La Chimoltrufia es mayor que el Chompiras"
+   {: .text-center }
 
-"El Chapulín es un superhéroe y es Mexicano"
-{: .text-center }
+   1. **Conector principal**: No hay, la proposición es simple.
+   2. **Proposiciones atómicas**:
+      * **$p$**: "La Chimoltrufia es mayor que el Chompiras"
+   3. **Expresión Lógica**: 
+      
+      $$
+      p
+      $$
 
-1. **Conector principal**: "y" ($\land$).
-2. **Proposiciones atomicas**:
-    * **$P$**: "El Chapulín es un superhéroe"
-    * **$Q$**: "El Chapulín es Mexicano"
-3. **Expresión Lógica**: 
+2. Obtenga la negación de la proposición anterior y exprese en lenguaje natural.
    
-   $$
-   P \land Q
-   $$
+   **Solución**: 
 
-### Ejemplo 3: Condicional (Implicación)
+   1. **Proposiciones Simples**:
+     * $p$: "La Chimoltrufia es mayor que el Chompiras"
 
-**Enunciado**:
+   2. **Expresión Lógica**: Como se pide la negación de la proposición anterior, el resultado es:
 
-"Si estudias con juicio, ganarás la materia"
-{: .text-center }
-
-1. **Conector princioal:** "Si... entonces..." ($\rightarrow$).
-2. **Proposiciones atómicas:**
-    * **$m$**: "Estudias con juicio" (Antecedente)
-    * **$n$**: "Ganarás la materia" (Consecuente)
-3. **Expresión Lógica**:
+      $$
+      \neg p
+      $$
    
-   $$
-   m \rightarrow n
-   $$
+   3. **Expresión en lenguaje natural**:
+  
+      "La Chimoltrufia ***no*** es mayor que el Chompiras"
+      {: .text-center }
 
-### Ejemplo 4: Expresión compuesta
-
-**Enunciado**:
-
-"Si apruebo el examen y entrego el proyecto, entonces no tendré que ir a recuperación"
-{: .text-center }
-
-1. **Conector princioal:** "Si... entonces..." ($\rightarrow$).
-2. **Proposiciones atómicas:**
-    * **$p$**: "Apruebo el examen"
-    * **$q$**: "Entrego el proyecto"
-    * **$r$**: "Tendré que ir a recuperación"
-3. **Expresión Lógica**:
+3. **Enunciado en lenguaje natural**: "Me gusta el cafe y la torta"
    
-   $$
-   (p \land q) \rightarrow \neg r
-   $$
+   **Solución**: 
 
+   **Enunciado**: 
+
+   "Me gusta el cafe y la torta"
+   {: .text-center }
+
+   1. **Conector principal**: "y" ($\land$).
+   2. **Proposiciones atómicas**:
+      * **$p$**: "Me gusta el cafe"
+      * **$q$**: "Me gusta la torta"
+   3. **Expresión Lógica**: 
+      
+      $$
+      p \land q
+      $$
+
+4. **Enunciado en lenguaje natural**: "Me gustan los perros o me gustan los gatos"
+   
+   **Solución**: 
+
+   **Enunciado**: 
+
+   "Me gustan los perros o me gustan los gatos"
+   {: .text-center }
+
+   1. **Conector principal**: "o" ($\lor$).
+   2. **Proposiciones atómicas**:
+      * **$p$**: "Me gustan los perros"
+      * **$q$**: "Me gustan los gatos"
+   3. **Expresión Lógica**: 
+      
+      $$
+      p \lor q
+      $$
+
+5. **Enunciado en lenguaje natural**: "Estudias o trabajas"
+   
+   **Solución**:
+
+   "Estudias o trabajas"
+   {: .text-center }
+
+   1. **Conector principal**: "o" ($\lor$).
+   2. **Proposiciones atómicas**:
+      * **$P$**: "Estudias"
+      * **$Q$**: "Trabajas"
+   3. **Expresión Lógica**: 
+      
+      $$
+      P \lor Q
+      $$
+
+6. **Enunciado en lenguaje natural**: "El Chapulín es un superhéroe y es Mexicano"
+   
+   **Solución**:
+
+   "El Chapulín es un superhéroe y es Mexicano"
+   {: .text-center }
+
+   1. **Conector principal**: "y" ($\land$).
+   2. **Proposiciones atomicas**:
+      * **$P$**: "El Chapulín es un superhéroe"
+      * **$Q$**: "El Chapulín es Mexicano"
+   3. **Expresión Lógica**: 
+       
+       $$
+       P \land Q
+       $$
+
+7. **Enunciado en lenguaje natural**: "Me gustan los perros o me gustan los gatos, pero no ambos"
+   
+   **Solución**:
+   
+   **Enunciado**:
+
+   "Me gustan los perros o me gustan los gatos, pero no ambos"
+   {: .text-center }
+
+   1. **Conector principal**: "o" ($\lor$).
+   2. **Proposiciones atómicas**:
+      * **$p$**: "Me gustan los perros"
+      * **$q$**: "Me gustan los gatos"
+   3. **Espresión Lógica**: 
+      
+      $$
+      p \oplus q
+      $$
+
+8. **Enunciado en lenguaje natural**: "Si estudias con juicio, ganarás la materia"
+   
+   **Solución**:
+
+   **Enunciado**:
+   
+   "Si estudias con juicio, ganarás la materia"
+   {: .text-center }
+
+   1. **Conector princioal:** "Si... entonces..." ($\rightarrow$).
+   2. **Proposiciones atómicas:**
+       * **$m$**: "Estudias con juicio" (Antecedente)
+       * **$n$**: "Ganarás la materia" (Consecuente)
+   3. **Expresión Lógica**:
+      
+      $$
+      m \rightarrow n
+      $$
+
+9. **Enunciado en lenguaje natural**: "Si le regalo una rosa, entonces ella irá al baile conmigo"
+   
+   **Solución**:
+
+   **Enunciado**:
+
+   "Si le regalo una rosa, entonces ella irá al baile conmigo"
+   {: .text-center }
+
+   1. **Conector princioal:** "Si... entonces..." ($\rightarrow$).
+   2. **Proposiciones atómicas:**
+       * **$p$**: "Le regalo una rosa"
+       * **$q$**: "Ella irá al baile conmigo"
+   3. **Expresión Lógica**:
+      
+      $$
+      p \rightarrow q
+      $$
+
+10. **Enunciado en lenguaje natural**: "Puedes tomar el vuelo si y solo si compras el tiquete"
+   
+   **Solución**:
+
+   **Enunciado**:
+
+   "Puedes tomar el vuelo si y solo si compras el tiquete"
+   {: .text-center }
+
+   1. **Conector princioal:** "Si... entonces..." ($\rightarrow$).
+   2. **Proposiciones atómicas:**
+       * **$p$**: "Puedes tomar el vuelo"
+       * **$q$**: "Compras el tiquete"
+   3. **Expresión Lógica**:
+      
+      $$
+      p \leftrightarrow q
+      $$
+
+11. **Enunciado en lenguaje natural**: "Si apruebo el examen y entrego el proyecto, entonces no tendré que ir a recuperación"
+    
+    **Solución**:
+
+    **Enunciado**:
+
+    "Si apruebo el examen y entrego el proyecto, entonces no tendré que ir a recuperación"
+    {: .text-center }
+
+    1. **Conector princioal:** "Si... entonces..." ($\rightarrow$).
+    2. **Proposiciones atómicas:**
+        * **$p$**: "Apruebo el examen"
+        * **$q$**: "Entrego el proyecto"
+        * **$r$**: "Tendré que ir a recuperación"
+    3. **Expresión Lógica**:
+       
+       $$
+       (p \land q) \rightarrow \neg r
+       $$
 
 ## Actividad
 

@@ -42,15 +42,23 @@ No todos los enunciados son proposiciones. Veamos:
 
 Gracias a esta abstracción, es posible representar y operar sobre problemas reales de forma estructurada. Al aplicar el rigor de las matemáticas, dejamos de lado las interpretaciones subjetivas para enfocarnos en la verificación lógica de la verdad.
 
+> **Conexión con programación**: en lógica proposicional trabajamos con valores $V/F$, que en programación suelen representarse como booleanos `true/false` (o incluso `1/0`).
+{: .important }
+
 ### Elementos de la Formalización
 
 La lógica proposicional opera mediante la **formalización**, un proceso que traduce el lenguaje natural (intrínsecamente ambiguo y semántico) a un lenguaje simbólico (exacto y sintáctico).
 
+<div style="text-align: center;" markdown="1">
 | Elemento | Representación Simbólica | Función |
 | :--- | :---: | :--- |
 | **Variables** | $p, q, r, ...$ | Representar hechos o afirmaciones simples. |
 | **Operadores** | $\neg, \land, \lor, \rightarrow$ | Establecer relaciones lógicas entre variables. |
 | **Signos de Agrupación** | $( ), [ ]$ | Determinar la jerarquía y el orden de evaluación. |
+
+**Tabla 1**. Elementos para formalizar enunciados.
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
 
 ---
 
@@ -58,6 +66,7 @@ La lógica proposicional opera mediante la **formalización**, un proceso que tr
 
 Los conectores lógicos son las herramientas fundamentales que nos permiten construir proposiciones complejas a partir de proposiciones simples.
 
+<div style="text-align: center;" markdown="1">
 | Operador | Nombre Técnico | Notación | Expresión Natural |
 | :--- | :--- | :---: | :--- |
 | **Negación** | Negación | $\neg p$ | "No p", "Es falso que p" |
@@ -67,40 +76,115 @@ Los conectores lógicos son las herramientas fundamentales que nos permiten cons
 | **Condicional** | Implicación | $p \rightarrow q$ | "Si p, entonces q" |
 | **Bicondicional**| Equivalencia | $p \leftrightarrow q$ | "p si y solo si q" |
 
+**Tabla 2**. Operadores lógicos.
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
+
 ---
 
 ## Axiomas de Verdad
 
-Para operar lógicamente, debemos conocer cómo se comporta cada operador frente a los valores de verdad: Verdadero ($V$) y Falso ($F$).
+Para operar lógicamente, debemos conocer cómo se comporta cada operador frente a los valores de verdad: Verdadero ($V$) y Falso ($F$). Estas reglas se especifican mediante **tablas de verdad**, que constituyen la base semántica de la lógica proposicional.
 
-### La Conjunción ($p \land q$)
+
+### Negación ($\neg p$)
+
+Invierte el valor de verdad de una proposición.
+
+<div style="text-align: center;" markdown="1">
+| $p$ | $\neg p$ |
+| :---: | :---: |
+| V | **F** |
+| F | **V** |
+
+**Tabla 3**. Negación.
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
+
+
+### Conjunción ($p \land q$)
 
 Es un operador restrictivo. La proposición compuesta solo es verdadera cuando **ambas componentes son verdaderas**.
 
-$$V \land V = V$$
+<div style="text-align: center;" markdown="1">
+| $p$ | $q$ | $p \land q$ |
+| :---: | :---: | :---: |
+| V | V | **V** |
+| V | F | **F** |
+| F | V | **F** |
+| F | F | **F** |
 
-*En cualquier otro caso (si hay al menos una falsedad), el resultado es $F$.*
+**Tabla 4**. Conjunción.
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
 
-### La Disyunción ($p \lor q$)
+
+> **Regla corta**: basta una falsedad para que toda la conjunción sea $F$.
+{: .important }
+
+### Disyunción ($p \lor q$)
 
 Es un operador inclusivo. La proposición es verdadera si **al menos una** de las componentes es verdadera.
 
-$$F \lor F = F$$
+<div style="text-align: center;" markdown="1">
+| $p$ | $q$ | $p \lor q$ |
+| :---: | :---: | :---: |
+| V | V | **V** |
+| V | F | **V** |
+| F | V | **V** |
+| F | F | **F** |
 
-*Solo es falsa cuando ambas proposiciones son falsas.*
+**Tabla 5**. Disyunción
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
 
-### El Condicional ($p \rightarrow q$)
+> **Regla corta**: basta una verdad para que toda la disyunción sea $V$.
+{: .important }
 
-Es fundamental comprender la relación de **Antecedente $\to$ Consecuente**.
+### Disyunción Exclusiva ($p \oplus q$)
+
+Es verdadera cuando exactamente una de las proposiciones es verdadera (no ambas).
+
+<div style="text-align: center;" markdown="1">
+| $p$ | $q$ | $p \oplus q$ |
+| :---: | :---: | :---: |
+| V | V | **F** |
+| V | F | **V** |
+| F | V | **V** |
+| F | F | **F** |
+
+**Tabla 6**. Disyunción Exclusiva
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
+
+
+> **Regla de oro**: Valores **diferentes** dan verdadero $V$.
+{: .important }
+
+### Condicional ($p \rightarrow q$)
+
+Se interpreta como **Antecedente $\rightarrow$ Consecuente**. Define una relación de compromiso o contrato. La única forma de romper el contrato es que el antecedente se cumpla ($V$) y el consecuente no ($F$).
+
+<div style="text-align: center;" markdown="1">
+| $p$ | $q$ | $p \to q$ |
+| :---: | :---: | :---: |
+| V | V | **V** |
+| V | F | **F** |
+| F | V | **V** |
+| F | F | **V** |
+
+**Tabla 7**. Condicional
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>    
+
 
 > **Regla de Oro:** Una implicación solo es FALSA cuando se parte de una verdad y se llega a una falsedad.
-
-$$V \rightarrow F = F$$
+> $$V \rightarrow F = F$$
+{: .important }
 
 *En todos los demás casos ($V \to V$, $F \to V$, $F \to F$), la implicación es Verdadera.*
 
-**Lecturas equivalentes:**
-
+Hay varias formas para hacer referencia a una relación condicional, a continuación se muestran algunas:
 * "$p$ implica $q$"
 * "$p$ es suficiente para $q$"
 * "$q$ es necesario para $p$"
@@ -109,110 +193,17 @@ $$V \rightarrow F = F$$
 
 Representa una equivalencia de valores. Es verdadera cuando ambas proposiciones comparten el mismo valor de verdad.
 
-$$V \leftrightarrow V = V$$
-$$F \leftrightarrow F = V$$
+<div style="text-align: center;" markdown="1">
+| $p$ | $q$ | $p \leftrightarrow q$ |
+| :---: | :---: | :---: |
+| V | V | **V** |
+| V | F | **F** |
+| F | V | **F** |
+| F | F | **V** |
 
-### Ejemplos de repaso
-
-Teniendo en cuenta la teoria anterior, resuelva los siguientes ejemplos:
-
-1. Exprese el siguiente enunciado en lenguaje natural a expresiones lógicas: "La Chimoltrufia es mayor que el Chompiras"
-
-   **Solución**:
-
-   * **Proposiciones Simples**:
-     * $p$: "La Chimoltrufia es mayor que el Chompiras"
-
-   * **Expresión Lógica**:
-
-     $$
-     p
-     $$
-2. Obtenga la negación de la proposición anterior y exprese en lenguaje natural.
-
-   **Solución**:
-
-   * **Proposiciones Simples**:
-     * $p$: "La Chimoltrufia es mayor que el Chompiras"
-
-   * **Expresión Lógica**:
-
-     $$
-     \neg p
-     $$
-
-   * **Expresión en lenguaje natural**:
-     "La Chimoltrufia ***no*** es mayor que el Chompiras"
-
-3. Dado el enunciado: "Me gusta el cafe y la torta", obtenga las proposiciones simples y exprese la proposición compuesta en lenguaje formal
-
-   **Solución**:
-
-   * **Proposiciones Simples**:
-     * $p$: "Me gusta el cafe"
-     * $q$: "Me gusta la torta"
-
-   * **Expresión Lógica**:
-
-     $$
-     p \land q
-     $$
-
-4. Proceda de manera similar al ejercicio anterior para el enunciado: "Me gustan los perros o me gustan los gatos".
-
-   **Solución**:
-
-   * **Proposiciones Simples**:
-     * $p$: "Me gusta el cafe"
-     * $q$: "Me gusta la torta"
-
-   * **Expresión Lógica**:
-
-     $${
-     p \land q
-     }$$
-
-5. Dado el enunciado: "Me gustan los perros o me gustan los gatos, pero no ambos", obtenga las proposiciones simples y exprese la proposición compuesta en lenguaje formal.
-
-   **Solución**:
-
-   * **Proposiciones Simples**:
-     * $p$: "Me gustan los perros"
-     * $q$: "Me gustan los gatos"
-
-   * **Expresión Lógica**:
-
-     $$
-     p \oplus q
-     $$
-
-6. Dado el enunciado: "Si le regalo una rosa, entonces ella irá al baile conmigo", obtenga las proposiciones simples y exprese la proposición compuesta en lenguaje formal.
-
-   **Solución**:
-
-   * **Proposiciones Simples**:
-     * $p$: "Le regalo una rosa"
-     * $q$: "Ella irá al baile conmigo"
-
-   * **Expresión Lógica**:
-
-     $${
-     p \rightarrow q
-     }$$
-
-7. Proceda igual para el enunciado: "Puedes tomar el vuelo si y solo si compras el tiquete".
-
-   **Solución**:
-
-   * **Proposiciones Simples**:
-     * $p$: "Puedes tomar el vuelo"
-     * $q$: "Compras el tiquete"
-
-   * **Expresión Lógica**:
-
-     $$
-     p \leftrightarrow q
-     $$
+**Tabla 8**. Bicondicional
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
 
 ---
 
