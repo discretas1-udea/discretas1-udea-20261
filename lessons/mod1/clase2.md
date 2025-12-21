@@ -86,7 +86,6 @@ Los conectores lógicos son las herramientas fundamentales que nos permiten cons
 
 Para operar lógicamente, debemos conocer cómo se comporta cada operador frente a los valores de verdad: Verdadero ($V$) y Falso ($F$). Estas reglas se especifican mediante **tablas de verdad**, que constituyen la base semántica de la lógica proposicional.
 
-
 ### Negación ($\neg p$)
 
 Invierte el valor de verdad de una proposición.
@@ -100,7 +99,6 @@ Invierte el valor de verdad de una proposición.
 **Tabla 3**. Negación.
 {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
 </div>
-
 
 ### Conjunción ($p \land q$)
 
@@ -117,7 +115,6 @@ Es un operador restrictivo. La proposición compuesta solo es verdadera cuando *
 **Tabla 4**. Conjunción.
 {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
 </div>
-
 
 > **Regla corta**: basta una falsedad para que toda la conjunción sea $F$.
 {: .important }
@@ -157,7 +154,6 @@ Es verdadera cuando exactamente una de las proposiciones es verdadera (no ambas)
 {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
 </div>
 
-
 > **Regla de oro**: Valores **diferentes** dan verdadero $V$.
 {: .important }
 
@@ -176,7 +172,6 @@ Se interpreta como **Antecedente $\rightarrow$ Consecuente**. Define una relaci�
 **Tabla 7**. Condicional
 {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
 </div>    
-
 
 > **Regla de Oro:** Una implicación solo es FALSA cuando se parte de una verdad y se llega a una falsedad.
 > $$V \rightarrow F = F$$
@@ -209,13 +204,21 @@ Representa una equivalencia de valores. Es verdadera cuando ambas proposiciones 
 
 ## Jerarquía de Operadores
 
-Cuando nos enfrentamos a una expresión compleja sin signos de agrupación suficientes, debemos respetar el siguiente orden de precedencia para evitar ambigüedades:
+Cuando nos enfrentamos a una expresión compleja sin signos de agrupación suficientes, debemos respetar el siguiente orden de precedencia para evitar ambigüedades. Para esto empleamos la tabla de **Jerarquía de Operadores** la cual define el orden de aplicación de los conectivos lógicos al evaluar expresiones sin paréntesis, siendo esencial para eliminar la ambigüedad. 
 
-1. **Signos de agrupación:** $( ), [ ], \{ \}$
-2. **Negación:** $\neg$
-3. **Conjunción y Disyunción:** $\land, \lor$
-4. **Condicional:** $\rightarrow$
-5. **Bicondicional:** $\leftrightarrow$
+<div style="text-align: center;" markdown="1">
+| Prioridad        | Símbolo | Asociatividad            | Ejemplo con paréntesis |
+|------------------|---------|--------------------------|------------------------|
+| 1 (más alta)     | $¬$     | No aplica (unitario)     | $¬p \land q \;\mapsto\; ((¬p) \land q)$ |
+| 2                | $\land$ | Izquierda (I → D)        | $p \land q \land r \;\mapsto\; ((p \land q) \land r)$ |
+| 3                | $\lor$  | Izquierda (I → D)        | $p \lor q \lor r \;\mapsto\; ((p \lor q) \lor r)$ |
+| 4                | $\oplus$| Izquierda (I → D)        | $p \oplus q \oplus r \;\mapsto\; ((p \oplus q) \oplus r)$ |
+| 5                | $\to$   | Derecha (I ← D)          | $p \to q \to r \;\mapsto\; (p \to (q \to r))$ |
+| 6 (más baja)     | $\leftrightarrow$ | Derecha (I ← D) | $p \leftrightarrow q \leftrightarrow r \;\mapsto\; (p \leftrightarrow (q \leftrightarrow r))$ |
+
+**Tabla 9**. Jerarquía de Operadores.
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
 
 ---
 
@@ -227,12 +230,17 @@ Una tabla de verdad es una herramienta gráfica que se utiliza para analizar tod
 
 A continuación, se presenta la tabla de verdad unificada para dos proposiciones cualesquiera $p$ y $q$, mostrando el comportamiento de todos los operadores lógicos fundamentales vistos en esta sesión:
 
+<div style="text-align: center;" markdown="1">
 | $p$ | $q$ | **Negación**<br>$\neg p$ | **Conjunción**<br>$p \land q$ | **Disyunción**<br>$p \lor q$ | **O Exclusivo**<br>$p \oplus q$ | **Condicional**<br>$p \rightarrow q$ | **Bicondicional**<br>$p \leftrightarrow q$ |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **V** | **V** | F | **V** | V | F | V | V |
 | **V** | **F** | F | F | V | **V** | **F** | F |
 | **F** | **V** | V | F | V | **V** | V | F |
 | **F** | **F** | V | F | **F** | F | V | V |
+
+**Tabla 10**. Tabla de verdad para los operadores lógicos fundamentales.
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
 
 ### Metodología: Construcción de Tablas de Verdad
 
@@ -261,7 +269,7 @@ Para construir una tabla de verdad de manera sistemática y minimizar errores, s
     {: .note }
 
 5. **Evaluar la expresión lógica paso a paso**
-    Llena las columnas auxiliares de izquierda a derecha, respetando la [jerarquía de operadores](#4-jerarquía-de-operadores).
+    Llena las columnas auxiliares de izquierda a derecha, respetando la [jerarquía de operadores](#jerarquía-de-operadores).
 
 6. **Revisar y validar la tabla**
     Verifica que no existan inconsistencias y clasifica el resultado final (Tautología, Contradicción o Contingencia).
@@ -307,3 +315,4 @@ Las proposiciones pueden clasificarse en tres tipos:
 3. **Contingencia**: Es una proposición que puede ser verdadera o falsa dependiendo de los valores de verdad de las proposiciones simples que la componen.
 
 **Ejemplo**: Para el ejemplo anterior, la proposición $\neg (p \land q) \lor \neg r$ es una contigencia, ya que es verdadera en ciertos casos y falsa en otros.
+
