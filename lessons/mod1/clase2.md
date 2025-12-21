@@ -53,7 +53,7 @@ La lógica proposicional opera mediante la **formalización**, un proceso que tr
 | Elemento | Representación Simbólica | Función |
 | :--- | :---: | :--- |
 | **Variables** | $p, q, r, ...$ | Representar hechos o afirmaciones simples. |
-| **Operadores** | $\neg, \land, \lor, \rightarrow$ | Establecer relaciones lógicas entre variables. |
+| **Operadores** | $\neg, \land, \lor, \oplus, \rightarrow, \leftrightarrow$ | Establecer relaciones lógicas entre variables. |
 | **Signos de Agrupación** | $( ), [ ]$ | Determinar la jerarquía y el orden de evaluación. |
 
 **Tabla 1**. Elementos para formalizar enunciados.
@@ -85,6 +85,9 @@ Los conectores lógicos son las herramientas fundamentales que nos permiten cons
 ## Axiomas de Verdad
 
 Para operar lógicamente, debemos conocer cómo se comporta cada operador frente a los valores de verdad: Verdadero ($V$) y Falso ($F$). Estas reglas se especifican mediante **tablas de verdad**, que constituyen la base semántica de la lógica proposicional.
+
+> **Nota**: En esta clase usaremos $V/F$. En ingeniería también es común $1/0$ (Verdadero = $1$, Falso = $0$).
+{: .note }
 
 ### Negación ($\neg p$)
 
@@ -162,7 +165,7 @@ Es verdadera cuando exactamente una de las proposiciones es verdadera (no ambas)
 Se interpreta como **Antecedente $\rightarrow$ Consecuente**. Define una relación de compromiso o contrato. La única forma de romper el contrato es que el antecedente se cumpla ($V$) y el consecuente no ($F$).
 
 <div style="text-align: center;" markdown="1">
-| $p$ | $q$ | $p \to q$ |
+| $p$ | $q$ | $p \rightarrow q$ |
 | :---: | :---: | :---: |
 | V | V | **V** |
 | V | F | **F** |
@@ -178,6 +181,9 @@ Se interpreta como **Antecedente $\rightarrow$ Consecuente**. Define una relaci�
 {: .important }
 
 *En todos los demás casos ($V \to V$, $F \to V$, $F \to F$), la implicación es Verdadera.*
+
+> Intuición: si "Si $p$, entonces $q$" es una regla, solo se viola cuando ocurre $p$ y no ocurre $q$. Si $p$ no ocurre, la regla no se incumple (verdad por vacuidad).
+{: .note }
 
 Hay varias formas para hacer referencia a una relación condicional, a continuación se muestran algunas:
 * "$p$ implica $q$"
@@ -220,11 +226,14 @@ Cuando nos enfrentamos a una expresión compleja sin signos de agrupación sufic
 {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
 </div>
 
+> **Convención**: cuando hay operadores con igual precedencia (por ejemplo, $\land$ y $\lor$), se evalúa de izquierda a derecha, salvo que los paréntesis indiquen lo contrario.
+{: .note }
+
 ---
 
 ## Construcción de Tablas de Verdad
 
-Una tabla de verdad es una herramienta gráfica que se utiliza para analizar todos los posibles valores de verdad de los enunciados lógicos que la componen, a fin de determinar la validez de un enunciado o argumento junto con todos sus posibles resultados.
+Una tabla de verdad es una herramienta gráfica que se utiliza para analizar todos los posibles valores de verdad de los enunciados lógicos que la componen, a fin de determinar el valor de verdad final de una expresión.
 
 ### Tabla de verdad para los operadores lógicos fundamentales
 
@@ -278,6 +287,20 @@ El número de filas ($N$) de la tabla depende del número de variables proposici
 
 $$N = 2^n$$
 
+### Errores típicos al construir tablas de verdad (y cómo evitarlos)
+
+1. **Número de filas incorrecto**: si hay $n$ variables, deben ser exactamente $2^n$ filas.  
+2. **Patrón $V/F$ mal distribuido**: la primera variable alterna cada $2^{n-1}$ filas, la segunda cada $2^{n-2}$, etc.  
+3. **No crear columnas auxiliares**: intentar resolver todo "de cabeza" aumenta errores; descomponga la expresión en subexpresiones.  
+4. **Alcance incorrecto de la negación**: $\neg(p \land q) \neq (\neg p \land q)$. Use paréntesis para evitar confusión.  
+5. **Confundir $\lor$ con $\oplus$**: $\lor$ permite "ambas", $\oplus$ no.  
+6. **Malinterpretar el condicional**: $p \rightarrow q$ solo es falsa cuando $p=V$ y $q=F$.  
+7. **Ignorar jerarquía**: si no hay paréntesis, se debe aplicar precedencia y asociatividad (ver Tabla 9).  
+8. **Errores de copia en la última columna**: si una columna auxiliar está mal, el resultado final también. Revise hacia atrás.  
+
+> **Recomendación** práctica: si al final el resultado es "raro", revise primero la columna del conector principal y luego las subexpresiones.
+{: .note }
+
 ### Ejemplo resuelto
 
 Construya una tabla de verdad para analizar todos los resultados posibles para la  proposición para la expresión:
@@ -293,6 +316,7 @@ $$
 
 **Tabla de Verdad Paso a Paso**
 
+<div style="text-align: center;" markdown="1">
 | Fila | $p$ | $q$ | $r$ | $(p \land q)$ | $\neg(p \land q)$ | $\neg r$ | **Resultado Final** <br> $\neg(p \land q) \lor \neg r$ |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 1 | F | F | F | F | V | V | **V** |
@@ -303,6 +327,10 @@ $$
 | 6 | V | F | V | F | V | F | **V** |
 | 7 | V | V | F | V | F | V | **V** |
 | 8 | V | V | V | V | F | F | **F** |
+
+**Tabla 11**. Tabla de verdad de $\neg (p \land q) \lor \neg r$.
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
 
 ---
 
