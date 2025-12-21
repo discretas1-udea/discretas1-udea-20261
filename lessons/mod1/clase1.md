@@ -24,7 +24,7 @@ Esta sesión introduce el objeto de estudio de la Lógica Proposicional, diferen
 
 Cuando nos comunicamos, los seres humanos lo hacemos a **través** del lenguaje. Gracias a este, podemos transmitir cualquier idea, concepto o sentimiento por medio de mensajes.
 
-Para construir mensajes empleamos oraciones. Una oración es la unidad **mínima** provista de significado y sentido. Desde el punto de vista **sintáctico**, está formada por la unión de un sujeto y un predicado (**Oración = Sujeto + Predicado**):
+Para construir mensajes empleamos oraciones. Una oración es una unidad fundamental del lenguaje que expresa un contenido con sentido completo en un contexto. Desde el punto de vista **sintáctico**, está formada por la unión de un sujeto y un predicado (**Oración = Sujeto + Predicado**):
 
 <div style="text-align: center;" markdown="1">
 
@@ -73,7 +73,7 @@ graph TD
     style w6 fill:#fff,stroke:#333,stroke-dasharray: 5 5
     style w7 fill:#fff,stroke:#333,stroke-dasharray: 5 5
 ```
-**Figura 1**. Analisis sintactico de una oracion.
+**Figura 1**. Análisis sintáctico de una oración.
 {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
 </div>
 
@@ -116,7 +116,7 @@ graph BT
     style Note2 fill:#fff,stroke:#999,stroke-dasharray: 5 5
     style Note3 fill:#fff,stroke:#999,stroke-dasharray: 5 5
 ```
-**Figura 2**. Dimensiones sintactica, semántica y pragmática.
+**Figura 2**. Dimensiones sintáctica, semántica y pragmática.
 {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
 </div>
 
@@ -148,7 +148,7 @@ De la tabla anterior, no todos los enunciados son aptos para determinar su verac
 
 ### Proposición
 
-La lógica se enfoca exclusivamente en los **Enunciados Declarativos** yq que al ser oracines que afirman o niegan algo sobre la realidad pueden tener un valor de verdad asociado. En el campo de la logica, este tipo de enunciados se conocen como proposiciones.
+La lógica se enfoca exclusivamente en los **Enunciados Declarativos** ya que al ser oraciones que afirman o niegan algo sobre la realidad pueden tener un valor de verdad asociado. En el campo de la lógica, este tipo de enunciados se conocen como proposiciones.
 
 <div style="background-color: #f0f4f8; border-left: 5px solid #0056b3; padding: 15px; margin: 20px 0;">
   <strong style="color: #0056b3;">Definición: Proposición Lógica</strong>
@@ -166,11 +166,11 @@ La lógica se enfoca exclusivamente en los **Enunciados Declarativos** yq que al
 
 ### Clasificación de Proposiciones
 
-Segun su estructura, existen dos tipos de proposiciones:
+Según su estructura, existen dos tipos de proposiciones:
 1. **Proposición simple o atómica**: No contiene conectores lógicos. 
    * **$P$**: "Hoy hay clase de Discretas 1".
    * **$Q$**: "7 es primo".
-2. **Proposición compuesta o molecular**: Contiene conectores lógicos ($\neg$, $\land$, $\lor$, $\oplus$, $\rightarrow$, $\leftrightarrow).
+2. **Proposición compuesta o molecular**: Contiene conectores lógicos ($\neg$, $\land$, $\lor$, $\oplus$, $\rightarrow$, $\leftrightarrow$).
    * **$\neg P$**: "Hoy no hay clase de Discretas 1".
    * **$P \land Q$**: "Hoy hay clase de Discretas 1 **y** 7 es primo".
    * **$P \rightarrow Q$**: **Si** hoy hay clase de Discretas 1, **entonces** 7 es primo.
@@ -188,7 +188,7 @@ En lógica, la **formalización** es el proceso de traducir enunciados y razonam
 > El objetivo central de todo esto consiste en pasar de "frases" a estructuras que puedan ser evaluadas y manipuladas sin ambigüedad.
 {: .important }
 
-### Simbolos
+### Símbolos
 
 En el lenguaje natural podemos decir lo mismo de muchas formas ("si... entonces...", "en caso de que...", "cuando...") y, además, una misma frase puede interpretarse de varias maneras según el contexto. Para evitar esa ambigüedad, la lógica trabaja con un **lenguaje formal**: un conjunto pequeño de **símbolos definidos** con significado fijo. 
 
@@ -202,7 +202,7 @@ Estas letras **no son** números ni cantidades: son "etiquetas" para proposicion
 
 #### Operadores Lógicos (Conectores)
 
-Los **conectores** son símbolos que permiten construir proposiciones compuestas a partir de proposiciones simples.
+Los **conectores** son símbolos que permiten construir proposiciones compuestas a partir de proposiciones simples. La siguiente tabla muestra de manera resumida los operadores lógicos empleados:
 
 <div style="text-align: center;" markdown="1">
 | Operador | Nombre | Símbolo | Lectura Común |
@@ -239,6 +239,8 @@ graph LR
 {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
 </div>
 
+A continuación, se describe con más detalle cada uno de los pasos mostrados en la figura anterior.
+
 **Paso 1. Detecte la estructura lógica (conectores)**
 
 1. Subraye las palabras que indiquen relación lógica:  
@@ -246,21 +248,24 @@ graph LR
 2. Determine cuál es el **conector principal** (el que "manda" en toda la frase).
 3. Si hay más de un conector, use **paréntesis** para reflejar la agrupación correcta.
 
-**Paso 2. Defina proposiciones simples asociandolas a variables**
+**Paso 2. Defina proposiciones simples asociándolas a variables**
 
 1. Separe la frase en **proposiciones atómicas** (enunciados declarativos sin conectores internos).
-2. Asigne una letra a cada una (por ejemplo, $(P, Q, R)$) y escriba su significado.
+2. Asigne una letra a cada una y escriba su significado. Usaremos letras como $p, q, r$ para representar proposiciones; la letra es arbitraria, lo importante es el significado que se le asigna.
 3. Verifique que cada proposición atómica tenga **valor de verdad** (sea claramente verdadera o falsa).
 
 **Paso 3. Construya la fórmula y verifique**
 
 1. Sustituya cada proposición atómica por su variable.
 2. Reemplace los conectores por sus símbolos:  
-   $(\neg, \land, \lor, \oplus, \rightarrow, \leftrightarrow )$
+   $(\neg, \land, \lor, \oplus, \rightarrow, \leftrightarrow)$
 3. Revise que la fórmula sea consistente con el español original:
    - ¿La negación está donde corresponde?
    - ¿Los paréntesis reflejan la intención?
    - ¿"solo si" se tradujo correctamente?
+
+> Nota: Para enunciados como "A María le gusta el café, asumimos que el sujeto, el momento y el contexto están fijos. Bajo esa interpretación, el enunciado puede tratarse como proposición (tendrá valor $V$ o $F$).
+{: .note }
 
 ---
 
@@ -304,38 +309,38 @@ Traduzca los siguientes enunciados a lenguaje formal:
       "La Chimoltrufia ***no*** es mayor que el Chompiras"
       {: .text-center }
 
-3. **Enunciado en lenguaje natural**: "Me gusta el cafe y la torta"
+3. **Enunciado en lenguaje natural**: "A María le gusta el café y la torta"
    
    **Solución**: 
 
    **Enunciado**: 
 
-   "Me gusta el cafe y la torta"
+   "A María le gusta el café y la torta"
    {: .text-center }
 
    1. **Conector principal**: "y" ($\land$).
    2. **Proposiciones atómicas**:
-      * **$p$**: "Me gusta el cafe"
-      * **$q$**: "Me gusta la torta"
+      * **$p$**: "A María le gusta el cafe"
+      * **$q$**: "A María le gusta la torta"
    3. **Expresión Lógica**: 
       
       $$
       p \land q
       $$
 
-4. **Enunciado en lenguaje natural**: "Me gustan los perros o me gustan los gatos"
+4. **Enunciado en lenguaje natural**: "A los estudiantes les gustan los perros o les gustan los gatos"
    
    **Solución**: 
 
    **Enunciado**: 
 
-   "Me gustan los perros o me gustan los gatos"
+   "A los estudiantes les gustan los perros o les gustan los gatos"
    {: .text-center }
 
    1. **Conector principal**: "o" ($\lor$).
    2. **Proposiciones atómicas**:
-      * **$p$**: "Me gustan los perros"
-      * **$q$**: "Me gustan los gatos"
+      * **$p$**: "A los estudiantes les gustan los perros"
+      * **$q$**: "A los estudiantes les gustan los gatos"
    3. **Expresión Lógica**: 
       
       $$
@@ -367,7 +372,7 @@ Traduzca los siguientes enunciados a lenguaje formal:
    {: .text-center }
 
    1. **Conector principal**: "y" ($\land$).
-   2. **Proposiciones atomicas**:
+   2. **Proposiciones atómicas**:
       * **$P$**: "El Chapulín es un superhéroe"
       * **$Q$**: "El Chapulín es Mexicano"
    3. **Expresión Lógica**: 
@@ -376,20 +381,20 @@ Traduzca los siguientes enunciados a lenguaje formal:
        P \land Q
        $$
 
-7. **Enunciado en lenguaje natural**: "Me gustan los perros o me gustan los gatos, pero no ambos"
+7. **Enunciado en lenguaje natural**: "A los estudiantes les gustan los perros o les gustan los gatos, pero no ambos"
    
    **Solución**:
    
    **Enunciado**:
 
-   "Me gustan los perros o me gustan los gatos, pero no ambos"
+   "A los estudiantes les gustan los perros o les gustan los gatos, pero no ambos"
    {: .text-center }
 
    1. **Conector principal**: "o" exclusivo ($\oplus$).
    2. **Proposiciones atómicas**:
-      * **$p$**: "Me gustan los perros"
-      * **$q$**: "Me gustan los gatos"
-   3. **Espresión Lógica**: 
+      * **$p$**: "A los estudiantes les gustan los perros"
+      * **$q$**: "A los estudiantes les gustan los gatos"
+   3. **Expresión Lógica**: 
       
       $$
       p \oplus q
@@ -404,7 +409,7 @@ Traduzca los siguientes enunciados a lenguaje formal:
    "Si estudias con juicio, ganarás la materia"
    {: .text-center }
 
-   1. **Conector princioal:** "Si... entonces..." ($\rightarrow$).
+   1. **Conector principal:** "Si... entonces..." ($\rightarrow$).
    2. **Proposiciones atómicas:**
        * **$m$**: "Estudias con juicio" (Antecedente)
        * **$n$**: "Ganarás la materia" (Consecuente)
@@ -423,7 +428,7 @@ Traduzca los siguientes enunciados a lenguaje formal:
    "Si le regalo una rosa, entonces ella irá al baile conmigo"
    {: .text-center }
 
-   1. **Conector princioal:** "Si... entonces..." ($\rightarrow$).
+   1. **Conector principal:** "Si... entonces..." ($\rightarrow$).
    2. **Proposiciones atómicas:**
        * **$p$**: "Le regalo una rosa"
        * **$q$**: "Ella irá al baile conmigo"
@@ -442,7 +447,7 @@ Traduzca los siguientes enunciados a lenguaje formal:
    "Puedes tomar el vuelo si y solo si compras el tiquete"
    {: .text-center }
 
-   1. **Conector princioal:** "Si... entonces..." ($\rightarrow$).
+   1. **Conector principal:** "Si y solo si..." ($\leftrightarrow$).
    2. **Proposiciones atómicas:**
        * **$p$**: "Puedes tomar el vuelo"
        * **$q$**: "Compras el tiquete"
@@ -461,7 +466,7 @@ Traduzca los siguientes enunciados a lenguaje formal:
     "Si apruebo el examen y entrego el proyecto, entonces no tendré que ir a recuperación"
     {: .text-center }
 
-    1. **Conector princioal:** "Si... entonces..." ($\rightarrow$).
+    1. **Conector principal:** "Si... entonces..." ($\rightarrow$).
     2. **Proposiciones atómicas:**
         * **$p$**: "Apruebo el examen"
         * **$q$**: "Entrego el proyecto"
@@ -474,20 +479,35 @@ Traduzca los siguientes enunciados a lenguaje formal:
 
 ## Actividad
 
-A continuación, exploraremos la conexión de lo que hemos visto hasta el momento con la cotidianidad y la tecnologia. El objetivo de esta materia mas alla de una comprensión introductoria de la Lógica y los numeros como parte de un plan academico dentro del microcurriculo es fomentar el **Pensamiento Critico** y la **Curiosidad**. A continuación lo invitamos a que revise los siguientes dos videos:
+A continuación, exploraremos la conexión de lo que hemos visto hasta el momento con la cotidianidad y la tecnología.
+
+El objetivo de esta materia, más allá de una comprensión introductoria de la lógica y los números como parte del plan académico del microcurrículo, es fomentar el **pensamiento crítico** y la **curiosidad**.
+A continuación, lo invitamos a revisar los siguientes dos videos:
 
 ### Video 1 - Esta herramienta te ayudará a mejorar tu pensamiento crítico
 
-Video sobre el **Método Sócratico** el cual es la base fundamental para tener penamiento crítico.
+Video sobre el **Método Sócratico** el cual es la base fundamental para tener pensamiento crítico.
 
 <div style="text-align: center;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7C3XUy3BYug?si=-qN2gYdYgYigivOa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
+**Actividad**: Identifique 3 enunciados del video que puedan convertirse en proposiciones y formalícelos.
+
 ### Video 2 - Documental The Thinking Game
 
-Este documental muestra el recorrido de **DeepMind** en la creación de sistemas de inteligencia artificial capaces de aprender y razonar. Aqui se explora los desafíos científicos, éticos y humanos detrás del desarrollo de la IA. A través de ejemplos como AlphaGo, reflexiona sobre qué significa "pensar" para una máquina. Invita a debatir los límites, riesgos y responsabilidades del uso de la inteligencia artificial.
+Este documental muestra el recorrido de **DeepMind** en la creación de sistemas de inteligencia artificial capaces de aprender y razonar. Aquí se exploran los desafíos científicos, éticos y humanos detrás del desarrollo de la IA. A través de ejemplos como AlphaGo, reflexiona sobre qué significa "pensar" para una máquina. Invita a debatir los límites, riesgos y responsabilidades del uso de la inteligencia artificial.
 
 <div style="text-align: center;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/d95J8yzvjbQ?si=E5xCapAN1h-fvTva" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
+
+**Actividad**: Escriba una implicación del tipo "si..., entonces..." que aparezca en el argumento del video.
+
+## Resultados de aprendizaje
+
+Al finalizar esta clase, se espera que usted sea capaz de:
+* Identificar correctamente las proposiciones simples (atómicas).
+* Diferenciar entre la estructura sintáctica de una oración y su valor semántico (verdad/falsedad).
+* Seleccionar el conector lógico adecuado según el enunciado.
+* Identificar el conector principal de un enunciado y usar paréntesis para reflejar la agrupación cuando sea necesario.
