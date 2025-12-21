@@ -86,7 +86,7 @@ Los conectores lógicos son las herramientas fundamentales que nos permiten cons
 
 Para operar lógicamente, debemos conocer cómo se comporta cada operador frente a los valores de verdad: Verdadero ($V$) y Falso ($F$). Estas reglas se especifican mediante **tablas de verdad**, que constituyen la base semántica de la lógica proposicional.
 
-> **Nota**: En esta clase usaremos $V/F$. En ingeniería también es común $1/0$ (Verdadero = $1$, Falso = $0$).
+> **Nota**: En ingeniería también es común $1/0$ (Verdadero = $1$, Falso = $0$).
 {: .note }
 
 ### Negación ($\neg p$)
@@ -182,9 +182,6 @@ Se interpreta como **Antecedente $\rightarrow$ Consecuente**. Define una relaci�
 
 *En todos los demás casos ($V \to V$, $F \to V$, $F \to F$), la implicación es Verdadera.*
 
-> Intuición: si "Si $p$, entonces $q$" es una regla, solo se viola cuando ocurre $p$ y no ocurre $q$. Si $p$ no ocurre, la regla no se incumple (verdad por vacuidad).
-{: .note }
-
 Hay varias formas para hacer referencia a una relación condicional, a continuación se muestran algunas:
 * "$p$ implica $q$"
 * "$p$ es suficiente para $q$"
@@ -210,7 +207,7 @@ Representa una equivalencia de valores. Es verdadera cuando ambas proposiciones 
 
 ## Jerarquía de Operadores
 
-Cuando nos enfrentamos a una expresión compleja sin signos de agrupación suficientes, debemos respetar el siguiente orden de precedencia para evitar ambigüedades. Para esto empleamos la tabla de **Jerarquía de Operadores** la cual define el orden de aplicación de los conectivos lógicos al evaluar expresiones sin paréntesis, siendo esencial para eliminar la ambigüedad. 
+Cuando nos enfrentamos a una expresión compuesta sin suficientes signos de agrupación, debemos respetar un **orden de precedencia** para evitar ambigüedades. Para ello usamos la tabla de **Jerarquía de operadores**, que establece el orden en que se aplican los conectivos lógicos al interpretar o evaluar expresiones **sin paréntesis**. Esta convención es esencial para asignar una lectura única a la expresión.
 
 <div style="text-align: center;" markdown="1">
 | Prioridad        | Símbolo | Asociatividad            | Ejemplo con paréntesis |
@@ -226,8 +223,79 @@ Cuando nos enfrentamos a una expresión compleja sin signos de agrupación sufic
 {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
 </div>
 
-> **Convención**: cuando hay operadores con igual precedencia (por ejemplo, $\land$ y $\lor$), se evalúa de izquierda a derecha, salvo que los paréntesis indiquen lo contrario.
+> **Notas clave**:
+> * La **negación** ($¬$) siempre aplica a **una proposición o a una expresión completa**.
+> * Los operadores con **igual precedencia** se agrupan según su **asociatividad** (izquierda o derecha).
+> * El uso de **paréntesis** permite evitar la ambigüedad en expresiones que usan varios operadores.
+> * Cuando una expresión tiene **paréntesis anidados**, la evaluación se realiza **de adentro hacia afuera**.
+> * si aparecen operadores con la **misma precedencia**, la expresión se agrupa según su **asociatividad** (por ejemplo, $\land$, $\lor$ y $\oplus$ se asocian a la izquierda; $\to$ y $\leftrightarrow$ a la derecha), salvo que los paréntesis indiquen lo contrario.
 {: .note }
+
+### Ejemplos resueltos
+
+1. Sean las proposiciones $P=V$, $Q=F$ y $R=F$. Determine el valor de la verdad de cada una de las siguientes expresiones:
+   * $P \rightarrow (Q \lor R)$
+   * $Q \rightarrow [P \rightarrow (R \land Q)]$
+   * $\neg(\neg P \rightarrow Q) \lor \neg R$
+
+   **Solución**:
+
+   * $P\rightarrow(Q \lor R)$
+     
+     Se reemplazan los valores de verdad de cada proposición en la expresión original y se procede a realizar la evaluación empleando la jerarquía de operadores:
+
+     $$
+     \begin{aligned}
+     P \rightarrow (Q \lor R) &\equiv V \rightarrow (F \lor F)\\
+                              &\equiv V \rightarrow F\\
+                              &\equiv F
+     \end{aligned}
+     $$
+
+   * $Q \rightarrow [P \rightarrow (R \land Q)]$
+    
+     Procediendo de manera similar, al reemplazar $P=V$, $Q=F$ y $R=F$ tenemos:
+
+     $$
+     \begin{aligned}
+     Q \rightarrow [P \rightarrow (R \land Q)] &\equiv F \rightarrow [V \rightarrow (F \land F)]\\
+                                               &\equiv F \rightarrow [V \rightarrow F]\\
+                                               &\equiv F \rightarrow F \\
+                                               &\equiv V 
+     \end{aligned}
+     $$
+   
+   * $\neg(\neg P \rightarrow Q) \lor \neg R$
+     
+     Al reemplazar $P=V$, $Q=F$ y $R=F$ tenemos la siguiente solución paso a paso siguiendo la jerarquía de operadores:
+
+     $$
+     \begin{aligned}
+     \neg(\neg P \rightarrow Q) \lor \neg R &\equiv \neg(\neg V \rightarrow F) \lor \neg F \\
+                                            &\equiv \neg(F \rightarrow F) \lor \neg F \\
+                                            &\equiv \neg V \lor \neg F \\
+                                            &\equiv F \lor \neg F \\
+                                            &\equiv F \lor V \\
+                                            &\equiv V
+     \end{aligned}
+     $$
+
+     Si se procede a evaluar con cualquier otra combinación el resultado será falso, sin embargo, al ser el procedimiento similar, este se omite.
+
+2. Encuentre una proposición compuesta que involucre las variables proposicionales $P$, $Q$ y $R$, que sea verdadera cuando $P$ y $Q$ son verdaderas y $R$ es falsa, pero falsa en caso contrario. 
+   
+   (**Pista**: Use una conjunción de cada variable proposicional o su negación).
+
+   **Solución**: Para el caso tenemos que hayar una expresión compuesta $f(P,Q,R)$ la cual se caracteriza por ser $f=V$ si $P=V$ y $Q=V$ y $R=F$ y $f=F$ en caso contrario. Si empleamos una conjunción entre las variables tenemos que la unica forma de lograr esto es que $f = P\land Q\land \neg R$. Para comprobar, procedemos a evaluar, paso a paso, la expresión para $f$ para los valores que la hacen verdadera:
+
+   $$
+   \begin{aligned}
+   P\land Q\land \neg R &\equiv V\land V\land \neg F \\
+                        &\equiv V\land V\land V \\
+                        &\equiv V\land V \\
+                        &\equiv V
+   \end{aligned}
+   $$
 
 ---
 
@@ -266,7 +334,10 @@ Para construir una tabla de verdad de manera sistemática y minimizar errores, s
     Se asignan los valores de verdad iniciales distribuyéndolos sistemáticamente (mitad y mitad, luego de dos en dos, etc.).
     * **Notación:** Se puede utilizar $V/F$ o notación binaria para ingeniería ($1/0$).
         * Verdadero = $1$
-        * Falso = $0$
+        * Falso = $0$  
+    
+    > **Nota**: Para trabajar las tablas de verdad usaremos la notación binaria empleada ingeniería.
+    {: .note }
 
 4. **Agregar columnas auxiliares**
     Desglosa la fórmula compleja en operaciones más pequeñas. No intentes resolver todo en una sola columna mentalmente.
@@ -285,7 +356,9 @@ Para construir una tabla de verdad de manera sistemática y minimizar errores, s
 
 El número de filas ($N$) de la tabla depende del número de variables proposicionales distintas ($n$) según la fórmula:
 
-$$N = 2^n$$
+$$
+N = 2^n
+$$
 
 ### Errores típicos al construir tablas de verdad (y cómo evitarlos)
 
@@ -298,39 +371,64 @@ $$N = 2^n$$
 7. **Ignorar jerarquía**: si no hay paréntesis, se debe aplicar precedencia y asociatividad (ver Tabla 9).  
 8. **Errores de copia en la última columna**: si una columna auxiliar está mal, el resultado final también. Revise hacia atrás.  
 
-> **Recomendación** práctica: si al final el resultado es "raro", revise primero la columna del conector principal y luego las subexpresiones.
+> **Recomendación práctica**: si al final el resultado es "raro", revise primero la columna del conector principal y luego las subexpresiones.
 {: .note }
 
-### Ejemplo resuelto
+### Ejemplos resueltos
 
-Construya una tabla de verdad para analizar todos los resultados posibles para la  proposición para la expresión:
+1. Construya una tabla de verdad para analizar todos los resultados posibles para la  proposición para la expresión:
 
-$$
-\neg (p \land q) \lor \neg r
-$$
+    $$
+    \neg (p \land q) \lor \neg r
+    $$
+    
+    **Análisis:**
+    
+    * **Variables**: $p, q, r$ ($n=3$).
+    * **Filas**: $2^3 = 8$ filas.
+    
+    **Tabla de Verdad Paso a Paso**
+    
+    <div style="text-align: center;" markdown="1">
+    | Fila | $p$ | $q$ | $r$ | $(p \land q)$ | $\neg(p \land q)$ | $\neg r$ | **Resultado Final** <br> $\neg(p \land q) \lor \neg r$ |
+    | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+    | 1 | 0 | 0 | 0 | 0 | 1 | 1 | **1** |
+    | 2 | 0 | 0 | 1 | 0 | 1 | 0 | **1** |
+    | 3 | 0 | 1 | 0 | 0 | 1 | 1 | **1** |
+    | 4 | 0 | 1 | 1 | 0 | 1 | 0 | **1** |
+    | 5 | 1 | 0 | 0 | 0 | 1 | 1 | **1** |
+    | 6 | 1 | 0 | 1 | 0 | 1 | 0 | **1** |
+    | 7 | 1 | 1 | 0 | 1 | 0 | 1 | **1** |
+    | 8 | 1 | 1 | 1 | 1 | 0 | 0 | **0** |
+    
+    **Tabla 11**. Tabla de verdad de $\neg (p \land q) \lor \neg r$.
+    {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+    </div>
+    
+2. Construya la tabla de verdad la siguiente expresión:
 
-**Análisis:**
-
-* **Variables**: $p, q, r$ ($n=3$).
-* **Filas**: $2^3 = 8$ filas.
-
-**Tabla de Verdad Paso a Paso**
-
-<div style="text-align: center;" markdown="1">
-| Fila | $p$ | $q$ | $r$ | $(p \land q)$ | $\neg(p \land q)$ | $\neg r$ | **Resultado Final** <br> $\neg(p \land q) \lor \neg r$ |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 1 | F | F | F | F | V | V | **V** |
-| 2 | F | F | V | F | V | F | **V** |
-| 3 | F | V | F | F | V | V | **V** |
-| 4 | F | V | V | F | V | F | **V** |
-| 5 | V | F | F | F | V | V | **V** |
-| 6 | V | F | V | F | V | F | **V** |
-| 7 | V | V | F | V | F | V | **V** |
-| 8 | V | V | V | V | F | F | **F** |
-
-**Tabla 11**. Tabla de verdad de $\neg (p \land q) \lor \neg r$.
-{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
-</div>
+    $$
+    (P \leftrightarrow Q) \oplus (P \leftrightarrow \neg Q)
+    $$
+    
+    **Análisis:**
+    
+    * **Variables**: $P, Q$ ($n=2$).
+    * **Filas**: $2^2 = 4$ filas.
+    
+    **Tabla de Verdad Paso a Paso**
+    
+    <div style="text-align: center;" markdown="1">
+    | Fila | $P$ | $Q$ | $\neg Q$ | $(P \leftrightarrow Q)$ | $(P \leftrightarrow \neg Q)$ |**Resultado Final** <br> $(P \leftrightarrow Q) \oplus (P \leftrightarrow \neg Q)$ |
+    | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+    | 1 | 0 | 0 | 1 | 1 | 0 | **1** |
+    | 2 | 0 | 1 | 0 | 0 | 1 | **1** |
+    | 3 | 1 | 0 | 1 | 0 | 1 | **1** |
+    | 4 | 1 | 1 | 0 | 1 | 0 | **1** |
+    
+    **Tabla 12**. Tabla de verdad de $(P \leftrightarrow Q) \oplus (P \leftrightarrow \neg Q)$.
+    {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+    </div>
 
 ---
 
@@ -339,8 +437,142 @@ $$
 Las proposiciones pueden clasificarse en tres tipos:
 
 1. **Tautología**: Es una proposición que es verdadera en todos los casos posibles.
+   
+   Por ejemplo la proposición $p \lor \neg p$ es una tautología.
+
+   <div style="text-align: center;" markdown="1">
+    | Fila | $p$ | $\neg p$ | $(p \lor \neg p)$ |
+    | :---: | :---: | :---: | :---: |
+    | 1 | 0 | 1 | **1** |
+    | 2 | 1 | 0 | **1** |   
+        
+    **Tabla 13**. Tabla de verdad para una tautología.
+    {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+    </div>
+
 2. **Contradicción**: Es una proposición que es falsa en todos los casos posibles.
+   
+   Por ejemplo la proposición $p \land \neg p$ es una contradicción.
+
+   <div style="text-align: center;" markdown="1">
+    | Fila | $p$ | $\neg p$ | $(p \land \neg p)$ |
+    | :---: | :---: | :---: | :---: |
+    | 1 | 0 | 1 | **0** |
+    | 2 | 1 | 0 | **0** |
+
+    **Tabla 14**. Tabla de verdad para una contradicción.
+    {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+    </div>
+
 3. **Contingencia**: Es una proposición que puede ser verdadera o falsa dependiendo de los valores de verdad de las proposiciones simples que la componen.
 
-**Ejemplo**: Para el ejemplo anterior, la proposición $\neg (p \land q) \lor \neg r$ es una contigencia, ya que es verdadera en ciertos casos y falsa en otros.
+   Por ejemplo, la proposición $\neg (p \land q) \lor \neg r$ (previamente analizada) es una contingencia. Note que la proposición tiene valores falsos y verdaderos para diferentes entradas.
+
+   <div style="text-align: center;" markdown="1">
+    | Fila | $p$ | $q$ | $r$ | $\neg(p \land q) \lor \neg r$ |
+    | :---: | :---: | :---: | :---: | :---: |
+    | 1 | 0 | 0 | 0 | **1** |
+    | 2 | 0 | 0 | 1 | **1** |
+    | 3 | 0 | 1 | 0 | **1** |
+    | 4 | 0 | 1 | 1 | **1** |
+    | 5 | 1 | 0 | 0 | **1** |
+    | 6 | 1 | 0 | 1 | **1** |
+    | 7 | 1 | 1 | 0 | **1** |
+    | 8 | 1 | 1 | 1 | **0** |
+    
+    **Tabla 15**. Tabla de verdad para una contingencia.
+    {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+    </div>
+
+## Actividad
+
+### Identificación de proposiciones
+
+Identifique cuáles de los siguientes enunciados son proposiciones. Justifica tu respuesta basándote en el **Principio de Bivalencia**.
+1.  $x + 5 = 10$
+2.  "La suma de los ángulos internos de un triángulo plano es 180°."
+3.  "Por favor, compila el código antes de enviarlo a producción."
+4.  "Esta frase es falsa."
+
+### Evaluación Directa (Sustitución)
+
+Determine el valor de verdad final realizando la sustitución paso a paso. **Valores**: $A = 1$ (V), $B = 0$ (F), $C = 0$ (F).
+1.  $(A \lor B) \to C$
+2.  $\neg B \leftrightarrow (A \land \neg C)$
+3.  $B \to (C \to A)$
+
+
+### Tablas de verdad
+
+Construya la tabla de verdad y clasifique el resultado como **Tautología, Contradicción o Contingencia**.
+
+$$\neg [(p \lor q) \to (p \land q)]$$
+
+### Desafío de Ingeniería (Equivalencia XOR)
+
+Demuestre mediante tablas de verdad si la siguiente estructura lógica es una equivalencia válida (si ambas columnas finales son idénticas):
+
+$$(p \oplus q) \equiv (p \lor q) \land \neg (p \land q)$$
+
+
+### Modelado de Sistemas
+
+Traduzca y evalúe la siguiente expresión:
+  
+**Requerimiento:** *"Si el usuario tiene privilegios de administrador o el archivo no está bloqueado por el sistema, entonces el acceso es permitido ($r$)."*
+
+1.  **Formulación:** Determine la expresión lógica resultante.
+2.  **Caso de prueba:** Si un usuario **no** es administrador, el archivo **está** bloqueado, pero el sistema otorga acceso, ¿es la afirmación del requerimiento verdadera o falsa? Justifique usando la tabla del condicional.
+
+> **Nota importante:** En lógica, la precisión es binaria. Un solo error en un bit de la tabla de verdad invalida todo el sistema. ¡Revisa tus resultados!
+{: .note } 
+
+---
+
+## Resultados de aprendizaje
+
+Al finalizar esta clase se espera que el estudiante sea capaz de:
+* Traducir enunciados de lenguaje natural a lenguaje lógico.
+* Evaluar expresiones logicas compuestas empleando los axiomas de verdad, los operadores logicos y las reglas de jerarquia.
+* Construir tablas de verdad para la evalución de proposiciones.
+* Clasificar los diferentes tipos de proposiciones.
+
+---
+
+## Solucionario de Autoevaluación
+
+Utilice esta sección para validar sus resultados después de completar la actividad.
+
+<details>
+<summary><b>Presione aquí para ver las respuestas</b></summary>
+<br>
+
+### Diagnóstico de Bivalencia
+
+1. **No** (Enunciado abierto / Variable $x$ no definida).
+2. **Sí** (Proposición atómica / Hecho matemático).
+3. **No** (Enunciado imperativo / Orden).
+4. **No** (Paradoja / Autoreferencia).
+
+### Evaluación Directa
+
+1. **F** (0)
+2. **V** (1)
+3. **V** (1)
+
+### Tablas de verdad
+
+* **Columna de salida:** 0, 1, 1, 0
+* **Clasificación:** **Contingencia**
+
+### Desafío XOR
+
+* **Resultado:** **Equivalencia Válida**. La tabla resultante para $(p \lor q) \land \neg (p \land q)$ coincide con la definición del XOR ($0, 1, 1, 0$).
+
+### Modelado de Sistemas
+
+1. **Fórmula:** $(p \lor \neg q) \to r$
+2. **Evaluación:** **Verdadero (V)**. (Explicación: El antecedente resulta falso $0 \to 1$, lo cual es verdadero por definición del condicional).
+
+</details>
 
