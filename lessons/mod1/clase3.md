@@ -9,13 +9,11 @@ math: mathjax
 ![Built with AI](https://img.shields.io/badge/Built%20with-AI-blue.svg)
 
 # Clase 03 - Equivalencias Lógicas y Álgebra de Proposiciones
-
 {: .no_toc }
 
-Esta sesión marca el avance del cálculo tabular al **cálculo algebraico**. En lugar de usar tablas de verdad (método semántico), empleamos leyes lógicas (método sintáctico) para simplificar, demostrar o transformar proposiciones de manera eficiente.
+Teniendo en cuenta los conceptos iniciales vistos en las secciones anteriores, ya estamos listos para abordar con un poco mas de profundidad algunos aspectos relacionados con la traducción de lenguaje natural a expresiones logica proposicional. Una vez visto esto, vamos a tratar con un poco mas de profundidad aspectos relacionados con los conectores de implicación y equivalencia cuya comprensión es util para analizar relaciones de dependencia y equivalencia dentro de la logica formal.
 
 ## Tabla de Contenidos
-
 {: .no_toc .text-delta }
 
 1. TOC
@@ -23,13 +21,58 @@ Esta sesión marca el avance del cálculo tabular al **cálculo algebraico**. En
 
 ---
 
-## 1. Repaso
+## Repaso
 
-{: .no_toc }
+En clases anteriores se abordaron los primeros pasos necesarios relacionados con la logica proposicional los cuales se listan a continuación:
+1. Se definió el concepto de **proposición** como un enunciado declarativo que puede ser cierto (V) o falso (F) pero no ambos (**axioma de bivalencia**).
+2. Se clasificaron las proposiciones en dos tipos principales, las **simples** y las **compuestas**. La diferencia basicamente radica en el uso de **operadores logicos**.
+3. Se estudiaron cada uno de los operadores logicos, su definición y el efecto que tienen al aplicarse en las proposiciones.
+4. Tal y como sucede en otras ramas de las matematicas como el algebra o el aritmetica, se estudiaron el uso correcto de los operadores logicos para formar y evaluar expresiones validas (**Fomulas bien formadas**) analizandose de manera intuitiva y a modo de analigia las principales reglas de formación de expresuiones con respecto a otras ramas (algebra y aritmetica) con el fin de comprender las reglas de formación basica de expresiones logicas.
+5. De manera análoga al Algebra, se evaluaron expresiones lógicas para determinar el valor de la verdad de una expresión logica haciendo enfatizando en que el resultado no es un numero real como en algebra o aritmetica sino un valor logico que puede tomar solo dos posibilidades, cierto o falso del universo o dominio (lo cual será aterrizado despues).
+6. Se estudió el uso de tablas de verdad como una herramienta que facilita la evaluación de los diferentes valores que puede tomar una expresión logica (**proposicion**) en comparación con la forma tradicional de reemplazar las variables lógicas.
+
+A continuación, se muestran las principales tablas que resumen formalmente los principales aspectos a tener en cuenta desde el punto de vista operativo cuando se estan operando con **proposiciones** dentro del campo de la **logica formal**.
+
+### Tabla de verdad para los operadores lógicos fundamentales
+
+La siguiente tabla muestra un resumen de los operadores logicos empleados en la construcción de proposiciones:
+
+<div style="text-align: center;" markdown="1">
+| $p$ | $q$ | **Negación**<br>$\neg p$ | **Conjunción**<br>$p \land q$ | **Disyunción**<br>$p \lor q$ | **O Exclusivo**<br>$p \oplus q$ | **Condicional**<br>$p \rightarrow q$ | **Bicondicional**<br>$p \leftrightarrow q$ |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **V** | **V** | F | **V** | V | F | V | V |
+| **V** | **F** | F | F | V | **V** | **F** | F |
+| **F** | **V** | V | F | V | **V** | V | F |
+| **F** | **F** | V | F | **F** | F | V | V |
+
+**Tabla 1**. Tabla de verdad para los operadores lógicos fundamentales.
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
+
+### Jerarquía de Operadores
+
+Cuando se tiene una propocisión, esta debe ser valida (ser una expresión bien formada). Al igual que cualquier formula, esta podra ser evaluada y siguiendo unas reglas arrojar un resultado logico. La siguiente tabla muestra de manera resumida, los principales aspectos a tener en cuenta para evaluar de manera correcta una proposicion (reglas de prioridad y asociatividad).
+
+<div style="text-align: center;" markdown="1">
+| Prioridad        | Símbolo | Asociatividad            | Ejemplo con paréntesis |
+|------------------|---------|--------------------------|------------------------|
+| 1 (más alta)     | $¬$     | No aplica (unitario)     | $¬p \land q \;\equiv\; ((¬p) \land q)$ |
+| 2                | $\land$ | Izquierda (I → D)        | $p \land q \land r \;\equiv\; ((p \land q) \land r)$ |
+| 3                | $\lor$  | Izquierda (I → D)        | $p \lor q \lor r \;\equiv\; ((p \lor q) \lor r)$ |
+| 4                | $\oplus$| Izquierda (I → D)        | $p \oplus q \oplus r \;\equiv\; ((p \oplus q) \oplus r)$ |
+| 5                | $\to$   | Derecha (I ← D)          | $p \to q \to r \;\equiv\; (p \to (q \to r))$ |
+| 6 (más baja)     | $\leftrightarrow$ | Derecha (I ← D) | $p \leftrightarrow q \leftrightarrow r \;\equiv\; (p \leftrightarrow (q \leftrightarrow r))$ |
+
+**Tabla x**. Jerarquía de Operadores.
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
 
 Antes de aplicar el Álgebra de Proposiciones, es fundamental recordar las bases de la formalización y los axiomas de verdad de los conectores lógicos.
 
-### 1.1. Lenguaje Natural vs Lenguaje Lógico
+> **Importante**: Acabamos de repasar las bases de la formalización necesarias para abordar las **proposiciones** dentro de la **lógica formal**. Si aún tiene vacios, la recomendación es que repase el material previo a haga las preguntas necesarias antes de seguir, con esto va a evitar perder el hilo de la historia.
+{: .important }
+
+### Lenguaje Natural vs Lenguaje Lógico
 
 El lenguaje natural es el que usamos en la vida cotidiana, mientras que el lenguaje lógico es el que usamos en la formalización de proposiciones. Debido a que el lenguaje natural es impreciso, es necesario usar el lenguaje lógico para formalizar las proposiciones.
 
@@ -38,43 +81,13 @@ El lenguaje natural es el que usamos en la vida cotidiana, mientras que el lengu
 
 ---
 
-### 1.2. Axiomas de Verdad y Tablas de Referencia
+## Traducción de lenguaje natural a lenguaje formal y viceversa.
 
-Las leyes de equivalencia se basan en el comportamiento de los operadores. Las siguientes tablas resumen los valores de verdad:
-
-#### Tabla A: Negación, Conjunción ($\land$) y Disyunción ($\lor$)
-
-| $p$ | $q$ | **Negación**<br>$\neg p$ | **Conjunción**<br>$p \land q$ | **Disyunción**<br>$p \lor q$ |
-| :---: | :---: | :---: | :---: | :---: |
-| V | V | F | **V** | V |
-| V | F | F | F | V |
-| F | V | V | F | V |
-| F | F | V | F | **F** |
-
-> **Reglas Clave:**
->
-> * $\land$: Solo $V$ si ambas son $V$.
-> * $\lor$: Solo $F$ si ambas son $F$.
-{: .note }
-
-#### Tabla B: Condicional ($\rightarrow$), Bicondicional ($\leftrightarrow$) y Exclusiva ($\oplus$)
-
-| $p$ | $q$ | **Condicional**<br>$p \rightarrow q$ | **Bicondicional**<br>$p \leftrightarrow q$ | **Exclusiva**<br>$p \oplus q$ |
-| :---: | :---: | :---: | :---: | :---: |
-| V | V | V | **V** | F |
-| V | F | **F** | F | V |
-| F | V | V | F | V |
-| F | F | V | **V** | F |
-
-> **Caso Crítico del Condicional:**
-> El operador $p \rightarrow q$ solo es **Falso** cuando el antecedente ($p$) es $V$ y el consecuente ($q$) es $F$ (un único caso).
-{: .important }
-
-### 1.3. Tipos de enunciados declarativos
+### Tipos de enunciados declarativos
 
 A continuación se presentan los tipos de enunciados declarativos y su equivalencia con conectores lógicos.
 
-#### 1.3.1. Equivalencia entre enunciados declarativos y conectores lógicos
+#### Equivalencia entre enunciados declarativos y conectores lógicos
 
 Sean $P$ y $Q$ dos enunciados declarativos cualesquiera (simples o compuestos).
 
@@ -92,7 +105,7 @@ Sean $P$ y $Q$ dos enunciados declarativos cualesquiera (simples o compuestos).
 >* La expresión *“a menos que”* se modela como una disyunción inclusiva.
 {: .note }
 
-#### 1.3.2. Equivalencia entre enunciados declarativos con condicionales y bicondicionales
+#### Equivalencia entre enunciados declarativos con condicionales y bicondicionales
 
 Sobre el enunciado declarativo **condicional**: en este caso $P$ representa el **antecedente** y $Q$ el **consecuente**.
 
@@ -108,7 +121,7 @@ Sobre el enunciado declarativo **condicional**: en este caso $P$ representa el *
 > * En el **bicondicional**, ambas proposiciones tienen el mismo valor de verdad.
 {: .note }
 
-### 1.4. Traducción de lenguaje natural a lenguaje lógico
+### Traducción de lenguaje natural a lenguaje lógico
 
 Para traducir proposiciones expresadas en lenguaje natural a lenguaje lógico, es necesario identificar los conectivos y variables que representan las proposiciones. Esto se muestra en los siguientes pasos:
 
@@ -118,7 +131,7 @@ Para traducir proposiciones expresadas en lenguaje natural a lenguaje lógico, e
 4. Identificar los conectores lógicos.
 5. Construir la proposición lógica completa asociada al enunciado.
 
-### 1.5. Ejemplos de traducción de lenguaje natural a lenguaje lógico
+### Ejemplos de traducción de lenguaje natural a lenguaje lógico
 
 Traducir de lenguaje natural a lenguaje lógico los siguientes enunciados:
 
@@ -238,9 +251,9 @@ Traducir de lenguaje natural a lenguaje lógico los siguientes enunciados:
 
 ---
 
-## 2. Expresiones condicionales
+## Expresiones condicionales
 
-### 2.1 Tipos de proposiciones condicionales
+### Tipos de proposiciones condicionales
 
 A partir de una proposición condicional original (o Directa):
 
@@ -268,29 +281,11 @@ $$
 \neg P \to \neg Q
 $$
 
-### 2.2. Condiciones de suficiencia y necesidad
+### Condiciones de suficiencia y necesidad
 
 To Do...
 
-## 3. Reglas de Prioridad de Operadores
+### Ejemplos
 
-La **Jerarquía de Operadores** es una regla sintáctica que define el orden de aplicación de los conectivos lógicos al evaluar expresiones sin paréntesis, siendo esencial para eliminar la ambigüedad.
-
-| Prioridad        | Símbolo | Asociatividad            | Ejemplo con paréntesis |
-|------------------|---------|--------------------------|------------------------|
-| 1 (más alta)     | $¬$     | No aplica (unitario)     | $¬p \land q \;\mapsto\; ((¬p) \land q)$ |
-| 2                | $\land$ | Izquierda (I → D)        | $p \land q \land r \;\mapsto\; ((p \land q) \land r)$ |
-| 3                | $\lor$  | Izquierda (I → D)        | $p \lor q \lor r \;\mapsto\; ((p \lor q) \lor r)$ |
-| 4                | $\oplus$| Izquierda (I → D)        | $p \oplus q \oplus r \;\mapsto\; ((p \oplus q) \oplus r)$ |
-| 5                | $\to$   | Derecha (I ← D)          | $p \to q \to r \;\mapsto\; (p \to (q \to r))$ |
-| 6 (más baja)     | $\leftrightarrow$ | Derecha (I ← D) | $p \leftrightarrow q \leftrightarrow r \;\mapsto\; (p \leftrightarrow (q \leftrightarrow r))$ |
-
-> #### Notas clave
->
-> * La **negación** ($¬$) siempre aplica a **una proposición o a una expresión completa**.
-> * Los operadores con **igual precedencia** se agrupan según su **asociatividad** (izquierda o derecha).
-> * El uso de **paréntesis** permite evitar la ambigüedad en expresiones que usan varios operadores.
-> * Cuando una expresión tiene **paréntesis anidados**, la evaluación se realiza **de adentro hacia afuera**.
-{: .note }
-
+To do...
 ---

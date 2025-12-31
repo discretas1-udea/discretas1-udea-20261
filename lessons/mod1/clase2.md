@@ -488,7 +488,7 @@ Las proposiciones pueden clasificarse en tres tipos:
 
 ### Identificación de proposiciones
 
-Identifique cuáles de los siguientes enunciados son proposiciones. Justifica tu respuesta basándote en el **Principio de Bivalencia**.
+Identifique cuáles de los siguientes enunciados son proposiciones. Justifique su respuesta basándose en el **Principio de Bivalencia**.
 1.  $x + 5 = 10$
 2.  "La suma de los ángulos internos de un triángulo plano es 180°."
 3.  "Por favor, compila el código antes de enviarlo a producción."
@@ -519,13 +519,10 @@ $$(p \oplus q) \equiv (p \lor q) \land \neg (p \land q)$$
 
 Traduzca y evalúe la siguiente expresión:
   
-**Requerimiento:** *"Si el usuario tiene privilegios de administrador o el archivo no está bloqueado por el sistema, entonces el acceso es permitido ($r$)."*
+**Requerimiento:** *"Si el usuario tiene privilegios de administrador o el archivo no está bloqueado por el sistema, entonces el acceso es permitido."*
 
 1.  **Formulación:** Determine la expresión lógica resultante.
 2.  **Caso de prueba:** Si un usuario **no** es administrador, el archivo **está** bloqueado, pero el sistema otorga acceso, ¿es la afirmación del requerimiento verdadera o falsa? Justifique usando la tabla del condicional.
-
-> **Nota importante:** En lógica, la precisión es binaria. Un solo error en un bit de la tabla de verdad invalida todo el sistema. ¡Revisa tus resultados!
-{: .note } 
 
 ---
 
@@ -543,7 +540,7 @@ Al finalizar esta clase se espera que el estudiante sea capaz de:
 
 Utilice esta sección para validar sus resultados después de completar la actividad.
 
-<details>
+<details markdown="1">
 <summary><b>Presione aquí para ver las respuestas</b></summary>
 <br>
 

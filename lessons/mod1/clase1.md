@@ -8,7 +8,7 @@ nav_order: 1
 ![Built with AI](https://img.shields.io/badge/Built%20with-AI-blue.svg)
 
 # Clase 01 - Fundamentos de Lógica Proposicional
-{: .no_toc .text-delta }
+{: .no_toc }
 
 Esta sesión introduce el objeto de estudio de la Lógica Proposicional, diferenciando el lenguaje natural de las estructuras formales que rigen el razonamiento matemático.
 
