@@ -62,6 +62,41 @@ Al igual que en la aritmética ($\times$ antes que $+$), en lógica el orden imp
 
 Traducir de lenguaje natural a lógico es similar a "compilar" código: buscamos eliminar la ambigüedad humana para dejar instrucciones precisas. Para realizar esto con éxito, seguiremos un proceso estructurado.
 
+<div style="text-align: center;" markdown="1">
+```mermaid
+graph LR
+    %% Estilos
+    classDef input fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000;
+    classDef process fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000;
+    classDef output fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000;
+
+    %% Nodos
+    Raw[/"🗣️ Lenguaje Natural"/]:::input
+    
+    %% Simplificamos el subgraph para evitar el error de sintaxis
+    subgraph Compilador
+        direction TB
+        Step1["1. Atomizar (Variables)"]:::process
+        Step2["2. Mapear (Conectores)"]:::process
+        Step3["3. Estructurar (Jerarquía)"]:::process
+    end
+    
+    Code[/"🤖 Lógica Formal"/]:::output
+
+    %% Conexiones
+    Raw --> Step1
+    Step1 --> Step2
+    Step2 --> Step3
+    Step3 --> Code
+
+    %% Conexión indirecta
+    Raw -.-> Code
+```
+
+**Figura 1**. Resumen proceso de traducción.
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
+
 ### Dirección 1: Lenguaje Natural $\to$ Lógica Formal
 
 Para evitar errores comunes, recomendamos seguir un algoritmo de 3 pasos:
@@ -161,7 +196,7 @@ $$
 
 > **Nota para programadores:** Esta estructura lógica es el fundamento de las *Cláusulas de Guardia* ([Guard Clauses](https://en.wikipedia.org/wiki/Guard_(computer_science))) en programación: verificar primero las condiciones de fallo para detener la ejecución antes de continuar.
 
-### Ejemplos de traducción de lenguaje natural a lenguaje lógico
+## Ejemplos de traducción de lenguaje natural a lenguaje lógico
 
 Traducir de lenguaje natural a lenguaje lógico los siguientes enunciados:
 
