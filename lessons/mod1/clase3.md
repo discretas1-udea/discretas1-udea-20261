@@ -21,115 +21,145 @@ Teniendo en cuenta los conceptos iniciales vistos en las secciones anteriores, y
 
 ---
 
-## Repaso
+## Repaso: El Kit del Traductor Lógico
 
-En clases anteriores se abordaron los primeros pasos necesarios relacionados con la logica proposicional los cuales se listan a continuación:
-1. Se definió el concepto de **proposición** como un enunciado declarativo que puede ser cierto (V) o falso (F) pero no ambos (**axioma de bivalencia**).
-2. Se clasificaron las proposiciones en dos tipos principales, las **simples** y las **compuestas**. La diferencia basicamente radica en el uso de **operadores logicos**.
-3. Se estudiaron cada uno de los operadores logicos, su definición y el efecto que tienen al aplicarse en las proposiciones.
-4. Tal y como sucede en otras ramas de las matematicas como el algebra o el aritmetica, se estudiaron el uso correcto de los operadores logicos para formar y evaluar expresiones validas (**Fomulas bien formadas**) analizandose de manera intuitiva y a modo de analigia las principales reglas de formación de expresuiones con respecto a otras ramas (algebra y aritmetica) con el fin de comprender las reglas de formación basica de expresiones logicas.
-5. De manera análoga al Algebra, se evaluaron expresiones lógicas para determinar el valor de la verdad de una expresión logica haciendo enfatizando en que el resultado no es un numero real como en algebra o aritmetica sino un valor logico que puede tomar solo dos posibilidades, cierto o falso del universo o dominio (lo cual será aterrizado despues).
-6. Se estudió el uso de tablas de verdad como una herramienta que facilita la evaluación de los diferentes valores que puede tomar una expresión logica (**proposicion**) en comparación con la forma tradicional de reemplazar las variables lógicas.
+Para lograr traducir correctamente del español (ambiguo) al lenguaje matemático (preciso), necesitamos tener a mano las herramientas que definimos en las clases 1 y 2.
 
-A continuación, se muestran las principales tablas que resumen formalmente los principales aspectos a tener en cuenta desde el punto de vista operativo cuando se estan operando con **proposiciones** dentro del campo de la **logica formal**.
+Antes de comenzar, verifique que tiene claros estos tres componentes:
 
-### Tabla de verdad para los operadores lógicos fundamentales
+### 1. La Materia Prima: Proposiciones Atómicas
 
-La siguiente tabla muestra un resumen de los operadores logicos empleados en la construcción de proposiciones:
+Recuerde el **Axioma de Bivalencia**: Solo nos interesan oraciones que puedan ser **Verdaderas (1)** o **Falsas (0)**.
+* *En el código:* Estas serán nuestras variables booleanas (`p`, `q`, `r`, `isUserLoggedIn`).
+
+### 2. El Pegamento: Operadores Lógicos
+
+Estos símbolos son la estructura sintáctica que une las ideas.
 
 <div style="text-align: center;" markdown="1">
-| $p$ | $q$ | **Negación**<br>$\neg p$ | **Conjunción**<br>$p \land q$ | **Disyunción**<br>$p \lor q$ | **O Exclusivo**<br>$p \oplus q$ | **Condicional**<br>$p \rightarrow q$ | **Bicondicional**<br>$p \leftrightarrow q$ |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **V** | **V** | F | **V** | V | F | V | V |
-| **V** | **F** | F | F | V | **V** | **F** | F |
-| **F** | **V** | V | F | V | **V** | V | F |
-| **F** | **F** | V | F | **F** | F | V | V |
+| Nombre | Símbolo | Rol Gramatical (Aprox.) |
+| :--- | :---: | :--- |
+| Negación | $\neg$ | Modificador del verbo ("No") |
+| Conjunción | $\land$ | Unión ("Y", "Pero") |
+| Disyunción | $\lor$ | Alternativa ("O") |
+| Condicional | $\to$ | Relación Causa-Efecto ("Si... entonces") |
+| Bicondicional| $\leftrightarrow$ | Equivalencia ("Si y solo si") |
 
-**Tabla 1**. Tabla de verdad para los operadores lógicos fundamentales.
+**Tabla 1**. Operadores lógicos fundamentales.
 {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
 </div>
 
-### Jerarquía de Operadores
-
-Cuando se tiene una propocisión, esta debe ser valida (ser una expresión bien formada). Al igual que cualquier formula, esta podra ser evaluada y siguiendo unas reglas arrojar un resultado logico. La siguiente tabla muestra de manera resumida, los principales aspectos a tener en cuenta para evaluar de manera correcta una proposicion (reglas de prioridad y asociatividad).
-
-<div style="text-align: center;" markdown="1">
-| Prioridad        | Símbolo | Asociatividad            | Ejemplo con paréntesis |
-|------------------|---------|--------------------------|------------------------|
-| 1 (más alta)     | $¬$     | No aplica (unitario)     | $¬p \land q \;\equiv\; ((¬p) \land q)$ |
-| 2                | $\land$ | Izquierda (I → D)        | $p \land q \land r \;\equiv\; ((p \land q) \land r)$ |
-| 3                | $\lor$  | Izquierda (I → D)        | $p \lor q \lor r \;\equiv\; ((p \lor q) \lor r)$ |
-| 4                | $\oplus$| Izquierda (I → D)        | $p \oplus q \oplus r \;\equiv\; ((p \oplus q) \oplus r)$ |
-| 5                | $\to$   | Derecha (I ← D)          | $p \to q \to r \;\equiv\; (p \to (q \to r))$ |
-| 6 (más baja)     | $\leftrightarrow$ | Derecha (I ← D) | $p \leftrightarrow q \leftrightarrow r \;\equiv\; (p \leftrightarrow (q \leftrightarrow r))$ |
-
-**Tabla x**. Jerarquía de Operadores.
-{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
-</div>
-
-Antes de aplicar el Álgebra de Proposiciones, es fundamental recordar las bases de la formalización y los axiomas de verdad de los conectores lógicos.
-
-> **Importante**: Acabamos de repasar las bases de la formalización necesarias para abordar las **proposiciones** dentro de la **lógica formal**. Si aún tiene vacios, la recomendación es que repase el material previo a haga las preguntas necesarias antes de seguir, con esto va a evitar perder el hilo de la historia.
-{: .important }
-
-### Lenguaje Natural vs Lenguaje Lógico
-
-El lenguaje natural es el que usamos en la vida cotidiana, mientras que el lenguaje lógico es el que usamos en la formalización de proposiciones. Debido a que el lenguaje natural es impreciso, es necesario usar el lenguaje lógico para formalizar las proposiciones.
-
-* **Proposición:** Enunciado que cumple el **Principio de Bivalencia** ($V$ o $F$, pero no ambos).
-* **Formalización:** Proceso de traducción que usa variables ($p, q, r$) y operadores ($\land, \lor, \rightarrow$).
+### 3. Las Reglas de Puntuación: Jerarquía
+Al igual que en la aritmética ($\times$ antes que $+$), en lógica el orden importa para evitar ambigüedades.
+1.  **Paréntesis** `()` (Máxima prioridad)
+2.  **Negación** $\neg$
+3.  **Conjunción** $\land$ y **Disyunción** $\lor$
+4.  **Condicional** $\to$ y **Bicondicional** $\leftrightarrow$ (Menor prioridad)
 
 ---
 
-## Traducción de lenguaje natural a lenguaje formal y viceversa.
+## Traducción: De Palabras a Fórmulas (y Viceversa)
 
-### Tipos de enunciados declarativos
+Traducir de lenguaje natural a lógico es similar a "compilar" código: buscamos eliminar la ambigüedad humana para dejar instrucciones precisas. Para realizar esto con éxito, seguiremos un proceso estructurado.
 
-A continuación se presentan los tipos de enunciados declarativos y su equivalencia con conectores lógicos.
+### Dirección 1: Lenguaje Natural $\to$ Lógica Formal
 
-#### Equivalencia entre enunciados declarativos y conectores lógicos
+Para evitar errores comunes, recomendamos seguir un algoritmo de 3 pasos:
 
-Sean $P$ y $Q$ dos enunciados declarativos cualesquiera (simples o compuestos).
+1.  **Atomización:** Identifique las oraciones simples y asígneles una variable ($P, Q, R...$).
+2.  **Identificación de Conectores:** Busque las "palabras clave" y elija el símbolo correspondiente apoyándose en las siguientes tablas de referencia:
+    
+    <div markdown="1">
+    | Tipo | Conector lógico | Forma simbólica | Enunciados en lenguaje natural |
+    |---|---|---|---|
+    | Conjuntivo | Conjunción | $P \land Q$ | • P y Q<br>• P, pero Q<br>• P aun Q<br>• P también Q<br>• P todavía Q<br>• P, aunque Q<br>• P sin embargo Q<br>• P además Q<br>• P no obstante Q |
+    | Disyuntivo (inclusivo) | Disyunción | $P \lor Q$ | • P o Q<br>• P, a menos que Q<br>• Al menos una entre P y Q |
+    | Disyuntivo exclusivo | Disyunción exclusiva | $P \oplus Q$ | • P o Q, pero no ambos<br>• O P o Q exclusivamente<br>• Exactamente uno de P y Q |
+    
+    **Tabla 2**. Operadores $\land$, $\lor$ y $\oplus$ y palabras claves relacionadas.
+    {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+    </div>
 
-| Tipo                   | Conector lógico      | Forma simbólica | Enunciados en lenguaje natural |
-|------------------------|----------------------|-----------------|--------------------------------|
-| Conjuntivo             | Conjunción           | $P \land Q$     | • P y Q<br>• P, pero Q<br>• P aun Q<br>• P también Q<br>• P todavía Q<br>• P, aunque Q<br>• P sin embargo Q<br>• P además Q<br>• P no obstante Q |
-| Disyuntivo (inclusivo) | Disyunción           | $P \lor Q$      | • P o Q<br>• P, a menos que Q<br>• Al menos una entre P y Q |
-| Disyuntivo exclusivo   | Disyunción exclusiva | $P \oplus Q$    | • P o Q, pero no ambos<br>• O P o Q exclusivamente<br>• Exactamente uno de P y Q |
+    > **Notas clave**
+    >
+    >* El **"o"** en lenguaje natural se interpreta por defecto como **disyunción inclusiva**.
+    >* El **"o exclusivo"** indica que **solo una** proposición es verdadera.
+    >* Expresiones como *pero*, *sin embargo* o *no obstante* no alteran la estructura lógica (son conjunciones).
+    >* La expresión *“a menos que”* se modela usualmente como una disyunción inclusiva ($P \lor Q$) o una implicación ($\neg Q \to P$).
+    {: .note }
 
-> ##### Notas clave
->
->* El **“o”** en lenguaje natural se interpreta por defecto como **disyunción inclusiva**.
->* El **“o exclusivo”** indica que **solo una** proposición es verdadera.
->* Expresiones como *pero*, *sin embargo* o *no obstante* no alteran la estructura lógica.
->* La expresión *“a menos que”* se modela como una disyunción inclusiva.
-{: .note }
+    El caso del condicional requiere especial atención. En la siguiente tabla, asuma que $P$ representa el **antecedente** y $Q$ el **consecuente**.
+    
+    <div markdown="1">
+    | Tipo | Conector lógico | Forma simbólica | Enunciados en lenguaje natural |
+    |---|---|---|---|
+    | Condicional (Hipotético) | Implicación | $P \to Q$ | • Si $P$, entonces $Q$<br>• Si $P$, $Q$<br>• $Q$ si $P$<br>• $P$ solo si $Q$<br>• Para $P$, es necesario $Q$<br>• Es suficiente $P$ para $Q$<br>• $Q$ en caso de que $P$<br>• $Q$ siempre que $P$<br>• Como $P$, $Q$<br>• $Q$ cuando $P$<br>• $P$ implica que $Q$<br>• Cuando $P$, $Q$ |
+    | Bicondicional | Bicondicional | $P \leftrightarrow Q$ | • $P$ si, y solo si, $Q$<br>• $P$ es suficiente y necesario para $Q$<br>• $P$ es equivalente a $Q$<br>• $P$ y $Q$ son equivalentes |
+    
+    **Tabla 3**. Operadores $\leftarrow$ y $\leftrightarrow$ y palabras claves relacionadas.
+    {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+    </div>
+    
+    > **Notas clave sobre la Implicación**
+    >
+    > * La expresión **“$P$ solo si $Q$”** se formaliza como $P \to Q$. (El "solo si" introduce la condición necesaria/consecuente).
+    > * La expresión **“$Q$ si $P$”** también corresponde a $P \to Q$. (El "si" introduce la condición suficiente/antecedente).
+    > * En el **bicondicional**, ambas proposiciones tienen el mismo valor de verdad.
+    {: .note }
+    
+3.  **Estructuración:** Use paréntesis para agrupar las ideas y definir la jerarquía.
 
-#### Equivalencia entre enunciados declarativos con condicionales y bicondicionales
+#### Ejemplo Guiado: Reglas de Red
 
-Sobre el enunciado declarativo **condicional**: en este caso $P$ representa el **antecedente** y $Q$ el **consecuente**.
+Analicemos el siguiente enunciado de política de seguridad para aplicar el algoritmo:
 
-| Tipo                         | Conector lógico      | Forma simbólica        | Enunciados en lenguaje natural |
-|------------------------------|----------------------|------------------------|--------------------------------|
-| Condicional (Hipotético)     | Implicación          | $P \to Q$              | • Si $P$, entonces $Q$<br>• Si $P$, $Q$<br>• $Q$ si $P$<br>• $P$ solo si $Q$<br>• Para $P$, es necesario $Q$<br>• Es suficiente $P$ para $Q$<br>• $Q$ en caso de que $P$<br>• $Q$ siempre que $P$<br>• Como $P$, $Q$<br>• $Q$ cuando $P$<br>• $P$ implica que $Q$<br>• Cuando $P$, $Q$ |
-| Bicondicional                | Bicondicional        | $P \leftrightarrow Q$  | • $P$ si, y solo si, $Q$<br>• $P$ es suficiente y necesario para $Q$<br>• $P$ es equivalente a $Q$<br>• $P$ y $Q$ son equivalentes |
+> "Puedes acceder a internet desde el campus **solo si** estudias ciencias de la computación **o** **no** eres estudiante de primer año."
 
-> #### Notas clave
->
-> * La expresión **“$P$ solo si $Q$”** se formaliza como $P \to Q$.
-> * La expresión **“$Q$ si $P$”** también corresponde a $P \to Q$.
-> * En el **bicondicional**, ambas proposiciones tienen el mismo valor de verdad.
-{: .note }
+* **Paso 1: Definir Átomos (Variables)**
+  * $P$: Puedes acceder a internet desde el campus.
+  * $Q$: Estudias ciencias de la computación.
+  * $R$: Eres estudiante de primer año.
 
-### Traducción de lenguaje natural a lenguaje lógico
+* **Paso 2: Traducir Conectores**
+  * "o" $\to \lor$ (Disyunción entre la carrera y el año).
+  * "no" $\to \neg$ (Negación de ser de primer año: $\neg R$).
+  * "solo si" $\to \to$ (Condicional).
+      * **Atención:** Como vimos en la tabla anterior, "$P$ solo si..." indica que lo que sigue es el consecuente.
 
-Para traducir proposiciones expresadas en lenguaje natural a lenguaje lógico, es necesario identificar los conectivos y variables que representan las proposiciones. Esto se muestra en los siguientes pasos:
+* **Paso 3: Formalizar**
+  El antecedente es el acceso ($P$) y el consecuente es la condición compuesta ($Q$ o no $R$).
 
-1. Leer y comprender el enunciado.
-2. Identificar las proposiciones simples (atômicas).
-3. Asignar variables a las proposiciones simples.
-4. Identificar los conectores lógicos.
-5. Construir la proposición lógica completa asociada al enunciado.
+
+**Resultado Final**:
+
+$$
+P \to (Q \lor \neg R)
+$$
+
+### Dirección 2: Lógica Formal $\to$ Lenguaje Natural
+
+Esta habilidad es vital para leer código ajeno, documentación o especificaciones técnicas. El objetivo es convertir una fórmula abstracta en una oración coherente en español.
+
+**Ejercicio:**
+Dadas las proposiciones:
+* $S$: El sistema tiene memoria disponible.
+* $E$: Se ejecuta el proceso.
+
+Interprete la fórmula: 
+
+$$
+\neg S \to \neg E
+$$
+
+* **Traducción Literal (Robótica):**
+  
+  > "Si no es cierto que el sistema tiene memoria disponible, entonces no es cierto que se ejecuta el proceso".
+
+* **Traducción Natural (Profesional):**
+  
+  > "Si el sistema no tiene memoria, el proceso no se ejecuta".
+
+> **Nota para programadores:** Esta estructura lógica es el fundamento de las *Cláusulas de Guardia* ([Guard Clauses](https://en.wikipedia.org/wiki/Guard_(computer_science))) en programación: verificar primero las condiciones de fallo para detener la ejecución antes de continuar.
 
 ### Ejemplos de traducción de lenguaje natural a lenguaje lógico
 
