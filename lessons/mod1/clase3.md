@@ -52,7 +52,7 @@ Estos símbolos son la estructura sintáctica que une las ideas.
 ### 3. Las Reglas de Puntuación: Jerarquía
 
 Al igual que en la aritmética ($\times$ antes que $+$), en lógica el orden importa para evitar ambigüedades.
-1.  **Paréntesis** `()` (Máxima prioridad)
+1.  **Paréntesis** $()$ (Máxima prioridad)
 2.  **Negación** $\neg$
 3.  **Conjunción** $\land$ y **Disyunción** $\lor$
 4.  **Condicional** $\to$ y **Bicondicional** $\leftrightarrow$ (Menor prioridad)
@@ -121,7 +121,7 @@ Para evitar errores comunes, recomendamos seguir un algoritmo de 3 pasos:
     >* El **"o"** en lenguaje natural se interpreta por defecto como **disyunción inclusiva**.
     >* El **"o exclusivo"** indica que **solo una** proposición es verdadera.
     >* Expresiones como *pero*, *sin embargo* o *no obstante* no alteran la estructura lógica (son conjunciones).
-    >* La expresión *“a menos que”* se modela usualmente como una disyunción inclusiva ($P \lor Q$) o una implicación ($\neg Q \to P$).
+    >* La expresión *"a menos que"* se modela usualmente como una disyunción inclusiva ($P \lor Q$) o una implicación ($\neg Q \to P$).
     {: .note }
 
     El caso del condicional requiere especial atención. En la siguiente tabla, asuma que $P$ representa el **antecedente** y $Q$ el **consecuente**.
@@ -145,13 +145,13 @@ Para evitar errores comunes, recomendamos seguir un algoritmo de 3 pasos:
     
 3.  **Estructuración:** Use paréntesis para agrupar las ideas y definir la jerarquía.
 
-#### Ejemplo Guiado: Reglas de Red
+**Ejemplo Guiado: Reglas de Red**
 
 Analicemos el siguiente enunciado de política de seguridad para aplicar el algoritmo:
 
 > "Puedes acceder a internet desde el campus **solo si** estudias ciencias de la computación **o** **no** eres estudiante de primer año."
 
-* **Paso 1: Definir Átomos (Variables)**
+* **Paso 1: Definir proposiciones atómicas (Variables)**
   * $P$: Puedes acceder a internet desde el campus.
   * $Q$: Estudias ciencias de la computación.
   * $R$: Eres estudiante de primer año.
@@ -165,8 +165,7 @@ Analicemos el siguiente enunciado de política de seguridad para aplicar el algo
 * **Paso 3: Formalizar**
   El antecedente es el acceso ($P$) y el consecuente es la condición compuesta ($Q$ o no $R$).
 
-
-**Resultado Final**:
+**Resultado Final**: A continuación se presenta la expresión lógica resultante:
 
 $$
 P \to (Q \lor \neg R)
@@ -199,6 +198,8 @@ $$
 
 ## Ejemplos de traducción de lenguaje natural a lenguaje lógico
 
+A continuación se muestran algunos ejemplos resueltos a modo de repaso con el fin de reforzar los conceptos claves de traducción.
+
 > **Nota sobre la notación de variables (Estilo Matemático vs. Estilo Ingeniería)**
 >
 > Antes de resolver los ejercicios, tenga en cuenta que **no existe una única regla** para nombrar las proposiciones. Usted tiene libertad de elección según el contexto:
@@ -214,20 +215,18 @@ Traducir de lenguaje natural a lenguaje lógico los siguientes enunciados:
 1. "El automovil arranca si y solo si el tanque tiene gasolina y la bateria esta cargada".
 
    **Solución**:
-   El enunciado es un bicondicional, por lo que se puede formalizar como $P \leftrightarrow Q$.
-
-   Donde:
+   Como el enunciado tiene la forma "$P$ ***si y solo si*** $Q$" este es un bicondicional, por lo que se puede formalizar como $P \leftrightarrow Q$ en el cual:
    * $P$: El automovil arranca.
    * $Q$: El tanque tiene gasolina y la bateria esta cargada.
 
-   Sin embargo, podemos descomponer cada parte del bicondicional mediante proposiciones simples de la siguiente manera:
+   Sin embargo, si analizados cada una de las proposiciones resultantes, podemos ver, que la proposición $Q$ tiene el conector ***"y"*** por lo que es una proposición compuesta. A continuación, se muestra el analisis de cada proposición teniendo en cuenta lo previamente mencionado y nombrando las proposiciones simples empleando el estilo semantico (ver nota anterior):
    * Para $P$ tenemos la siguiente proposición simple:
      * $ON$: El automovil arranca.
    * Para $Q$ tenemos las siguiente proposiciones simples unidas mediante la conjunción ($\land$):
      * $GAS$: El tanque tiene gasolina.
      * $CHARGED$: La bateria esta cargada.
 
-   De modo que $P = ON$ y $Q = (GAS \land CHARGED)$. Por lo que $P \leftrightarrow Q$ se puede formalizar como:
+   De modo que $P \equiv ON$ y $Q \equiv (GAS \land CHARGED)$. Por lo que $P \leftrightarrow Q$ se puede formalizar como:
 
    $$
    ON \leftrightarrow (GAS \land CHARGED)
@@ -261,9 +260,9 @@ Traducir de lenguaje natural a lenguaje lógico los siguientes enunciados:
 
    Estas proposiciones estan negadas y unidas por una conjunción ($\land$). Por lo que:
 
-    $$
-    P = \neg M1 \land \neg T
-    $$
+   $$
+   P \equiv \neg M1 \land \neg T
+   $$
 
    Por otro lado, en lo que respecta al consecuente $Q$, tenemos las siguientes proposiciones simples:
    * $M2$: Podré cursar Matematicas Discretas 2.
@@ -271,13 +270,13 @@ Traducir de lenguaje natural a lenguaje lógico los siguientes enunciados:
 
    Estas proposiciones estan negadas y unidas por una conjunción ($\land$). Por lo que:
 
-    $$
-    Q = \neg M2 \land \neg T2
-    $$
+   $$
+   Q \equiv \neg M2 \land \neg T2
+   $$
 
    Finalmente el enunciado se puede formalizar como:
 
-   $$P \to Q = (\neg M1 \land \neg T) \to (\neg M2 \land \neg T2)$$
+   $$P \to Q \equiv (\neg M1 \land \neg T) \to (\neg M2 \land \neg T2)$$
 
 4. "No puedes subir la montaña rusa si mides menos de 1.2, a menos que tengas mas de 16 años".
 
@@ -294,23 +293,54 @@ Traducir de lenguaje natural a lenguaje lógico los siguientes enunciados:
    * $Age$: Tienes mas de 16 años.
    * $Height$: Mides menos de 1.2.
 
-   De modo que el antecedente $P$ es $P = Height \land \neg Age$.
+   De modo que el antecedente $P$ es $P \equiv Height \land \neg Age$.
 
    Por otro lado, el consecuente $Q$ se puede expresar en terminos de una unica proposicion simple:
-   * $RolerCoaster$: Puedes subir a la montaña rusa.
+   * $RollerCoaster$: Puedes subir a la montaña rusa.
 
-   Por lo que $Q = \neg RolerCoaster$.
+   Por lo que $Q = \neg RollerCoaster$.
 
    Finalmente el enunciado se puede formalizar como:
 
-   $$P \to Q = (Height \land \neg Age) \to \neg RolerCoaster$$
-
+   $$P \to Q = (Height \land \neg Age) \to \neg RollerCoaster$$
 
 ---
 
 ## Expresiones Condicionales y sus Variantes
 
-El operador condicional ($\to$) es único porque **el orden importa** (no es conmutativo). Entender sus variaciones es vital para la [programación defensiva](https://es.wikipedia.org/wiki/Programaci%C3%B3n_defensiva) y la argumentación lógica.
+Como ya sabemos, los enunciados de la forma "Si $P$ ****entonces*** $Q$" estan relacionados con el operador condicional $P \to Q$ el cual se muestra en la siguiente tabla:
+
+<div style="text-align: center;" markdown="1">
+| $P$ | $Q$ | $P \rightarrow Q$ |
+| :---: | :---: | :---: |
+| V | V | **V** |
+| V | F | **F** |
+| F | V | **V** |
+| F | F | **V** |
+
+**Tabla 4**. Tabla de verdad para el condicional
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>    
+
+El operador condicional ($\to$) es único porque **el orden importa** (no es conmutativo). Asi mismo, cada una de las proposiciones tambien suelen tener diferentes maneras de nombrarse. Por ejemplo, la proposición $P$ se suele conocer como hipotesis, antecedente o premisa, mientras que la proposicion $Q$ suele ser nombrada como tesis, consecuente o conclusión, resaltando con esto la relación de dependencia que intenta modelarse. Por ejemplo, supongamos que se tiene el siguiente enunciado (propio de las promesas de campaña de los politicos): "Si <u>soy elegido como su mandatario</u>, entonces <u>les daré casa a todos</u>". Al analizar el enunciado, podemos identificar que $P$: "<u>Soy elegido mandatario</u>" y $Q$: <u>les daré casa a todos</u> son el antecedente y el consecuente, sin embargo si se analiza las diferentes posibilidades para cada una de estas proposiciones teniendo en cuenta la tabla de verdad segun el contexto tenemos:
+
+<div style="text-align: center;" markdown="1">
+| $P$ | $Q$ | $P \rightarrow Q$ |
+| :---: | :---: | :---: |
+| **V**: Me eligen como presidente | **V**: Les dare casa a todos. | **V**: He dicho la verdad pues cumpli lo que prometí |
+| **V**: Me eligen como presidente | **F**: <u>No<\u> les dare casa a todos. | **F**: No cumplí lo que prometí asi que quede mal, de modo que he mentido (lo que pasa con los politicos). |
+| **F**: <u>No<\u> Me eligen como presidente |  **V**: Les dare casa a todos.| **V**: Pese a que no quede presidente, lo que dije que iba a realizar (dar casa a todos) lo hice, asi que cumpli el contrato. |
+| **F**: <u>No<\u> Me eligen como presidente | **F**: <u>No<\u> les dare casa a todos. | **V**: He dicho la verdad pues al no quedar de presidente no podré cumplir lo que habia prometido. |
+
+**Tabla 5**. Tabla de verdad para el condicional
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>   
+
+Notese que en resumen, siempre que se cumpla el contrato establecido por la dependencia, el resultado sera verdadero y cuando no se cumple este (lo cual se da cuando unicamente el consecuente es falso y el antecedente es verdadero), el resultado será falso.
+
+
+
+Entender sus variaciones es vital para la [programación defensiva](https://es.wikipedia.org/wiki/Programaci%C3%B3n_defensiva) y la argumentación lógica.
 
 A partir de una proposición original $P \to Q$, podemos derivar otras tres formas lógicas cambiando el orden o los signos.
 
