@@ -50,6 +50,7 @@ Estos símbolos son la estructura sintáctica que une las ideas.
 </div>
 
 ### 3. Las Reglas de Puntuación: Jerarquía
+
 Al igual que en la aritmética ($\times$ antes que $+$), en lógica el orden importa para evitar ambigüedades.
 1.  **Paréntesis** `()` (Máxima prioridad)
 2.  **Negación** $\neg$
@@ -198,6 +199,16 @@ $$
 
 ## Ejemplos de traducción de lenguaje natural a lenguaje lógico
 
+> **Nota sobre la notación de variables (Estilo Matemático vs. Estilo Ingeniería)**
+>
+> Antes de resolver los ejercicios, tenga en cuenta que **no existe una única regla** para nombrar las proposiciones. Usted tiene libertad de elección según el contexto:
+>
+> * **Estilo Clásico ($P, Q, R$):** Es el estándar en los libros de matemáticas. Es ideal para analizar la estructura lógica sin distraerse con el contenido.
+> * **Estilo Semántico ($Gasolina, Bateria, Edad$):** Es el estándar en Ciencias de la Computación y programación. Usar nombres descriptivos (como `isUserLoggedIn`) ayuda a no perder el significado de lo que estamos modelando.
+>
+> En los siguientes ejemplos alternaremos entre ambos estilos para que usted se familiarice con las dos formas de representación. Recuerde: el nombre de la variable no cambia la lógica.
+{: .note }
+
 Traducir de lenguaje natural a lenguaje lógico los siguientes enunciados:
 
 1. "El automovil arranca si y solo si el tanque tiene gasolina y la bateria esta cargada".
@@ -294,63 +305,152 @@ Traducir de lenguaje natural a lenguaje lógico los siguientes enunciados:
 
    $$P \to Q = (Height \land \neg Age) \to \neg RolerCoaster$$
 
-5. "Puedes acceder a internet desde el campus solo si estudias ciencias de la computacion o no eres estudiante de primer año".
-
-    **Solución**:
-    Este enunciado tiene la forma "P solo si Q", por lo que es una proposicion condicional de la forma $P \to Q$:
-    * $P$: Puedes acceder a internet desde el campus.
-    * $Q$: Estudias ciencias de la computacion o no eres estudiante de primer año.
-
-    El antecedente es una proposición simple la cual llamaremos $Internet$:
-    * $Internet$: Puedes acceder a internet desde el campus.
-
-    El consecuente es una proposición compuesta la cual llamaremos la cual se forma de dos proposiciones simples las cuales son:
-    * $ComputerScience$: Estudias ciencias de la computacion.
-    * $Freshman$: Eres estudiante de primer año.
-
-    Por lo que $Q = ComputerScience \lor \neg Freshman$.
-
-    Finalmente el enunciado se puede formalizar como:
-
-    $$P \to Q = Internet \to (ComputerScience \lor \neg Freshman)$$
 
 ---
 
-## Expresiones condicionales
+## Expresiones Condicionales y sus Variantes
 
-### Tipos de proposiciones condicionales
+El operador condicional ($\to$) es único porque **el orden importa** (no es conmutativo). Entender sus variaciones es vital para la [programación defensiva](https://es.wikipedia.org/wiki/Programaci%C3%B3n_defensiva) y la argumentación lógica.
 
-A partir de una proposición condicional original (o Directa):
+A partir de una proposición original $P \to Q$, podemos derivar otras tres formas lógicas cambiando el orden o los signos.
 
-$$
-P \to Q
-$$
+### Definición de Variantes
 
-Se pueden generar tres proposiciones relacionadas, que tienen relaciones específicas de equivalencia:
+Supongamos la proposición: *"Si es un cuadrado ($P$), entonces tiene cuatro lados ($Q$)"*.
 
-* **Reciproco (Converse)**: Se forma al intercambiar el antecedente y el consecuente de la proposición original.
+| Nombre | Fórmula | En Lenguaje Natural | Estatus Lógico |
+| :--- | :---: | :--- | :--- |
+| **Original** | $P \to Q$ | "Si es cuadrado, tiene 4 lados" | **Verdadera** |
+| **Recíproca** | $Q \to P$ | "Si tiene 4 lados, es un cuadrado" | **Falsa** (Podría ser un rectángulo) |
+| **Inversa** | $\neg P \to \neg Q$ | "Si no es cuadrado, no tiene 4 lados" | **Falsa** (Idem) |
+| **Contrarrecíproca** | $\neg Q \to \neg P$ | "Si no tiene 4 lados, no es un cuadrado" | **Verdadera** |
 
-$$
-Q \to P
-$$
+> **Observación Clave:**
+> Note que la proposición **Original** y la **Contrarrecíproca** comparten el mismo valor de verdad. Lo mismo ocurre entre la **Recíproca** y la **Inversa**.
+{: .note }
 
-* **Contrareciproco (Contrapositive)**: Se forma al negar el antecedente y el consecuente de la proposición original y luego intercambiarlos.
+### Demostración de Equivalencia
 
-$$
-\neg Q \to \neg P
-$$
+Para probar matemáticamente que una implicación es idéntica a su contrarrecíproca, usamos una tabla de verdad comparativa. Busque las columnas con valores idénticos:
 
-* **Contrario (Inverse)**: Se forma al negar el antecedente de la proposición original.
+| $P$ | $Q$ | $P \to Q$ (Original) | $\neg Q$ | $\neg P$ | $\neg Q \to \neg P$ (Contra.) | $Q \to P$ (Recíproca) |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| V | V | **V** | F | F | **V** | V |
+| V | F | **F** | V | F | **F** | V |
+| F | V | **V** | F | V | **V** | F |
+| F | F | **V** | V | V | **V** | V |
 
-$$
-\neg P \to \neg Q
-$$
+**Conclusión:**
+1.  La columna de la **Original** y la **Contrarrecíproca** son idénticas en todas las filas. Por lo tanto, son **Lógicamente Equivalentes**.
+    $$P \to Q \equiv \neg Q \to \neg P$$
+2.  La **Recíproca** tiene valores distintos. Asumir que $P \to Q$ es igual a $Q \to P$ es un error lógico conocido como *Falacia de Afirmación del Consecuente*.
 
-### Condiciones de suficiencia y necesidad
+### Aplicación en Ciencias de la Computación
 
-To Do...
+La contrarrecíproca es la base del **Refactoring** de condiciones para reducir la anidación (Indentation Hell).
 
-### Ejemplos
+**Código Original ($P \to Q$):**
+"Si el usuario es válido, ejecutamos el proceso".
 
-To do...
+```python
+if user_is_valid:
+    execute_process()
+```
+
+**Refactorización usando Contrarrecíproca ($\neg Q \to \neg P$)**:
+"Si no vamos a ejecutar el proceso (porque falló algo), es porque el usuario no es válido". En código, esto se traduce en **Cláusulas de Guarda** (Guard Clauses): manejamos la negación primero para salir temprano.
+
+```python
+if not user_is_valid:
+    return  # Salimos temprano (Return Early)
+execute_process() # Flujo principal sin anidación
+```
+
+## Condiciones Necesarias y Suficientes
+
+Una de las mayores confusiones en lógica (y en la toma de requisitos de software) es distinguir qué es necesario y qué es suficiente. Analicémoslo gráficamente.
+
+Para la implicación $P \to Q$:
+
+### 1. La Condición Suficiente ($P$)
+El antecedente $P$ es una condición **Suficiente** para $Q$.
+* **Significado:** Si tienes $P$, eso "basta" para garantizar $Q$. No necesitas nada más.
+* **Ejemplo:** "Si es un iPhone ($P$), entonces es un Smartphone ($Q$)".
+    * Ser iPhone es suficiente para saber que es un smartphone.
+
+### 2. La Condición Necesaria ($Q$)
+El consecuente $Q$ es una condición **Necesaria** para $P$.
+* **Significado:** Para que $P$ exista, $Q$ tiene que estar ahí. Si falta $Q$, $P$ no puede ocurrir (Modus Tollens).
+* **Ejemplo:** "Si hay fuego ($P$), entonces hay oxígeno ($Q$)".
+    * El oxígeno es necesario para el fuego. Sin oxígeno, no hay fuego.
+    * *Nota:* Tener oxígeno no garantiza fuego (no es suficiente), pero es un requisito indispensable.
+
+### Visualización de Conjuntos
+Piense en el condicional como un subconjunto. Si $P \to Q$, entonces el círculo de $P$ está **adentro** del círculo de $Q$.
+
+<div style="text-align: center;" markdown="1">
+```mermaid
+graph TD
+    %% Usamos IDs simples sin espacios para evitar el error de sintaxis
+    subgraph Conjunto_Q
+        P[iPhone - Suficiente]
+    end
+    style P fill:#b3e5fc,stroke:#01579b,stroke-width:2px
+    style Conjunto_Q fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+```
+
+**Figura 2**. Relación de contenencia: $P \subseteq Q$. Todo elemento de P está obligado a estar en Q
+.{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
+
+> **Regla de Oro para Ingenieros**:
+> * Lo Suficiente fuerza al resultado (Dispara el evento).
+> * Lo Necesario permite que suceda (Es el prerrequisito). 
+{: .note }
+
 ---
+
+## El Bicondicional: La Doble Vía
+
+Finalmente, llegamos al operador más estricto: el **Bicondicional** ($\leftrightarrow$). En lenguaje natural lo leemos como **"si y solo si"** (o abreviado *sii* en matemáticas, *iff* en inglés).
+
+### Definición Lógica
+El bicondicional ocurre cuando una proposición es **condición necesaria y suficiente** para la otra. Es decir, es una calle de doble sentido:
+
+$$P \leftrightarrow Q \equiv (P \to Q) \land (Q \to P)$$
+
+### Tabla de Verdad
+A diferencia del condicional, aquí el orden no importa (es conmutativo). El bicondicional es **Verdadero** únicamente cuando ambas proposiciones tienen el **mismo valor de verdad** (ambas V o ambas F).
+
+| $P$ | $Q$ | $P \leftrightarrow Q$ | Análisis |
+| :---: | :---: | :---: | :--- |
+| V | V | **V** | Coinciden (Equivalentes) |
+| V | F | **F** | Discrepan |
+| F | V | **F** | Discrepan |
+| F | F | **V** | Coinciden (Equivalentes) |
+
+> **Analogía para Programadores:**
+> El bicondicional funciona exactamente igual que el operador de igualdad estricta (`==`) o la compuerta lógica **XNOR** (Exclusive NOR). Devuelve `true` si los inputs son idénticos.
+{: .note }
+
+### Ejemplo Práctico: Especificación de Software
+
+> "El sistema activa la alarma ($A$) **si y solo si** detecta movimiento ($M$)".
+> $$A \leftrightarrow M$$
+
+Esto implica dos garantías fuertes:
+1.  **Si hay movimiento $\to$ Suena alarma** (Suficiencia).
+2.  **Si suena alarma $\to$ Hubo movimiento** (Necesidad: no hay falsos positivos).
+
+Si fuera solo un condicional simple ($M \to A$), la alarma podría sonar por error (un bug) y la proposición seguiría siendo cierta. El bicondicional prohíbe eso.
+
+---
+
+## Resumen de la Clase
+
+Hoy hemos profesionalizado nuestra capacidad de traducción y análisis. Llévese estas 3 reglas de oro:
+
+1.  **Algoritmo de Traducción:** Atomizar $\to$ Detectar Conectores $\to$ Estructurar.
+2.  **Ojo con el "Solo si":** Recuerde siempre que introduce el consecuente ($P \to Q$).
+3.  **Contrarrecíproca:** Si necesita refactorizar código o demostrar algo, úsela. Es su mejor amiga equivalente ($\neg Q \to \neg P$).
+
