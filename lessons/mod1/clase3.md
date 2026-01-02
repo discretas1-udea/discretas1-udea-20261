@@ -308,45 +308,88 @@ Traducir de lenguaje natural a lenguaje lógico los siguientes enunciados:
 
 ## Expresiones Condicionales y sus Variantes
 
-Como ya sabemos, los enunciados de la forma "Si $P$ ****entonces*** $Q$" estan relacionados con el operador condicional $P \to Q$ el cual se muestra en la siguiente tabla:
+Como ya sabemos, los enunciados de la forma "Si $P$ entonces $Q$" están relacionados con el operador condicional $P \to Q$.
+
+Este operador es único porque **el orden importa** (no es conmutativo). Además, sus componentes reciben nombres específicos que denotan su jerarquía:
+* **$P$ (Antecedente):** También llamado hipótesis o premisa.
+* **$Q$ (Consecuente):** También llamado tesis o conclusión.
+
+Esta relación de dependencia se rige por la siguiente tabla de verdad:
 
 <div style="text-align: center;" markdown="1">
-| $P$ | $Q$ | $P \rightarrow Q$ |
+| $P$ | $Q$ | $P \to Q$ |
 | :---: | :---: | :---: |
 | V | V | **V** |
 | V | F | **F** |
 | F | V | **V** |
 | F | F | **V** |
 
-**Tabla 4**. Tabla de verdad para el condicional
+**Tabla 4**. Tabla de verdad del condicional.
 {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
-</div>    
+</div>
 
-El operador condicional ($\to$) es único porque **el orden importa** (no es conmutativo). Asi mismo, cada una de las proposiciones tambien suelen tener diferentes maneras de nombrarse. Por ejemplo, la proposición $P$ se suele conocer como hipotesis, antecedente o premisa, mientras que la proposicion $Q$ suele ser nombrada como tesis, consecuente o conclusión, resaltando con esto la relación de dependencia que intenta modelarse. Por ejemplo, supongamos que se tiene el siguiente enunciado (propio de las promesas de campaña de los politicos): "Si <u>soy elegido como su mandatario</u>, entonces <u>les daré casa a todos</u>". Al analizar el enunciado, podemos identificar que $P$: "<u>Soy elegido mandatario</u>" y $Q$: <u>les daré casa a todos</u> son el antecedente y el consecuente, sin embargo si se analiza las diferentes posibilidades para cada una de estas proposiciones teniendo en cuenta la tabla de verdad segun el contexto tenemos:
+### Entendiendo la Lógica del Condicional (La Promesa)
+
+A menudo es difícil entender por qué el condicional es verdadero cuando el antecedente es falso (filas 3 y 4). La mejor forma de verlo es como una **promesa** o un **contrato** o como una relación de **causa efecto**. 
+
+Supongamos la promesa de campaña de un político:
+> "Si **soy elegido** ($P$), entonces **les daré casa a todos** ($Q$)."
+
+Analicemos si el político dijo la verdad o mintió en cada escenario:
 
 <div style="text-align: center;" markdown="1">
-| $P$ | $Q$ | $P \rightarrow Q$ |
-| :---: | :---: | :---: |
-| **V**: Me eligen como presidente | **V**: Les dare casa a todos. | **V**: He dicho la verdad pues cumpli lo que prometí |
-| **V**: Me eligen como presidente | **F**: <u>No<\u> les dare casa a todos. | **F**: No cumplí lo que prometí asi que quede mal, de modo que he mentido (lo que pasa con los politicos). |
-| **F**: <u>No<\u> Me eligen como presidente |  **V**: Les dare casa a todos.| **V**: Pese a que no quede presidente, lo que dije que iba a realizar (dar casa a todos) lo hice, asi que cumpli el contrato. |
-| **F**: <u>No<\u> Me eligen como presidente | **F**: <u>No<\u> les dare casa a todos. | **V**: He dicho la verdad pues al no quedar de presidente no podré cumplir lo que habia prometido. |
+| Escenario ($P$) | Resultado ($Q$) | Juicio al Político ($P \to Q$) | Explicación |
+| :--- | :--- | :---: | :--- |
+| **Gana** (V) | **Da casas** (V) | **V** | Cumplió su promesa. |
+| **Gana** (V) | **<u>No</u> da casas** (F) | **F** | **Mentiroso.** Rompió el contrato. |
+| **Pierde** (F) | **Da casas** (V) | **V** | No estaba obligado, pero lo hizo. No mintió. |
+| **Pierde** (F) | **<u>No</u> da casas** (F) | **V** | No ganó, así que la promesa no aplica. No mintió. |
 
-**Tabla 5**. Tabla de verdad para el condicional
+**Tabla 5**. Análisis semántico de la implicación.
 {: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
-</div>   
+</div>
 
-Notese que en resumen, siempre que se cumpla el contrato establecido por la dependencia, el resultado sera verdadero y cuando no se cumple este (lo cual se da cuando unicamente el consecuente es falso y el antecedente es verdadero), el resultado será falso.
-
-
-
-Entender sus variaciones es vital para la [programación defensiva](https://es.wikipedia.org/wiki/Programaci%C3%B3n_defensiva) y la argumentación lógica.
-
-A partir de una proposición original $P \to Q$, podemos derivar otras tres formas lógicas cambiando el orden o los signos.
+> **Conclusión:**
+> El condicional $P \to Q$ solo es **FALSO** en un único caso: cuando la hipótesis se cumple ($P$ es V) pero la conclusión falla ($Q$ es F). En todos los demás casos, el "contrato" se mantiene válido.
+{: .note }
 
 ### Definición de Variantes
 
-Supongamos la proposición: *"Si es un cuadrado ($P$), entonces tiene cuatro lados ($Q$)"*.
+A partir de una proposición original $P \to Q$, podemos derivar otras tres formas lógicas cambiando el orden y aplicando operaciones de negación tal y como se resume en la siguiente figura:
+
+<div style="text-align: center;" markdown="1">
+```mermaid
+graph LR
+    %% Nodos: Usamos comillas para evitar errores con flechas y HTML
+    Original("Original<br>P → Q")
+    
+    subgraph Variantes
+        Reciproca("Recíproca / Converse<br>Q → P")
+        Contra("Contrarrecíproca / Contrapositive<br>¬Q → ¬P")
+        Inversa("Inversa / Inverse<br>¬P → ¬Q")
+    end
+
+    %% Conexiones
+    Original -->|Cambiar Orden| Reciproca
+    Original -->|Cambiar Orden + Negar| Contra
+    Original -->|Solo Negar| Inversa
+
+    %% Estilos
+    classDef main fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
+    classDef variant fill:#e3f2fd,stroke:#1565c0,stroke-width:2px;
+    
+    class Original main;
+    class Reciproca,Contra,Inversa variant;
+```
+
+**Figura 3**. Relación entre las variantes del condicional.
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
+
+Supongamos la proposición: 
+> "Si **es un cuadrado** ($P$), entonces **tiene cuatro lados** ($Q$)".
+
+Si se aplican las operaciones sobre los miembros de la proposición original del ejemplo anterior, obtenemos los resultados que se resumen en la siguiente tabla:
 
 | Nombre | Fórmula | En Lenguaje Natural | Estatus Lógico |
 | :--- | :---: | :--- | :--- |
@@ -358,6 +401,9 @@ Supongamos la proposición: *"Si es un cuadrado ($P$), entonces tiene cuatro lad
 > **Observación Clave:**
 > Note que la proposición **Original** y la **Contrarrecíproca** comparten el mismo valor de verdad. Lo mismo ocurre entre la **Recíproca** y la **Inversa**.
 {: .note }
+
+Entender las variaciones de la expresión es vital para la [programación defensiva](https://es.wikipedia.org/wiki/Programaci%C3%B3n_defensiva) y la argumentación lógica ya que a veces decir lo mismo de una manerqa equivalente puede hacer el tratamiento del problema mas facil.
+
 
 ### Demostración de Equivalencia
 
