@@ -562,7 +562,7 @@ Para usar la tabla, busque el conector en la frase original y **"etiquete"** la 
 | :--- | :--- | :--- | :--- |
 | **"Basta que** firmes el documento para que sea válido." | **Ant ($P$):** Firmas el documento<br><br>**Cons ($Q$):** El documento es válido | **Suficiencia**<br>*(El énfasis está en la causa)* | $$Firmas \rightarrow Válido$$ |
 | "El coche arranca **solo si** tiene gasolina." | **Ant ($P$):** El coche arranca<br><br>**Cons ($Q$):** Tiene gasolina | **Necesidad**<br>*(El énfasis está en el requisito)* | $$Arranca \rightarrow Gasolina$$ |
-| "Ser humano **implica** ser mortal." | **Ant ($P$):** **Ser humano**<br><br>**Cons ($Q$):** Ser mortal | **Suficiencia**<br>*(Basta ser humano)* | $$Humano \rightarrow Mortal$$ |
+| "Ser humano **implica** ser mortal." | **Ant ($P$):** Ser humano<br><br>**Cons ($Q$):** Ser mortal | **Suficiencia**<br>*(Basta ser humano)* | $$Humano \rightarrow Mortal$$ |
 
 ---
 
@@ -609,4 +609,5 @@ Hoy hemos profesionalizado nuestra capacidad de traducción y análisis. Lléves
 1.  **Algoritmo de Traducción:** Atomizar $\to$ Detectar Conectores $\to$ Estructurar.
 2.  **Ojo con el "Solo si":** Recuerde siempre que introduce el consecuente ($P \to Q$).
 3.  **Contrarrecíproca:** Si necesita refactorizar código o demostrar algo, úsela. Es su mejor amiga equivalente ($\neg Q \to \neg P$).
+
 
