@@ -391,6 +391,8 @@ Supongamos la proposición:
 
 Si se aplican las operaciones sobre los miembros de la proposición original del ejemplo anterior, obtenemos los resultados que se resumen en la siguiente tabla:
 
+<div style="text-align: center;" markdown="1">
+
 | Nombre | Fórmula | En Lenguaje Natural | Estatus Lógico |
 | :--- | :---: | :--- | :--- |
 | **Original** | $P \to Q$ | "Si es cuadrado, tiene 4 lados" | **Verdadera** |
@@ -398,12 +400,15 @@ Si se aplican las operaciones sobre los miembros de la proposición original del
 | **Inversa** | $\neg P \to \neg Q$ | "Si no es cuadrado, no tiene 4 lados" | **Falsa** (Idem) |
 | **Contrarrecíproca** | $\neg Q \to \neg P$ | "Si no tiene 4 lados, no es un cuadrado" | **Verdadera** |
 
+**Tabla 6**. Variantes del condicional.
+{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
+</div>
+
 > **Observación Clave:**
 > Note que la proposición **Original** y la **Contrarrecíproca** comparten el mismo valor de verdad. Lo mismo ocurre entre la **Recíproca** y la **Inversa**.
 {: .note }
 
-Entender las variaciones de la expresión es vital para la [programación defensiva](https://es.wikipedia.org/wiki/Programaci%C3%B3n_defensiva) y la argumentación lógica ya que a veces decir lo mismo de una manerqa equivalente puede hacer el tratamiento del problema mas facil.
-
+Entender las variaciones de la expresión es vital para la [programación defensiva](https://es.wikipedia.org/wiki/Programaci%C3%B3n_defensiva) y la argumentación lógica. A veces, expresar una condición de una manera equivalente (usando la contrarrecíproca) puede hacer que la resolución de un problema o la escritura de código sea mucho más fácil y legible.
 
 ### Demostración de Equivalencia
 
@@ -423,7 +428,7 @@ Para probar matemáticamente que una implicación es idéntica a su contrarrecí
 
 ### Aplicación en Ciencias de la Computación
 
-La contrarrecíproca es la base del **Refactoring** de condiciones para reducir la anidación (Indentation Hell).
+La contrarrecíproca es la base del [**Refactoring**](https://en.wikipedia.org/wiki/Code_refactoring) de condiciones para reducir la anidación (Indentation Hell).
 
 **Código Original ($P \to Q$):**
 "Si el usuario es válido, ejecutamos el proceso".
@@ -442,47 +447,122 @@ if not user_is_valid:
 execute_process() # Flujo principal sin anidación
 ```
 
-## Condiciones Necesarias y Suficientes
+## Condiciones de suficiencia y necesidad ("La letra pequeña de las Matematicas")
 
-Una de las mayores confusiones en lógica (y en la toma de requisitos de software) es distinguir qué es necesario y qué es suficiente. Analicémoslo gráficamente.
+Imaginemos que estamos redactando un contrato legal o las especificaciones para la prestación de un servicio. En el lenguaje cotidiano, solemos ser imprecisos. Decimos "Si llueve, me mojo", pero olvidamos que puedo mojarme sin que llueva (si me caigo a una piscina).
 
-Para la implicación $P \to Q$:
+En matemáticas discretas, y en la vida profesional (derecho, programación, ingeniería), confundir lo que es necesario con lo que es suficiente puede llevar a pérdidas de dinero, bugs en el código o demandas legales.
 
-### 1. La Condición Suficiente ($P$)
-El antecedente $P$ es una condición **Suficiente** para $Q$.
-* **Significado:** Si tienes $P$, eso "basta" para garantizar $Q$. No necesitas nada más.
-* **Ejemplo:** "Si es un iPhone ($P$), entonces es un Smartphone ($Q$)".
-    * Ser iPhone es suficiente para saber que es un smartphone.
+Vamos a analizarlo con un **Contrato de prestación de servicios**.
 
-### 2. La Condición Necesaria ($Q$)
-El consecuente $Q$ es una condición **Necesaria** para $P$.
-* **Significado:** Para que $P$ exista, $Q$ tiene que estar ahí. Si falta $Q$, $P$ no puede ocurrir (Modus Tollens).
-* **Ejemplo:** "Si hay fuego ($P$), entonces hay oxígeno ($Q$)".
-    * El oxígeno es necesario para el fuego. Sin oxígeno, no hay fuego.
-    * *Nota:* Tener oxígeno no garantiza fuego (no es suficiente), pero es un requisito indispensable.
+### Escenario del Contrato
 
-### Visualización de Conjuntos
-Piense en el condicional como un subconjunto. Si $P \to Q$, entonces el círculo de $P$ está **adentro** del círculo de $Q$.
+Imaginemos un contrato entre un desarrollador (Proveedor) y una empresa (Cliente). Vamos a analizar cómo una mala redacción de las condiciones necesarias y suficientes puede afectar el pago o la ejecución del trabajo. Supongamos que el contrato tiene las siguientes clausulas:
+* **Clausula 1**: "*Si el servidor se cae por más de 1 hora consecutiva, el Proveedor deberá descontar el 10% de la factura mensual*."
+* **Clausula 2**: "*El Proveedor recibirá el pago final, solo si entrega el código fuente documentado*."
 
-<div style="text-align: center;" markdown="1">
-```mermaid
-graph TD
-    %% Usamos IDs simples sin espacios para evitar el error de sintaxis
-    subgraph Conjunto_Q
-        P[iPhone - Suficiente]
-    end
-    style P fill:#b3e5fc,stroke:#01579b,stroke-width:2px
-    style Conjunto_Q fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
-```
+Para realizar un analisis del contrato, vamos a emplear realizar la traducción de las clausulas anteriormente dadas en lenguaje natural, a lenguaje formal:
 
-**Figura 2**. Relación de contenencia: $P \subseteq Q$. Todo elemento de P está obligado a estar en Q
-.{: .fs-2 .text-grey-dk-000 .d-block .mt-2 }
-</div>
+|Clausula| Lenguaje natural | Proposiciones simples | Expresión logica|
+|---- | ---- | ---- | ---- |
+|1|"*Si el servidor se cae por más de 1 hora consecutiva, el Proveedor deberá descontar el 10% de la factura mensual*."|• **$serverDown$**, "*El servidor se cae por más de 1 hora consecutiva*"<br>• **$discount$**: "*El Proveedor deberá descontar el 10% de la factura mensual*" |$serverDown \to discount$|
+|2|"*El Proveedor recibirá el pago final, solo si entrega el código fuente documentado*"|• **$payment$**, "*El Proveedor recibirá el pago final*"<br> : **$documented$**"*Entrega el código fuente documentado*"|$payment \to documented$|
 
-> **Regla de Oro para Ingenieros**:
-> * Lo Suficiente fuerza al resultado (Dispara el evento).
-> * Lo Necesario permite que suceda (Es el prerrequisito). 
-{: .note }
+
+{: .warning }
+> **La Trampa del "Solo Si"**: ***No confíe en su intuición cronológica.***
+>
+> Cuando se traduce la frase "$P$ **solo si** $Q$" a lenguaje formal, es comun cometer el error de escribirla como $Q \rightarrow P$ porque $Q$ suele ser un requisito previo en el tiempo.
+>
+> En lógica formal, la expresión "solo si" **siempre introduce la Condición Necesaria** (la punta de la flecha).
+>
+> * **Forma incorrecta:** $Q \rightarrow P$
+> * **Forma correcta:** $P \rightarrow Q$ 
+>
+> **Regla de oro:** El "solo si" actúa como un candado en la puerta de salida. Si tienes $P$, *obligatoriamente* tuviste que tener $Q$.
+
+### Definiciones formales
+
+Retomemos la definición forma de la implicación condicional:
+
+$$
+P \to Q
+$$
+
+#### Condicion de suficiencia (La Garantía)
+
+En una implicación $P \to Q$, decimos que **$P$ es suficiente para $Q$** porque **cada vez que $P$ ocurre, $Q$ queda garantizada**. En términos de valores de verdad: si $P$ es verdadera, entonces $Q$ también debe ser verdadera.
+
+**Analisis lógico**: Retomemos la clausula 1:
+
+$$
+serverDown \to discount
+$$
+
+* **¿Es suficiente?** <u>Sí</u>. Basta con que el servidor falle 1 hora para que el descuento sea obligatorio. No importa si fue por un ataque hacker o un error de código; si ocurre $serverDown$, $discount$ es inevitable.
+* **¿Es la única forma?** <u>No necesariamente</u>. Podría haber otras cláusulas que también generen descuentos (por ejemplo, demora en la entrega), por lo tanto, la caída del servidor no es la única causa posible de un descuento, pero es suficiente para causarlo.
+
+#### Condicion de necesidad (el requisito obligatorio)
+
+En una implicación $P \to Q$, decimos que **$Q$ es necesaria para $P$** porque **$P$ no puede ocurrir sin $Q$**.  Tener $Q$ no garantiza $P$, pero **sin $Q$, $P$ es imposible**.
+
+**Analisis lógico**: Ahora analicemos la clausula 2:
+
+$$
+payment \to documented
+$$
+
+{: .tip }
+> Para analizar cláusulas "**solo si**", suele ser útil usar el **contrarrecíproco**:
+> $$\neg Q \to \neg P$$
+> Por ejemplo, de $payment \to documented$ se deduce $\neg documented \to \neg payment$.
+
+* **¿Es suficiente entregar el código?** <u>No</u>. Pues se puede entregar el código ($documented$) y aun así no recibir el pago ($payment$) porque quizás este no funciona o fue entregado tarde. Entregar el código no garantiza el pago.
+* **¿Es necesario?** <u>Sí</u>. Si el código no se entrega ($\neg documented$), es imposible que recibir el pago ($\neg payment$), pues este es un prerrequisito.
+
+
+### Resumen: Suficiencia vs. Necesidad
+
+La siguiente tabla resume lo anteriormente tratado:
+
+| Característica | **Condición Suficiente** ($P$) | **Condición Necesaria** ($Q$) |
+| :--- | :--- | :--- |
+| **Rol en $P \to Q$** | Es el **Antecedente** (La Causa).<br>*(Está a la izquierda de la flecha)* | Es el **Consecuente** (El Requisito).<br>*(Está a la derecha de la flecha)* |
+| **Definición** | Es un disparador. Si ocurre, el resultado es automático. | Es un bloqueo. Si falta, el resultado es imposible. |
+| **Frases Clave** | *"Si...", "Basta con que...", "Es suficiente para..."* | *"Solo si...", "Es necesario que...", "Únicamente si..."* |
+| **Ejemplo Clásico** | **El Fuego**<br>(Si ves fuego, *garantizas* que hay oxígeno). | **El Oxígeno**<br>(Es un *requisito*. Sin oxígeno no hay fuego). |
+| **Analogía Visual** | **El Círculo Pequeño** (Subconjunto).<br>Estar en Madrid es suficiente para estar en España. | **El Círculo Grande** (Superconjunto).<br>Estar en España es necesario para estar en Madrid. |
+| **La Prueba de Fuego**<br>*(Pregúntate esto)* | *"¿Si tengo esto, el resultado está asegurado?"* | *"¿Si NO tengo esto, el resultado se vuelve imposible?"* |
+
+### Tabla de Referencia: Traducción de Conectores Lógicos
+
+La estructura base es la implicación: **$Antecedente \rightarrow Consecuente$**
+
+| **INDICADORES DE SUFICIENCIA** | **INDICADORES DE NECESIDAD** |
+| :--- | :--- |
+| **(Lo que sigue a esto es el Antecedente $P$)** | **(Lo que sigue a esto es el Consecuente $Q$)** |
+| *Van al lado IZQUIERDO de la flecha ($P \rightarrow$)* | *Van al lado DERECHO de la flecha ($\rightarrow O$)* |
+| **Si**... (*Si $P$, entonces $Q$*) | ...**solo si**... |
+| **Cuando**... | ...**solamente si**... |
+| **Cada vez que**... | ...**únicamente si**... |
+| **Dondequiera que**... | ...**es una condición necesaria** para... |
+| **Siempre que**... | ...**es un requisito** para... |
+| **Basta que**... | ...**es indispensable** para... |
+| **Es suficiente que**... | ...**implica**... |
+| **En caso de que**... | ...**conlleva**... |
+| **Dado que**... | ...**requiere**... |
+| **Todo** / **Cualquier**... | ...**es obligatorio** para... |
+| **Quien**... | |
+
+**Cómo usar esta tabla (Ejemplos prácticos)**
+
+Para usar la tabla, busque el conector en la frase original y **"etiquete"** la parte de la oración que va justo después de él.
+
+| Lenguaje Natural | Análisis (Antecedente / Consecuente) | Énfasis del Conector | Expresión Lógica |
+| :--- | :--- | :--- | :--- |
+| **"Basta que** firmes el documento para que sea válido." | **Ant ($P$):** Firmas el documento<br><br>**Cons ($Q$):** El documento es válido | **Suficiencia**<br>*(El énfasis está en la causa)* | $$Firmas \rightarrow Válido$$ |
+| "El coche arranca **solo si** tiene gasolina." | **Ant ($P$):** El coche arranca<br><br>**Cons ($Q$):** Tiene gasolina | **Necesidad**<br>*(El énfasis está en el requisito)* | $$Arranca \rightarrow Gasolina$$ |
+| "Ser humano **implica** ser mortal." | **Ant ($P$):** **Ser humano**<br><br>**Cons ($Q$):** Ser mortal | **Suficiencia**<br>*(Basta ser humano)* | $$Humano \rightarrow Mortal$$ |
 
 ---
 
