@@ -569,14 +569,15 @@ El bicondicional ocurre cuando una proposición es **condición necesaria y sufi
 $$P \leftrightarrow Q \equiv (P \to Q) \land (Q \to P)$$
 
 ### Tabla de Verdad
-A diferencia del condicional, aquí el orden no importa (es conmutativo). El bicondicional es **Verdadero** únicamente cuando ambas proposiciones tienen el **mismo valor de verdad** (ambas V o ambas F).
+
+A diferencia del condicional, aquí el orden no importa (es conmutativo). El bicondicional es **Verdadero (1)** únicamente cuando ambas proposiciones tienen el **mismo valor de verdad**.
 
 | $P$ | $Q$ | $P \leftrightarrow Q$ | Análisis |
 | :---: | :---: | :---: | :--- |
-| V | V | **V** | Coinciden (Equivalentes) |
-| V | F | **F** | Discrepan |
-| F | V | **F** | Discrepan |
-| F | F | **V** | Coinciden (Equivalentes) |
+| 1 | 1 | **1** | Coinciden (Equivalentes) |
+| 1 | 0 | **0** | Discrepan |
+| 0 | 1 | **0** | Discrepan |
+| 0 | 0 | **1** | Coinciden (Equivalentes) |
 
 
 ### Análisis: La Condición "Necesaria y Suficiente"
@@ -595,17 +596,6 @@ Estamos afirmando dos cosas simultáneamente:
 2.  **Necesidad ($A \to N$):** Sacar 3.0 es **necesario** para aprobar. (Si aprobo, *obligatoriamente* tuvo que haber sacado 3.0; no hubo otra forma, ni sobornos ni errores).
 
 Por lo tanto, en matemáticas, la frase **"Si y solo si"** es sinónimo exacto de **"Condición Necesaria y Suficiente"**.
-
-#### Comparación Visual
-
-Para entender la potencia de esta definición, visualicemos los conjuntos de verdad:
-
-| Tipo de Relación | Implicación ($P \to Q$) | Bicondicional ($P \leftrightarrow Q$) |
-| :--- | :---: | :---: |
-| **Concepto** | **Inclusión** | **Identidad** |
-| **Lógica** | $P$ es suficiente, pero $Q$ es necesario. | $P$ es necesaria **Y** suficiente para $Q$. |
-| **Diagrama Mental** | El conjunto $P$ es más pequeño y está **dentro** de $Q$. | El conjunto $P$ es **exactamente igual** al conjunto $Q$. |
-| **Ejemplo** | *Los antioqueños ($P$) son colombianos ($Q$)*.<br>(Ser antioqueño implica ser colombiano, pero no al revés). | *Tener 3 lados ($P$) equivale a ser triángulo ($Q$)*.<br>(Son la misma cosa con diferente nombre). |
 
 {: .note }
 > **En Resumen:**
@@ -627,7 +617,7 @@ Mediante tablas de verdad, determine si las siguientes proposiciones son equival
 2.  $\neg(\neg p) \;\overset{?}{\equiv}\; p$
 3.  $\neg(p \land q) \;\overset{?}{\equiv}\; \neg p \land \neg q$
 
-#### Solución:
+**Solución**:
 
 **1. Definición del Condicional**
 Evaluamos $\neg p \lor q \;\overset{?}{\equiv}\; p \to q$.
@@ -645,7 +635,7 @@ $$\neg p \lor q \equiv p \to q$$
 **2. Doble Negación**
 Evaluamos $\neg(\neg p) \;\overset{?}{\equiv}\; p$.
 
-| $p$ | $\neg p$ | $\neg (\neg p)$ | **¿Son Iguales a $p$?** |
+| $p$ | $\neg p$ | $\neg (\neg p)$ | **¿Es Igual a $p$?** |
 |:---:|:---:|:---:|:---:|
 | 0 | 1 | **0** | ✅ |
 | 1 | 0 | **1** | ✅ |
@@ -655,7 +645,6 @@ $$p \equiv \neg (\neg p)$$
 
 **3. El Error Común (Falsa Distributiva)**
 Evaluamos $\neg(p \land q) \;\overset{?}{\equiv}\; \neg p \land \neg q$.
-*¿Será que la negación se distribuye igual que un signo menos en aritmética?* Veamos:
 
 | $p$ | $q$ | $p \land q$ | **$\neg(p \land q)$** | $\neg p$ | $\neg q$ | **$\neg p \land \neg q$** | **¿Son Iguales?** |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -687,7 +676,7 @@ Asuma que $V$ es una Tautología (siempre $V$) y $F$ es una Contradicción (siem
 | Nombre de la Ley | Equivalencia ($\land$) | Equivalencia ($\lor$) |
 | :--- | :--- | :--- |
 | **Identidad** | $p \land V \equiv p$ | $p \lor F \equiv p$ |
-| **Dominación** | $p \land F \equiv F$ | $p \lor V \equiv T$ |
+| **Dominación** | $p \land F \equiv F$ | $p \lor V \equiv V$ |
 | **Idempotencia** | $p \land p \equiv p$ | $p \lor p \equiv p$ |
 | **Doble Negación** | $\neg(\neg p) \equiv p$ | |
 | **Conmutativa** | $p \land q \equiv q \land p$ | $p \lor q \equiv q \lor p$ |
@@ -703,3 +692,89 @@ Asuma que $V$ es una Tautología (siempre $V$) y $F$ es una Contradicción (siem
 > $$p \to q \equiv \neg p \lor q$$
 > *(Apréndala de memoria, la usaremos constantemente).*
 
+---
+
+## Autoevaluación
+
+Resuelva los siguientes retos antes de mirar las respuestas.
+
+### Reto 1: Traducción de enuciados
+
+Traduzca las siguientes sentencias a lógica proposicional, definiendo claramente sus variables atómicas. Preste especial atención a las condiciones de suficiencia y necesidad.
+1.  *"El servidor se reinicia solo si se detecta un error crítico".*
+2.  *"Para que el algoritmo termine, es necesario que la variable $i$ llegue a 10".*
+3.  *"Basta con que presiones el botón rojo para que se detenga la máquina".*
+4.  *"Un número es par si y solo si es divisible por 2".*
+
+### Reto 2: Analisis de equivalencia
+
+Utilizando **Tablas de Verdad**, determine si la siguiente afirmación es verdadera o falsa:\
+
+> *"La negación de una implicación $\neg(p \to q)$ es equivalente a afirmar el antecedente y negar el consecuente ($p \land \neg q$)."*
+
+$$\neg(p \to q) \overset{?}{\equiv} p \land \neg q$$
+
+### Reto 3: Identificación de Leyes
+
+Analice la siguiente simplificación paso a paso e indique **qué ley lógica** justifica cada paso:
+
+**Expresión inicial:** $(p \land q) \lor (p \land \neg q)$
+1.  $p \land (q \lor \neg q)$ $\longrightarrow$ **¿Ley?**
+2.  $p \land V$ $\longrightarrow$ **¿Ley?**
+3.  $p$ $\longrightarrow$ **¿Ley?**
+
+---
+
+## Resultados de aprendizaje
+
+Al finalizar esta clase, se espera que usted sea capaz de:
+* Diferenciar con precisión entre condiciones necesarias y suficientes en enunciados complejos.
+* Formalizar correctamente proposiciones que involucren los conectores "solo si", "a menos que" y "si y solo si".
+* Demostrar la equivalencia (o no equivalencia) entre dos expresiones lógicas utilizando tablas de verdad.
+* Reconocer la utilidad de las leyes del álgebra de proposiciones para simplificar expresiones redundantes.
+
+---
+
+## Solucionario de Autoevaluación
+
+Utilice esta sección para validar sus resultados después de completar la actividad.
+
+<details markdown="1">
+<summary><b>Presione aquí para ver las respuestas</b></summary>
+<br>
+
+### Reto 1: Traducción de enuciados
+
+1.  **$R \to E$**
+    * *Variables:* $R$: Servidor reinicia, $E$: Error crítico.
+    * *Análisis:* "Solo si" introduce la condición necesaria (el candado). Si ocurre $R$, obligatoriamente tuvo que ocurrir $E$.
+2.  **$A \to I$**
+    * *Variables:* $A$: Algoritmo termina, $I$: $i$ llega a 10.
+    * *Análisis:* "Es necesario" introduce el consecuente. Sin $I$, no hay $A$.
+3.  **$B \to M$**
+    * *Variables:* $B$: Presiona botón, $M$: Máquina se detiene.
+    * *Análisis:* "Basta con" indica suficiencia. El botón dispara la acción.
+4.  **$P \leftrightarrow D$**
+    * *Variables:* $P$: Es par, $D$: Divisible por 2.
+    * *Análisis:* "Si y solo si" indica bicondicional (identidad lógica).
+
+### Reto 2: Analisis de equivalencia
+
+**VERDADERO.** La equivalencia es correcta. Esta es una forma muy común de negar un "Si... entonces".
+
+*Tabla de comprobación:*
+
+| $p$ | $q$ | $p \to q$ | **$\neg(p \to q)$** | $\neg q$ | **$p \land \neg q$** | ¿Iguales? |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| 0 | 0 | 1 | **0** | 1 | **0** | ✅ |
+| 0 | 1 | 1 | **0** | 0 | **0** | ✅ |
+| 1 | 0 | 0 | **1** | 1 | **1** | ✅ |
+| 1 | 1 | 1 | **0** | 0 | **0** | ✅ |
+
+### Reto 3: Identificación de Leyes
+
+1.  **Ley Distributiva** (inversa, o factor común). Extraemos $p$.
+2.  **Ley del Inverso (o Negación)**. $(q \lor \neg q)$ siempre es Verdad ($V$).
+3.  **Ley de Identidad**. $(p \land V)$ es $p$.
+
+</details>
