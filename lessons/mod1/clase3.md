@@ -447,122 +447,114 @@ if not user_is_valid:
 execute_process() # Flujo principal sin anidación
 ```
 
-## Condiciones de suficiencia y necesidad ("La letra pequeña de las Matematicas")
+## Condiciones de suficiencia y necesidad ("La letra pequeña de las Matemáticas")
 
 Imaginemos que estamos redactando un contrato legal o las especificaciones para la prestación de un servicio. En el lenguaje cotidiano, solemos ser imprecisos. Decimos "Si llueve, me mojo", pero olvidamos que puedo mojarme sin que llueva (si me caigo a una piscina).
 
-En matemáticas discretas, y en la vida profesional (derecho, programación, ingeniería), confundir lo que es necesario con lo que es suficiente puede llevar a pérdidas de dinero, bugs en el código o demandas legales.
+En matemáticas discretas, y en la vida profesional (derecho, programación, ingeniería), confundir lo que es **necesario** con lo que es **suficiente** puede llevar a pérdidas de dinero, *bugs* en el código o demandas legales.
 
 Vamos a analizarlo con un **Contrato de prestación de servicios**.
 
 ### Escenario del Contrato
 
-Imaginemos un contrato entre un desarrollador (Proveedor) y una empresa (Cliente). Vamos a analizar cómo una mala redacción de las condiciones necesarias y suficientes puede afectar el pago o la ejecución del trabajo. Supongamos que el contrato tiene las siguientes clausulas:
-* **Clausula 1**: "*Si el servidor se cae por más de 1 hora consecutiva, el Proveedor deberá descontar el 10% de la factura mensual*."
-* **Clausula 2**: "*El Proveedor recibirá el pago final, solo si entrega el código fuente documentado*."
+Imaginemos un contrato entre un desarrollador (Proveedor) y una empresa (Cliente). Vamos a analizar cómo una mala redacción de las condiciones puede afectar el pago. Supongamos que el contrato tiene las siguientes cláusulas:
 
-Para realizar un analisis del contrato, vamos a emplear realizar la traducción de las clausulas anteriormente dadas en lenguaje natural, a lenguaje formal:
+* **Cláusula 1**: "*Si el servidor se cae por más de 1 hora consecutiva, el Proveedor deberá descontar el 10% de la factura mensual*."
+* **Cláusula 2**: "*El Proveedor recibirá el pago final, solo si entrega el código fuente documentado*."
 
-|Clausula| Lenguaje natural | Proposiciones simples | Expresión logica|
-|---- | ---- | ---- | ---- |
-|1|"*Si el servidor se cae por más de 1 hora consecutiva, el Proveedor deberá descontar el 10% de la factura mensual*."|• **$serverDown$**, "*El servidor se cae por más de 1 hora consecutiva*"<br>• **$discount$**: "*El Proveedor deberá descontar el 10% de la factura mensual*" |$serverDown \to discount$|
-|2|"*El Proveedor recibirá el pago final, solo si entrega el código fuente documentado*"|• **$payment$**, "*El Proveedor recibirá el pago final*"<br> : **$documented$**"*Entrega el código fuente documentado*"|$payment \to documented$|
+Para realizar un análisis del contrato, vamos a traducir las cláusulas a lenguaje formal:
 
+| Cláusula | Lenguaje natural | Proposiciones simples | Expresión lógica |
+| :--- | :--- | :--- | :---: |
+| 1 | "*Si el servidor se cae..., entonces descuenta...*" | • **$serverDown$**: El servidor cae > 1h<br>• **$discount$**: Descontar 10% | $serverDown \to discount$ |
+| 2 | "*Recibirá pago, solo si entrega código...*" | • **$payment$**: Recibe pago final<br>• **$documented$**: Entrega código doc. | $payment \to documented$ |
 
 {: .warning }
 > **La Trampa del "Solo Si"**: ***No confíe en su intuición cronológica.***
 >
-> Cuando se traduce la frase "$P$ **solo si** $Q$" a lenguaje formal, es comun cometer el error de escribirla como $Q \rightarrow P$ porque $Q$ suele ser un requisito previo en el tiempo.
+> Cuando se traduce la frase "$P$ **solo si** $Q$" a lenguaje formal, es común cometer el error de escribirla como $Q \rightarrow P$ porque $Q$ suele ser un requisito previo en el tiempo.
 >
 > En lógica formal, la expresión "solo si" **siempre introduce la Condición Necesaria** (la punta de la flecha).
 >
 > * **Forma incorrecta:** $Q \rightarrow P$
-> * **Forma correcta:** $P \rightarrow Q$ 
+> * **Forma correcta:** $P \rightarrow Q$
 >
-> **Regla de oro:** El "solo si" actúa como un candado en la puerta de salida. Si tienes $P$, *obligatoriamente* tuviste que tener $Q$.
+> **Regla de oro:** El "solo si" actúa como un candado. Si tienes $P$ (el pago), *obligatoriamente* tuviste que tener $Q$ (el código).
 
 ### Definiciones formales
 
-Retomemos la definición forma de la implicación condicional:
+Recordemos la tabla de verdad del condicional:
 
-$$
-P \to Q
-$$
+| $P$ | $Q$ | $P \to Q$ |
+|:---:|:---:|:---:|
+| V | V | V |
+| V | F | F |
+| F | V | V |
+| F | F | V |
 
-#### Condicion de suficiencia (La Garantía)
+A partir de esta tabla se desprenden los conceptos de **suficiencia** y **necesidad**:
 
-En una implicación $P \to Q$, decimos que **$P$ es suficiente para $Q$** porque **cada vez que $P$ ocurre, $Q$ queda garantizada**. En términos de valores de verdad: si $P$ es verdadera, entonces $Q$ también debe ser verdadera.
+* **$P$ es suficiente para $Q$**: Porque si $P$ es verdadera, la única forma de que la implicación se mantenga válida es que **$Q$ también sea verdadera**.
+* **$Q$ es necesaria para $P$**: Porque **no existe ninguna fila** donde $P$ sea verdadera y $Q$ sea falsa.
 
-**Analisis lógico**: Retomemos la clausula 1:
+#### Condición de Suficiencia (La Garantía)
 
-$$
-serverDown \to discount
-$$
+Decimos que **$P$ es suficiente para $Q$** porque **basta con que ocurra $P$ para garantizar $Q$**.
 
-* **¿Es suficiente?** <u>Sí</u>. Basta con que el servidor falle 1 hora para que el descuento sea obligatorio. No importa si fue por un ataque hacker o un error de código; si ocurre $serverDown$, $discount$ es inevitable.
-* **¿Es la única forma?** <u>No necesariamente</u>. Podría haber otras cláusulas que también generen descuentos (por ejemplo, demora en la entrega), por lo tanto, la caída del servidor no es la única causa posible de un descuento, pero es suficiente para causarlo.
+**Análisis lógico de la Cláusula 1:**
+$$serverDown \to discount$$
 
-#### Condicion de necesidad (el requisito obligatorio)
+* **¿Es suficiente?** **Sí**. Basta con que el servidor falle 1 hora para que el descuento sea obligatorio. No importa si fue por un ataque hacker o un error de código; si ocurre $serverDown$, $discount$ es inevitable.
+* **¿Es la única causa?** **No necesariamente**. Podría haber otras cláusulas que también generen descuentos (por ejemplo, demora en la entrega). La caída del servidor no es la única causa, pero es *suficiente* para causarlo.
 
-En una implicación $P \to Q$, decimos que **$Q$ es necesaria para $P$** porque **$P$ no puede ocurrir sin $Q$**.  Tener $Q$ no garantiza $P$, pero **sin $Q$, $P$ es imposible**.
+#### Condición de Necesidad (El Requisito)
 
-**Analisis lógico**: Ahora analicemos la clausula 2:
+Decimos que **$Q$ es necesaria para $P$** porque **$P$ no puede ocurrir sin $Q$**. Tener $Q$ no garantiza $P$, pero su ausencia hace imposible a $P$.
 
-$$
-payment \to documented
-$$
+**Análisis lógico de la Cláusula 2:**
+$$payment \to documented$$
 
-{: .tip }
-> Para analizar cláusulas "**solo si**", suele ser útil usar el **contrarrecíproco**:
-> $$\neg Q \to \neg P$$
-> Por ejemplo, de $payment \to documented$ se deduce $\neg documented \to \neg payment$.
-
-* **¿Es suficiente entregar el código?** <u>No</u>. Pues se puede entregar el código ($documented$) y aun así no recibir el pago ($payment$) porque quizás este no funciona o fue entregado tarde. Entregar el código no garantiza el pago.
-* **¿Es necesario?** <u>Sí</u>. Si el código no se entrega ($\neg documented$), es imposible que recibir el pago ($\neg payment$), pues este es un prerrequisito.
-
+* **¿Es suficiente entregar el código?** **No**. Se puede entregar el código ($documented$) y aun así no recibir el pago ($payment$) porque quizás el código no funciona o fue entregado tarde.
+* **¿Es necesario?** **Sí**. Si el código no se entrega ($\neg documented$), es imposible recibir el pago ($\neg payment$), pues es un prerrequisito contractual.
 
 ### Resumen: Suficiencia vs. Necesidad
 
-La siguiente tabla resume lo anteriormente tratado:
-
 | Característica | **Condición Suficiente** ($P$) | **Condición Necesaria** ($Q$) |
 | :--- | :--- | :--- |
-| **Rol en $P \to Q$** | Es el **Antecedente** (La Causa).<br>*(Está a la izquierda de la flecha)* | Es el **Consecuente** (El Requisito).<br>*(Está a la derecha de la flecha)* |
+| **Rol en $P \to Q$** | Es el **Antecedente** (La Causa).<br>*(Izquierda de la flecha)* | Es el **Consecuente** (El Requisito).<br>*(Derecha de la flecha)* |
 | **Definición** | Es un disparador. Si ocurre, el resultado es automático. | Es un bloqueo. Si falta, el resultado es imposible. |
 | **Frases Clave** | *"Si...", "Basta con que...", "Es suficiente para..."* | *"Solo si...", "Es necesario que...", "Únicamente si..."* |
-| **Ejemplo Clásico** | **El Fuego**<br>(Si ves fuego, *garantizas* que hay oxígeno). | **El Oxígeno**<br>(Es un *requisito*. Sin oxígeno no hay fuego). |
-| **Analogía Visual** | **El Círculo Pequeño** (Subconjunto).<br>Estar en Madrid es suficiente para estar en España. | **El Círculo Grande** (Superconjunto).<br>Estar en España es necesario para estar en Madrid. |
-| **La Prueba de Fuego**<br>*(Pregúntate esto)* | *"¿Si tengo esto, el resultado está asegurado?"* | *"¿Si NO tengo esto, el resultado se vuelve imposible?"* |
+| **Analogía Visual** | **El Círculo Pequeño** (Subconjunto).<br>Estar en Madrid es *suficiente* para estar en España. | **El Círculo Grande** (Superconjunto).<br>Estar en España es *necesario* para estar en Madrid. |
 
 ### Tabla de Referencia: Traducción de Conectores Lógicos
 
-La estructura base es la implicación: **$Antecedente \rightarrow Consecuente$**
+Para usar esta tabla, busque el conector en la frase y vea qué introduce (Antecedente o Consecuente).
 
-| **INDICADORES DE SUFICIENCIA** | **INDICADORES DE NECESIDAD** |
+| **INDICADORES DE SUFICIENCIA ($P$)** | **INDICADORES DE NECESIDAD ($Q$)** |
 | :--- | :--- |
-| **(Lo que sigue a esto es el Antecedente $P$)** | **(Lo que sigue a esto es el Consecuente $Q$)** |
-| *Van al lado IZQUIERDO de la flecha ($P \rightarrow$)* | *Van al lado DERECHO de la flecha ($\rightarrow O$)* |
+| *Introducen el Antecedente ($P \to$)* | *Introducen el Consecuente ($\to Q$)* |
 | **Si**... (*Si $P$, entonces $Q$*) | ...**solo si**... |
 | **Cuando**... | ...**solamente si**... |
 | **Cada vez que**... | ...**únicamente si**... |
-| **Dondequiera que**... | ...**es una condición necesaria** para... |
-| **Siempre que**... | ...**es un requisito** para... |
-| **Basta que**... | ...**es indispensable** para... |
+| **Siempre que**... | ...**es una condición necesaria** para... |
+| **Basta que**... | ...**es un requisito** para... |
 | **Es suficiente que**... | ...**implica**... |
-| **En caso de que**... | ...**conlleva**... |
-| **Dado que**... | ...**requiere**... |
-| **Todo** / **Cualquier**... | ...**es obligatorio** para... |
-| **Quien**... | |
+| **Dado que**... | ...**conlleva**... |
 
-**Cómo usar esta tabla (Ejemplos prácticos)**
+**Ejemplos de análisis rápido:**
 
-Para usar la tabla, busque el conector en la frase original y **"etiquete"** la parte de la oración que va justo después de él.
+| Lenguaje Natural | Análisis | Traducción |
+| :--- | :--- | :--- |
+| "Basta que firmes para que sea válido" | "Basta que" introduce la suficiencia (Antecedente). | $Firmas \to Válido$ |
+| "El coche arranca solo si tiene gasolina" | "Solo si" introduce la necesidad (Consecuente). | $Arranca \to Gasolina$ |
+| "Ser humano implica ser mortal" | "Implica" apunta al consecuente. | $Humano \to Mortal$ |
 
-| Lenguaje Natural | Análisis (Antecedente / Consecuente) | Énfasis del Conector | Expresión Lógica |
-| :--- | :--- | :--- | :--- |
-| **"Basta que** firmes el documento para que sea válido." | **Ant ($P$):** Firmas el documento<br><br>**Cons ($Q$):** El documento es válido | **Suficiencia**<br>*(El énfasis está en la causa)* | $$Firmas \rightarrow Válido$$ |
-| "El coche arranca **solo si** tiene gasolina." | **Ant ($P$):** El coche arranca<br><br>**Cons ($Q$):** Tiene gasolina | **Necesidad**<br>*(El énfasis está en el requisito)* | $$Arranca \rightarrow Gasolina$$ |
-| "Ser humano **implica** ser mortal." | **Ant ($P$):** Ser humano<br><br>**Cons ($Q$):** Ser mortal | **Suficiencia**<br>*(Basta ser humano)* | $$Humano \rightarrow Mortal$$ |
+### Regla práctica
+
+{: .tip }
+> Cuando tenga dudas, hágase estas dos preguntas (la respuesta debe ser **SÍ**):
+> 1.  **Para Suficiencia ($P$):** *"Si tengo esto, ¿el resultado está 100% garantizado?"*
+> 2.  **Para Necesidad ($Q$):** *"Si NO tengo esto, ¿el resultado es imposible?"*
 
 ---
 
@@ -571,6 +563,7 @@ Para usar la tabla, busque el conector en la frase original y **"etiquete"** la 
 Finalmente, llegamos al operador más estricto: el **Bicondicional** ($\leftrightarrow$). En lenguaje natural lo leemos como **"si y solo si"** (o abreviado *sii* en matemáticas, *iff* en inglés).
 
 ### Definición Lógica
+
 El bicondicional ocurre cuando una proposición es **condición necesaria y suficiente** para la otra. Es decir, es una calle de doble sentido:
 
 $$P \leftrightarrow Q \equiv (P \to Q) \land (Q \to P)$$
@@ -585,29 +578,128 @@ A diferencia del condicional, aquí el orden no importa (es conmutativo). El bic
 | F | V | **F** | Discrepan |
 | F | F | **V** | Coinciden (Equivalentes) |
 
-> **Analogía para Programadores:**
-> El bicondicional funciona exactamente igual que el operador de igualdad estricta (`==`) o la compuerta lógica **XNOR** (Exclusive NOR). Devuelve `true` si los inputs son idénticos.
+
+### Análisis: La Condición "Necesaria y Suficiente"
+
+Retomando nuestro análisis anterior sobre la "letra pequeña" de los contratos, recordamos que en una implicación normal ($P \to Q$) los roles estaban divididos: uno era la **Causa** (Suficiente) y el otro el **Requisito** (Necesario).
+
+En el bicondicional ($P \leftrightarrow Q$), al tener la flecha en ambas direcciones, ocurre una fusión de roles única en la lógica.
+
+Si decimos: *"Aprobarás la materia ($A$) **si y solo si** sacas 3.0 o más ($N$)"*:
+
+$$A \leftrightarrow N$$
+
+Estamos afirmando dos cosas simultáneamente:
+
+1.  **Suficiencia ($N \to A$):** Sacar 3.0 es **suficiente** para aprobar. (Si tiene la nota, el aprobado es automático).
+2.  **Necesidad ($A \to N$):** Sacar 3.0 es **necesario** para aprobar. (Si aprobo, *obligatoriamente* tuvo que haber sacado 3.0; no hubo otra forma, ni sobornos ni errores).
+
+Por lo tanto, en matemáticas, la frase **"Si y solo si"** es sinónimo exacto de **"Condición Necesaria y Suficiente"**.
+
+#### Comparación Visual
+
+Para entender la potencia de esta definición, visualicemos los conjuntos de verdad:
+
+| Tipo de Relación | Implicación ($P \to Q$) | Bicondicional ($P \leftrightarrow Q$) |
+| :--- | :---: | :---: |
+| **Concepto** | **Inclusión** | **Identidad** |
+| **Lógica** | $P$ es suficiente, pero $Q$ es necesario. | $P$ es necesaria **Y** suficiente para $Q$. |
+| **Diagrama Mental** | El conjunto $P$ es más pequeño y está **dentro** de $Q$. | El conjunto $P$ es **exactamente igual** al conjunto $Q$. |
+| **Ejemplo** | *Los antioqueños ($P$) son colombianos ($Q$)*.<br>(Ser antioqueño implica ser colombiano, pero no al revés). | *Tener 3 lados ($P$) equivale a ser triángulo ($Q$)*.<br>(Son la misma cosa con diferente nombre). |
+
 {: .note }
+> **En Resumen:**
+> Mientras que el condicional ($P \to Q$) nos dice que "una cosa lleva a la otra", el bicondicional ($P \leftrightarrow Q$) nos dice que **"dos cosas son lógicamente indistinguibles"**. Si sé el valor de verdad de una, sé automáticamente el de la otra.
 
-### Ejemplo Práctico: Especificación de Software
+## Proposiciones Equivalentes
 
-> "El sistema activa la alarma ($A$) **si y solo si** detecta movimiento ($M$)".
-> $$A \leftrightarrow M$$
+{: .info }
+> Dos proposiciones compuestas $P$ y $Q$ son **lógicamente equivalentes**, denotado como $P \equiv Q$, si la proposición bicondicional $P \leftrightarrow Q$ es una **tautología** (es decir, siempre es verdadera).
 
-Esto implica dos garantías fuertes:
-1.  **Si hay movimiento $\to$ Suena alarma** (Suficiencia).
-2.  **Si suena alarma $\to$ Hubo movimiento** (Necesidad: no hay falsos positivos).
+La demostración de equivalencia puede realizarse mediante dos enfoques:
+1.  **Enfoque de Modelos:** Uso de tablas de verdad (fuerza bruta).
+2.  **Enfoque Axiomático:** Uso de leyes lógicas (álgebra).
 
-Si fuera solo un condicional simple ($M \to A$), la alarma podría sonar por error (un bug) y la proposición seguiría siendo cierta. El bicondicional prohíbe eso.
+### Enfoque 1: Tablas de Verdad (Modelos)
 
----
+Mediante tablas de verdad, determine si las siguientes proposiciones son equivalentes:
+1.  $\neg p \lor q \;\overset{?}{\equiv}\; p \to q$
+2.  $\neg(\neg p) \;\overset{?}{\equiv}\; p$
+3.  $\neg(p \land q) \;\overset{?}{\equiv}\; \neg p \land \neg q$
 
-## Resumen de la Clase
+#### Solución:
 
-Hoy hemos profesionalizado nuestra capacidad de traducción y análisis. Llévese estas 3 reglas de oro:
+**1. Definición del Condicional**
+Evaluamos $\neg p \lor q \;\overset{?}{\equiv}\; p \to q$.
 
-1.  **Algoritmo de Traducción:** Atomizar $\to$ Detectar Conectores $\to$ Estructurar.
-2.  **Ojo con el "Solo si":** Recuerde siempre que introduce el consecuente ($P \to Q$).
-3.  **Contrarrecíproca:** Si necesita refactorizar código o demostrar algo, úsela. Es su mejor amiga equivalente ($\neg Q \to \neg P$).
+| $p$ | $q$ | $\neg p$ | $\neg p \lor q$ | $p \to q$ | **¿Son Iguales?** |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| 0 | 0 | 1 | **1** | **1** | ✅ |
+| 0 | 1 | 1 | **1** | **1** | ✅ |
+| 1 | 0 | 0 | **0** | **0** | ✅ |
+| 1 | 1 | 0 | **1** | **1** | ✅ |
 
+Como las columnas son idénticas en todos los casos, concluimos que **SÍ son equivalentes**.
+$$\neg p \lor q \equiv p \to q$$
+
+**2. Doble Negación**
+Evaluamos $\neg(\neg p) \;\overset{?}{\equiv}\; p$.
+
+| $p$ | $\neg p$ | $\neg (\neg p)$ | **¿Son Iguales a $p$?** |
+|:---:|:---:|:---:|:---:|
+| 0 | 1 | **0** | ✅ |
+| 1 | 0 | **1** | ✅ |
+
+Como vemos, negar la negación nos devuelve al valor original. **SÍ son equivalentes**.
+$$p \equiv \neg (\neg p)$$
+
+**3. El Error Común (Falsa Distributiva)**
+Evaluamos $\neg(p \land q) \;\overset{?}{\equiv}\; \neg p \land \neg q$.
+*¿Será que la negación se distribuye igual que un signo menos en aritmética?* Veamos:
+
+| $p$ | $q$ | $p \land q$ | **$\neg(p \land q)$** | $\neg p$ | $\neg q$ | **$\neg p \land \neg q$** | **¿Son Iguales?** |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 0 | 0 | 0 | **1** | 1 | 1 | **1** | ✅ |
+| 0 | 1 | 0 | **1** | 1 | 0 | **0** | ❌ **Diferente** |
+| 1 | 0 | 0 | **1** | 0 | 1 | **0** | ❌ **Diferente** |
+| 1 | 1 | 1 | **0** | 0 | 0 | **0** | ✅ |
+
+**Conclusión:** Las columnas de salida **NO** son iguales.
+$$\neg(p \land q) \not\equiv \neg p \land \neg q$$
+
+{: .warning }
+> **Advertencia:** Esto demuestra que **NO** se puede simplemente "repartir" la negación. Para negar un paréntesis, necesitamos reglas especiales (Leyes de De Morgan).
+
+### Enfoque 2: Axiomático (Introducción al Álgebra)
+
+Si bien las tablas de verdad son un método infalible (fuerza bruta), tienen un grave problema de **escalabilidad**.
+* Para 2 variables: 4 filas (Manejable).
+* Para 3 variables: 8 filas (Aceptable).
+* Para 5 variables: $2^5 = 32$ filas (**¡Ineficiente!**).
+
+Para trabajar de manera profesional y eficiente, los matemáticos e ingenieros utilizan el **Álgebra de Proposiciones**. Al igual que en el álgebra elemental simplificamos $x + x = 2x$, aquí utilizamos leyes preestablecidas para transformar expresiones complejas en simples.
+
+**El Inventario de Herramientas**
+En la próxima clase (**Clase 04**) nos dedicaremos a *aplicar* estas leyes para simplificar expresiones ("computar"). Por ahora, es fundamental que conozca y tenga a la mano la siguiente tabla de referencia.
+
+Asuma que $V$ es una Tautología (siempre $V$) y $F$ es una Contradicción (siempre $F$).
+
+| Nombre de la Ley | Equivalencia ($\land$) | Equivalencia ($\lor$) |
+| :--- | :--- | :--- |
+| **Identidad** | $p \land V \equiv p$ | $p \lor F \equiv p$ |
+| **Dominación** | $p \land F \equiv F$ | $p \lor V \equiv T$ |
+| **Idempotencia** | $p \land p \equiv p$ | $p \lor p \equiv p$ |
+| **Doble Negación** | $\neg(\neg p) \equiv p$ | |
+| **Conmutativa** | $p \land q \equiv q \land p$ | $p \lor q \equiv q \lor p$ |
+| **Asociativa** | $(p \land q) \land r \equiv p \land (q \land r)$ | $(p \lor q) \lor r \equiv p \lor (q \lor r)$ |
+| **Distributiva** | $p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$ | $p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$ |
+| **De Morgan** | $\neg(p \land q) \equiv \neg p \lor \neg q$ | $\neg(p \lor q) \equiv \neg p \land \neg q$ |
+| **Absorción** | $p \lor (p \land q) \equiv p$ | $p \land (p \lor q) \equiv p$ |
+| **Inverso (Negación)** | $p \land \neg p \equiv F$ | $p \lor \neg p \equiv V$ |
+
+{: .warning }
+> **Nota Fundamental:**
+> Aunque no es una "ley" estructural como las anteriores, la herramienta más usada para empezar cualquier simplificación es la **Definición del Condicional**:
+> $$p \to q \equiv \neg p \lor q$$
+> *(Apréndala de memoria, la usaremos constantemente).*
 
