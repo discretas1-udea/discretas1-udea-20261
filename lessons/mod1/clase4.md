@@ -277,14 +277,19 @@ $$
 
    | Paso | Procedimiento  | Justificación  |
    | ---- | ------ | ------- |
-   | 1    | $\neg\bigl(p \lor \neg(p \land q)\bigr)$ | Expresion original (lado izquierdo) |
+   | 1    | $\neg\bigl(p \lor (\neg p \land q)\bigr)$ | Expresion original (lado izquierdo) |
    | 2    | $\neg p \land \neg\bigl(\neg(p \land q)\bigr)$ | Ley de De Morgan para la negación de una disyunción |
-   | 3    | $\neg p \land \bigl(\neg(\neg p) \lor \neg(\neg q)\bigr)$ | Ley de De Morgan para la negación de una conjunción |
-   | 4    | $\neg p \land (p \lor q)$ | Ley de la doble negación |
-   | 5    | $(\neg p \land p) \lor (\neg p \land q)$ | Ley distributiva del $\land$ sobre el $\lor$ |
-   | 6    | $F \lor (\neg p \land q)$ | Ley del complemento |
-   | 7    | $\neg p \land q$ | Ley de la identidad |
+   | 3    | $\neg p \land \bigl(\neg(\neg p) \lor \neg(q)\bigr)$ | Ley de De Morgan para la negación de una conjunción |
+   | 4    | $\neg p \land (p \lor \neg q)$ | Ley de la doble negación |
+   | 5    | $(\neg p \land p) \lor (\neg p \land \neg q)$ | Ley distributiva del $\land$ sobre el $\lor$ |
+   | 6    | $F \lor (\neg p \land \neg q)$ | Ley de la complemento para la conjunción ($\land$)|
+   | 7    | $\neg p \land \neg q$ | Ley de la identidad para la disyunción ($\lor$) |
+   
+   De modo que:
 
+   $$
+   \therefore\;\;\neg (p \lor (\neg p \land q)) \equiv \neg p \land \neg q
+   $$
 
 2. Para este ejercicio lo que nos piden es demostrar la ley de la absorción para la conjución:
 
@@ -371,4 +376,75 @@ $$
     $$
     \therefore\;\;\neg(\neg p \land q) \land (p \lor q) \equiv p
     $$
-    
+
+---
+
+## Resultados de Aprendizaje
+
+Al finalizar esta clase, usted será capaz de:
+
+* **Identificar y nombrar** las leyes fundamentales del álgebra de proposiciones.
+* **Simplificar expresiones lógicas** complejas reduciendo el número de conectores y variables.
+* **Demostrar equivalencias tautológicas** mediante el método axiomático sin recurrir a tablas de verdad.
+* **Aplicar estrategias de "factorización" y "distribución"** lógica para optimizar demostraciones.
+
+---
+
+## Ejercicios de Autoevaluación (Retos)
+
+Ponga a prueba su dominio del álgebra lógica con los siguientes retos. Intente resolverlos en papel justificando cada paso antes de ver la solución.
+
+### Reto 1: Simplificación Directa
+Simplifique la siguiente expresión hasta su mínima forma:
+$$(p \lor q) \land \neg p$$
+
+### Reto 2: Eliminación de Condicionales
+Utilice las leyes de traducción y simplificación para demostrar que la siguiente expresión es una **Contradicción** ($F$):
+$$\neg(p \to (p \lor q))$$
+
+### Reto 3: El desafío de la "Factorización"
+Simplifique la expresión aplicando la Ley Distributiva de forma inversa (identificando el término común):
+$$(p \land q) \lor (p \land \neg q)$$
+
+---
+
+## Sección de Respuestas
+{: .no_toc }
+
+<details markdown="1">
+  <summary><b>Haga clic aquí para ver las soluciones y justificaciones</b></summary>
+<br>
+
+### Solución Reto 1: Simplificación Directa
+{: .no_toc }
+
+| Paso | Expresión | Justificación |
+| :--- | :--- | :--- |
+| 1 | $(p \lor q) \land \neg p$ | Expresión original |
+| 2 | $(\neg p \land p) \lor (\neg p \land q)$ | **Ley Distributiva** |
+| 3 | $F \lor (\neg p \land q)$ | **Ley del Complemento** ($p \land \neg p \equiv F$) |
+| 4 | $\neg p \land q$ | **Ley de Identidad** |
+
+### Solución Reto 2: Eliminación de Condicionales
+{: .no_toc }
+
+| Paso | Expresión | Justificación |
+| :--- | :--- | :--- |
+| 1 | $\neg(p \to (p \lor q))$ | Expresión original |
+| 2 | $\neg(\neg p \lor (p \lor q))$ | **Definición del Condicional** |
+| 3 | $\neg((\neg p \lor p) \lor q)$ | **Ley Asociativa** |
+| 4 | $\neg(V \lor q)$ | **Ley del Complemento** (Tercero excluido) |
+| 5 | $\neg(V)$ | **Ley de Dominación** ($V \lor q \equiv V$) |
+| 6 | $F$ | **Definición de Negación** |
+
+### Solución Reto 3: El desafío de la "Factorización"
+{: .no_toc }
+
+| Paso | Expresión | Justificación |
+| :--- | :--- | :--- |
+| 1 | $(p \land q) \lor (p \land \neg q)$ | Expresión original |
+| 2 | $p \land (q \lor \neg q)$ | **Ley Distributiva Inversa** (Factor común $p$) |
+| 3 | $p \land V$ | **Ley del Complemento** |
+| 4 | $p$ | **Ley de Identidad** |
+
+</details>
