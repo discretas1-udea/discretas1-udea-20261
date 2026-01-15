@@ -53,45 +53,49 @@ Al finalizar esta sesión usted será capaz de:
 
 ---
 
-## Repaso: Equivalencia lógica
+## Repaso: Equivalencia Lógica y El Camino hacia la Inferencia
 
-A lo largo del curso hemos venido trabajando con **proposiciones lógicas**, las cuales, a medida que hemos ido avanzando, han pasado de ser tratadas desde una perspectiva más informal a un enfoque cada vez más formal, apoyado en los conceptos del **álgebra proposicional** previamente abordados.
+Antes de adentrarnos en el concepto de **Validez** (¿es correcto mi razonamiento?), es fundamental asegurar que dominamos el concepto de **Equivalencia** (¿dicen lo mismo estas dos frases?).
 
-El uso del álgebra proposicional —o cálculo proposicional, como se denomina en algunos textos— nos ha permitido trabajar con variables proposicionales mediante operaciones lógicas y reglas bien definidas desde un punto de vista matemático.
+A lo largo del curso, hemos evolucionado desde una perspectiva informal de las proposiciones hacia un enfoque formal apoyado en el **Álgebra Proposicional**. Este cambio nos ha permitido dejar de depender de la intuición lingüística para confiar en reglas matemáticas precisas.
 
-Recordemos que una expresión lógica puede estar compuesta por varias variables proposicionales y operadores lógicos. Al evaluarla para distintas asignaciones de valores de verdad, la expresión solo puede tomar uno de dos valores posibles: **verdadero** o **falso**.  
+### ¿Qué significa realmente $A \equiv B$?
 
-Diremos que dos expresiones lógicas $A = f(p,q,r)$ y $B = g(p,q,r)$ son **lógicamente equivalentes**, y lo denotamos como $A \equiv B$, si al evaluarlas para **todas las posibles asignaciones de valores de verdad** producen exactamente el mismo resultado.
+Diremos que dos expresiones lógicas $A(p,q,\dots)$ y $B(p,q,\dots)$ son **lógicamente equivalentes** ($A \equiv B$) si, y solo si:
+> **Al evaluarlas para TODAS las posibles combinaciones de verdad, producen exactamente el mismo resultado.**
 
-Para demostrar la equivalencia lógica entre dos expresiones hemos estudiado dos enfoques:
-- el **enfoque basado en modelos** (también llamado *semántico*), que utiliza tablas de verdad, y
-- el **enfoque axiomático** (también llamado *sintáctico*), en el cual, mediante el uso de axiomas o leyes lógicas, se realizan transformaciones sucesivas sobre una expresión hasta obtener otra lógicamente equivalente.
+En términos prácticos: $A$ y $B$ son "sinónimos matemáticos". Puedo reemplazar uno por otro en cualquier fórmula sin alterar su valor de verdad.
 
-Las reglas que empleamos en el enfoque axiomático se resumen en la siguiente tabla:
+Recordemos las dos herramientas que tenemos para verificar esto:
+1.  **Enfoque Semántico (Tablas de Verdad):** Fuerza bruta. Verificamos fila por fila. Es infalible pero lento.
+2.  **Enfoque Sintáctico (Axiomático):** Elegancia matemática. Transformamos la expresión usando leyes permitidas hasta que coincida con la otra.
+  
+### Inventario Rápido de Leyes
 
-| **Nombre** | **Equivalencia lógica (∧)** | **Equivalencia lógica (∨)** |
-|---|---|---|
-| **Conmutatividad** | $P \land Q \equiv Q \land P$ | $P \lor Q \equiv Q \lor P$ |
-| **Asociatividad** | $P \land (Q \land R) \equiv (P \land Q) \land R$ | $P \lor (Q \lor R) \equiv (P \lor Q) \lor R$ |
-| **Distributividad** | $P \land (Q \lor R) \equiv (P \land Q) \lor (P \land R)$ | $P \lor (Q \land R) \equiv (P \lor Q) \land (P \lor R)$ |
-| **Idempotencia** | $P \land P \equiv P$ | $P \lor P \equiv P$ |
-| **Doble negación** | $\neg(\neg P) \equiv P$ | — |
-| **Leyes de De Morgan** | $\neg(P \land Q) \equiv \neg P \lor \neg Q$ | $\neg(P \lor Q) \equiv \neg P \land \neg Q$ |
-| **Identidad** | $P \land V \equiv P$ | $P \lor F \equiv P$ |
-| **Dominación** | $P \land F \equiv F$ | $P \lor V \equiv V$ |
-| **Absorción** | $P \land (P \lor Q) \equiv P$ | $P \lor (P \land Q) \equiv P$ |
-| **Complemento** | $P \land \neg P \equiv F$ | $P \lor \neg P \equiv V$ |
-| **Implicación** | $P \to Q \equiv \neg P \lor Q$ | — |
-| **Equivalencia** | $P \leftrightarrow Q \equiv (P \to Q) \land (Q \to P)$ | — |
+Para los ejercicios de demostración que vendrán, mantenga esta tabla a la mano. Estas son sus "herramientas de construcción":
 
-### Ejemplo de repaso
+| Nombre | Forma $\land$ / $\to$ | Forma $\lor$ |
+| :--- | :--- | :--- |
+| **Conmutativa** | $p \land q \equiv q \land p$ | $p \lor q \equiv q \lor p$ |
+| **Asociativa** | $(p \land q) \land r \equiv p \land (q \land r)$ | $(p \lor q) \lor r \equiv p \lor (q \lor r)$ |
+| **Distributiva** | $p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$ | $p \lor (q \land r) \equiv (p \land q) \land (p \land r)$ |
+| **De Morgan** | $\neg(p \land q) \equiv \neg p \lor \neg q$ | $\neg(p \lor q) \equiv \neg p \land \neg q$ |
+| **Identidad** | $p \land V \equiv p$ | $p \lor F \equiv p$ |
+| **Dominación** | $p \land F \equiv F$ | $p \lor V \equiv V$ |
+| **Absorción** | $p \land (p \lor q) \equiv p$ | $p \lor (p \land q) \equiv p$ |
+| **Complemento** | $p \land \neg p \equiv F$ | $p \lor \neg p \equiv V$ |
+| **Doble Negación** | $\neg(\neg p) \equiv p$ | — |
+| **Implicación** | $p \to q \equiv \neg p \lor q$ | — |
+| **Contrapositiva** | $p \to q \equiv \neg q \to \neg p$ | *(Muy útil)* |
+| **Equivalencia** | $p \leftrightarrow q \equiv (p \to q) \land (q \to p)$ | — |
+
+#### Ejemplo de repaso
 {: .no_toc }
 
-A modo de ejemplo, demostremos mediante ambos enfoques que:
+Vamos a calentar motores demostrando una propiedad clásica de la lógica: **La contrapositiva del bicondicional**.
+Demuestre que:
 
-$$
-p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q
-$$
+$$p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q$$
 
 **Solución**: A continuación se muestra la demostración al aplicar ambos metodos.
 
@@ -112,21 +116,26 @@ $$
 
 * **Metodo axiomático**: Partiendo del lado derecho de la expresión ($\neg p \leftrightarrow \neg q$), aplicamos las leyes del inventario para llegar al lado izquierdo:
   
-  | Paso | Procedimiento | Justificación |
-  |---|---|---|
-  | 1 | $\neg p \leftrightarrow \neg q$ | Expresión original |
-  | 2 | $(\neg p \to \neg q) \land (\neg q \to \neg p)$ | Definición del bicondicional |
-  | 3 | $(\neg(\neg p) \lor \neg q) \land (\neg(\neg q) \lor \neg p)$ | Definición del condicional |
-  | 4 | $(p \lor \neg q) \land (q \lor \neg p)$ | Doble negación |
-  | 5 | $(\neg q \lor p) \land (\neg p \lor q)$ | Conmutatividad de $\lor$ |
-  | 6 | $(q \to p) \land (p \to q)$ | Definición del condicional |
-  | 7 | $p \leftrightarrow q$ | Definición del bicondicional |
+  Partimos del lado derecho ($\neg p \leftrightarrow \neg q$) e intentaremos transformarlo paso a paso para llegar al lado izquierdo ($p \leftrightarrow q$).
+
+  | Paso | Expresión | Justificación |
+  | :---: | :--- | :--- |
+  | **1** | $\neg p \leftrightarrow \neg q$ | Expresión original (lado derecho) |
+  | **2** | $(\neg p \to \neg q) \land (\neg q \to \neg p)$ | **Definición de Bicondicional** ($A \leftrightarrow B \equiv (A \to B) \land (B \to A)$) |
+  | **3** | $(\neg(\neg p) \lor \neg q) \land (\neg(\neg q) \lor \neg p)$ | **Definición de Condicional** ($A \to B \equiv \neg A \lor B$) |
+  | **4** | $(p \lor \neg q) \land (q \lor \neg p)$ | **Doble Negación** |
+  | **5** | $(\neg q \lor p) \land (\neg p \lor q)$ | **Conmutativa** (Ordenamos para ver el condicional) |
+  | **6** | $(q \to p) \land (p \to q)$ | **Definición de Condicional** (Inversa: $\neg A \lor B \equiv A \to B$) |
+  | **7** | $(p \to q) \land (q \to p)$ | **Conmutativa** (del operador $\land$) |
+  | **8** | $p \leftrightarrow q$ | **Definición de Bicondicional** |
 
   Por lo tanto,
 
   $$
   \therefore\;\; p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q
   $$
+
+  > **Reflexión:** Note que en el paso 6 recuperamos dos condicionales. El hecho de que $(q \to p) \land (p \to q)$ sea lo mismo que $p \leftrightarrow q$ nos muestra la simetría perfecta de esta estructura.
 
 
 
