@@ -383,10 +383,10 @@ $$
 
 Al finalizar esta clase, usted será capaz de:
 
-* **Identificar y nombrar** las leyes fundamentales del álgebra de proposiciones.
-* **Simplificar expresiones lógicas** complejas reduciendo el número de conectores y variables.
-* **Demostrar equivalencias tautológicas** mediante el método axiomático sin recurrir a tablas de verdad.
-* **Aplicar estrategias de "factorización" y "distribución"** lógica para optimizar demostraciones.
+* Identificar y nombrar las leyes fundamentales del álgebra de proposiciones.
+* Simplificar expresiones lógicas complejas reduciendo el número de conectores y variables.
+* Demostrar equivalencias tautológicas mediante el método axiomático sin recurrir a tablas de verdad.
+* Aplicar estrategias de "factorización" y "distribución" lógica para optimizar demostraciones.
 
 ---
 
