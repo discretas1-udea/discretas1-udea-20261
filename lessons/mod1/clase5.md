@@ -55,15 +55,19 @@ Al finalizar esta sesión usted será capaz de:
 
 ## Repaso: Equivalencia lógica
 
-A lo largo del curso hemos venido trabajando con **proposiciones** logicas, las cuales conforme hemos ideo avanzando han pasado de ser vistas desde una perspectiva mas informal a un enfoque mas formal a partir de los conceptos de Algebra proposicional previamente abordados.
+A lo largo del curso hemos venido trabajando con **proposiciones lógicas**, las cuales, a medida que hemos ido avanzando, han pasado de ser tratadas desde una perspectiva más informal a un enfoque cada vez más formal, apoyado en los conceptos del **álgebra proposicional** previamente abordados.
 
-El uso del algebra proposicional, o calculo proposicional (conocido en otros textos) nos ha permitido trabajar con variables proposicionales mediante el uso de operaciones lógicas y reglas bien definidas desde un punto de vista matematico.
+El uso del álgebra proposicional —o cálculo proposicional, como se denomina en algunos textos— nos ha permitido trabajar con variables proposicionales mediante operaciones lógicas y reglas bien definidas desde un punto de vista matemático.
 
-Recordemos que una expresión logica, puede estar compuesta de varias variables (proposiciones) y operadores, los cuales al ser evaluadas para los diferentes valores logicos (como en su momento se vio en algebra o calculo con numeros) dan como resultado distintos valores que solo pueden ser falsos o verdaderos. Ahora, si tenemos dos expresiones logicas ($A = f(p,q,r)$ y $B = g(p,g,r)$) diferentes que tienen las mismas variables, las cuales al ser evaluadas para todos los valores posibles dan exactamente los mismos valores logicos decimos que son **logicamente equivalentes** ($A \equiv B$).
+Recordemos que una expresión lógica puede estar compuesta por varias variables proposicionales y operadores lógicos. Al evaluarla para distintas asignaciones de valores de verdad, la expresión solo puede tomar uno de dos valores posibles: **verdadero** o **falso**.  
 
-Para demostrar equivalencia mostramos dos caminos para llegar a lo mismo, el **enfoque de modelos** (tambien conocido como semantico) que consistia en evaluar la expresion empleando tablas de verdad, y el **enfoque axiomatico** (tambien conocido como sintactico) en el cual, mediante el uso de una serie de reglas (axiomas) podiamos llevar de manera logica una serie de transformaciones sobre una expresión original para llegar diferente pero logicamente equivalente. 
+Diremos que dos expresiones lógicas $A = f(p,q,r)$ y $B = g(p,q,r)$ son **lógicamente equivalentes**, y lo denotamos como $A \equiv B$, si al evaluarlas para **todas las posibles asignaciones de valores de verdad** producen exactamente el mismo resultado.
 
-Las reglas que empleamos se resumen en la siguiente tabla:
+Para demostrar la equivalencia lógica entre dos expresiones hemos estudiado dos enfoques:
+- el **enfoque basado en modelos** (también llamado *semántico*), que utiliza tablas de verdad, y
+- el **enfoque axiomático** (también llamado *sintáctico*), en el cual, mediante el uso de axiomas o leyes lógicas, se realizan transformaciones sucesivas sobre una expresión hasta obtener otra lógicamente equivalente.
+
+Las reglas que empleamos en el enfoque axiomático se resumen en la siguiente tabla:
 
 | **Nombre** | **Equivalencia lógica (∧)** | **Equivalencia lógica (∨)** |
 |---|---|---|
@@ -83,7 +87,7 @@ Las reglas que empleamos se resumen en la siguiente tabla:
 ### Ejemplo de repaso
 {: .no_toc }
 
-A modo de ejemplo demostremos mediante ambos metodos que:
+A modo de ejemplo, demostremos mediante ambos enfoques que:
 
 $$
 p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q
@@ -100,28 +104,28 @@ $$
   | 1 | 0 | 0 | 1 | **0** | **0** | **1** | ✅ |
   | 1 | 1 | 0 | 0 | **1** | **1** | **1** | ✅ |
 
-  Como $p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q$ es una tautologia, entonces es valido afirmar que:
+  Como la proposición $(p \leftrightarrow q) \leftrightarrow (\neg p \leftrightarrow \neg q)$ resulta ser una **tautología**, es válido afirmar que:
 
   $$
-  \therefore\;\;p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q
+  \therefore\;\; p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q
   $$
 
-* **Metodo axiomático**: Partiendo del lado derecho de la expresión ($\neg p \leftrightarrow \neg q$), vamos a intentar llegar al lado izquierdo ($p \leftrightarrow q$) mediante la aplicación de los axiomas de la tabla:
+* **Metodo axiomático**: Partiendo del lado derecho de la expresión ($\neg p \leftrightarrow \neg q$), aplicamos las leyes del inventario para llegar al lado izquierdo:
   
   | Paso | Procedimiento | Justificación |
   |---|---|---|
-  | 1 | $\neg p \leftrightarrow \neg q$ | Expresión original (lado derecho) |
-  | 2 | $(\neg p \to \neg q) \land (\neg q \to \neg p)$ | Definición de equivalencia|
-  | 3 | $(\neg(\neg p) \lor \neg q) \land (\neg(\neg q) \lor \neg p)$ | Definición de implicación |
+  | 1 | $\neg p \leftrightarrow \neg q$ | Expresión original |
+  | 2 | $(\neg p \to \neg q) \land (\neg q \to \neg p)$ | Definición del bicondicional |
+  | 3 | $(\neg(\neg p) \lor \neg q) \land (\neg(\neg q) \lor \neg p)$ | Definición del condicional |
   | 4 | $(p \lor \neg q) \land (q \lor \neg p)$ | Doble negación |
-  | 5 | $(\neg q \lor p) \land (\neg p \lor q)$ | Conmutatividad para la disyunción ($\lor$) |
-  | 6 | $(q \to p) \land (p \lor q)$ | Definición de implicación |
-  | 7 | $p \leftrightarrow q$ | Definición de equivalencia (Lado derecho) |
-  
-  Luego, podemos decir que:
+  | 5 | $(\neg q \lor p) \land (\neg p \lor q)$ | Conmutatividad de $\lor$ |
+  | 6 | $(q \to p) \land (p \to q)$ | Definición del condicional |
+  | 7 | $p \leftrightarrow q$ | Definición del bicondicional |
+
+  Por lo tanto,
 
   $$
-  \therefore\;\;p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q
+  \therefore\;\; p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q
   $$
 
 
