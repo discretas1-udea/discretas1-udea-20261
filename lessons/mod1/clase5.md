@@ -138,8 +138,38 @@ $$p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q$$
   > **Reflexión:** Note que en el paso 6 recuperamos dos condicionales. El hecho de que $(q \to p) \land (p \to q)$ sea lo mismo que $p \leftrightarrow q$ nos muestra la simetría perfecta de esta estructura.
 
 
+## El proceso deductivo
+
+### Contextualización
+
+Argumentar es algo que solemos hacer de manera cotidiana en cualquier tipo de conversación sea sobre politica, religión, futbol o cualquier cosa. Para esto, partimos de unos hechos y de manera logica llegar a unas conclusiones o tratar de influir en alguien. Seguramente en el pasado, usted ha tenido que realizar examenes de comprensión lectora donde partir de un texto le suelen hacer preguntas con el fin de evaluar si usted entendió lo leido. Por ejemplo, supongamos que le dan la siguiente historia en la que se cuenta como Sherlock Holmes resolvio el robo de un safiro:
+
+{: .note }
+> **El Caso del Zafiro Desaparecido**
+> El inspector Lestrade irrumpió en la sala, visiblemente frustrado.— "Holmes, es imposible. El Zafiro de Sussex ha desaparecido de la caja fuerte, pero no hay signos de fuerza bruta. Tenemos tres sospechosos, pero ninguna prueba."
+> 
+> Sherlock Holmes, encendiendo su pipa, respondió con calma:— "Lestrade, los hechos hablan por sí solos si se escuchan con lógica. Repasemos lo que sabemos":
+> 1. "Sabemos que si el ladrón hubiera forzado la ventana, entonces habría huellas de barro en la alfombra, pues anoche llovió a cántaros."
+> 2. "Sin embargo, he revisado la alfombra con mi lupa y no hay ni una sola mancha de barro."
+> 3. "Ahora bien, por la naturaleza de la caja fuerte, sabemos que o bien el ladrón forzó la ventana o bien tenía la llave maestra."
+> 4. "Y finalmente, un hecho doloroso pero cierto: si el ladrón tenía la llave maestra, entonces el mayordomo es cómplice, pues solo él custodia esa llave."
+
+Por ejemplo, segun la historia anterior una posible pregunta a responder seria: ¿Quien es el culpable y por que?
+
+En esta sección vamos a tratar de conectar desde el punto de vista de la logica formal el proceso de argumentación tomando como punto de partida esta historia y tratando de relacionarla con el algebra de proposiciones. Para esto vamos a ver en que consiste una argumentación desde el punto de vista logico y cual es el proceso para llevar a cabo un proceso deductivo de manera formal mediante la aplicación de reglas de inferencia.
+
+### ¿Qué es un Argumento?
+
+Argumentar es el proceso de presentar una secuencia de enunciados (denominados premisas) con el objetivo de demostrar la veracidad de una afirmación final, llamada conclusión.
 
 
+
+Desde el punto de vista matematico, un argumento tiene una estructura lógica definida por:
+* **Premisas**: Son las suposiciones, leyes o hechos conocidos que sirven como punto de partida.
+* **Conclusión**: Es la aserción que se deriva de las premisas.
+
+
+El **análisis lógico** se centra en la forma del argumento y no en su contenido. Esto permite determinar si la conclusión se deduce necesariamente de las premisas.
 
 
 
