@@ -140,68 +140,174 @@ $$p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q$$
 
 ## El proceso deductivo
 
-### Contextualización
+### Contextualización: De la Opinión a la Demostración
 
-Argumentar es algo que solemos hacer de manera cotidiana en cualquier tipo de conversación sea sobre politica, religión, futbol o cualquier cosa. Para esto, partimos de unos hechos y de manera logica llegar a unas conclusiones o tratar de influir en alguien. Seguramente en el pasado, usted ha tenido que realizar examenes de comprensión lectora donde partir de un texto le suelen hacer preguntas con el fin de evaluar si usted entendió lo leido. Por ejemplo, supongamos que le dan la siguiente historia en la que se cuenta como Sherlock Holmes resolvio el robo de un safiro:
+Argumentar es una actividad cotidiana. Lo hacemos constantemente al discutir sobre política, religión o fútbol, o cuando intentamos convencer a alguien de nuestro punto de vista. En esos escenarios informales, solemos mezclar hechos con emociones, intuiciones y opiniones.
+
+Sin embargo, en el ámbito académico y científico, "argumentar" tiene un significado mucho más estricto. Seguramente, en el pasado usted ha realizado exámenes de comprensión lectora donde, a partir de un texto, debe responder preguntas lógicas para demostrar que entendió lo leído.
+
+Analicemos esto con el siguiente relato deductivo:
 
 {: .note }
 > **El Caso del Zafiro Desaparecido**
-> El inspector Lestrade irrumpió en la sala, visiblemente frustrado.— "Holmes, es imposible. El Zafiro de Sussex ha desaparecido de la caja fuerte, pero no hay signos de fuerza bruta. Tenemos tres sospechosos, pero ninguna prueba."
-> 
-> Sherlock Holmes, encendiendo su pipa, respondió con calma:— "Lestrade, los hechos hablan por sí solos si se escuchan con lógica. Repasemos lo que sabemos":
+>
+> El inspector Lestrade irrumpió en la sala, visiblemente frustrado.
+> — "Holmes, es imposible. El **Zafiro de Sussex** ha desaparecido de la caja fuerte, pero no hay signos de fuerza bruta. Tenemos tres sospechosos, pero ninguna prueba."
+>
+> Sherlock Holmes, encendiendo su pipa, respondió con calma:
+> — "Lestrade, los hechos hablan por sí solos si se escuchan con lógica. Repasemos lo que sabemos:"
+>
 > 1. "Sabemos que si el ladrón hubiera forzado la ventana, entonces habría huellas de barro en la alfombra, pues anoche llovió a cántaros."
 > 2. "Sin embargo, he revisado la alfombra con mi lupa y no hay ni una sola mancha de barro."
 > 3. "Ahora bien, por la naturaleza de la caja fuerte, sabemos que o bien el ladrón forzó la ventana o bien tenía la llave maestra."
 > 4. "Y finalmente, un hecho doloroso pero cierto: si el ladrón tenía la llave maestra, entonces el mayordomo es cómplice, pues solo él custodia esa llave."
 
-Por ejemplo, segun la historia anterior una posible pregunta a responder seria: ¿Quien es el culpable y por que?
+Ante este escenario, una pregunta natural sería: **¿Quién es el culpable y por qué?**
 
-En esta sección vamos a tratar de conectar desde el punto de vista de la logica formal el proceso de argumentación tomando como punto de partida esta historia y tratando de relacionarla con el algebra de proposiciones. Para esto vamos a ver en que consiste una argumentación desde el punto de vista logico y cual es el proceso para llevar a cabo un proceso deductivo de manera formal mediante la aplicación de reglas de inferencia.
+Nuestra intuición nos grita la respuesta rápidamente ("¡El mayordomo!"). Pero, **¿cómo podemos estar seguros al 100%?** ¿Cómo podemos garantizar que nuestra conclusión no es una corazonada, sino una verdad ineludible?
 
-### ¿Qué es un Argumento?
+En esta sección, conectaremos esta narrativa con la **lógica formal**. Veremos cómo transformar estas pistas (premisas) en fórmulas matemáticas y cómo el **proceso deductivo** nos permite "calcular" al culpable sin margen de error, utilizando las reglas de inferencia.
 
-Argumentar es el proceso de presentar una secuencia de enunciados (denominados premisas) con el objetivo de demostrar la veracidad de una afirmación final, llamada conclusión.
+### Sobre la argumentación
 
+**Argumentar** es el proceso de presentar una secuencia de enunciados, denominados **premisas** con el objetivo de demostrar la veracidad de una afirmación final, llamada **conclusión**. 
 
+Retornando a nuestro **El Caso del Zafiro Desaparecido**, las premisas, escritas en un tono mas formal con el fin de hacer mas facil la visualización de las proposiciones (para su posterior traducción a lenguaje simbolico) que hacen parte de la historia:
+1. "Si el ladrón hubiera forzado la ventana, entonces habría huellas de barro en la alfombra."
+2. "No hay manchas de barro en la alfombra."
+3. "El ladron forzo la ventana o bien tenía la llave maestra."
+4. "Si el ladrón tenía la llave maestra, entonces el mayordomo es cómplice."
 
-Desde el punto de vista matematico, un argumento tiene una estructura lógica definida por:
-* **Premisas**: Son las suposiciones, leyes o hechos conocidos que sirven como punto de partida.
-* **Conclusión**: Es la aserción que se deriva de las premisas.
+Por otro lado, para responder a la pregunta **¿quién es el culpable?**, la afirmación que se pretende justificar a partir de estas premisas es:
 
+> **"El mayordomo es cómplice."**
 
-El **análisis lógico** se centra en la forma del argumento y no en su contenido. Esto permite determinar si la conclusión se deduce necesariamente de las premisas.
+Esta afirmación puede verse como una **proposición candidata a conclusión**, cuya veracidad no se asumirá de entrada, sino que deberá derivarse lógicamente a partir de las premisas mediante un proceso deductivo.
 
+Antes de proceder a trabajar la historia dentro del contexto le la logica proposicional debemos traducir las proposiciones y la conclusión anterior a lenguaje formal. Para ello iniciamos definiendo las variables logicas asociadas a las proposiciones atomicas:
+* **$p$**: El ladrón forzó la ventana.
+* **$q$**: Hay huellas de barro en la alfombra.
+* **$r$**: El ladrón tenia llave maestra.
+* **$s$**: El mayordomo es complice.
 
+Ahora, expresando las premisas y la conclusion en lenguaje formal tenemos:
+* **Premisas**:
+  1. "Si el ladrón hubiera forzado la ventana, entonces habría huellas de barro en la alfombra."
+     
+     $$
+     p \to q
+     $$
+  2. "No hay manchas de barro en la alfombra."
+     
+     
+     $$
+     \neg q
+     $$
 
-En la **Clase 04** aprendimos a transformar proposiciones usando equivalencias (sin evaluar casos),
-como se simplifica un polinomio sin reemplazar $x$ por números.
+  3. "El ladron forzo la ventana o bien tenía la llave maestra."
+     
+     $$
+     q \lor r
+     $$
 
-Hoy aprovechamos esa idea, pero el objeto cambia:
+  4. "Si el ladrón tenía la llave maestra, entonces el mayordomo es cómplice."
+     
+     $$
+     r \to s
+     $$
+     
 
-- En Clase 04 el foco era una **proposición** ($P \equiv Q$).
-- Hoy el foco es un **argumento** (premisas $\Rightarrow$ conclusión).
+* **Conclusión**:
+  
+  > "El mayordomo es cómplice."
+  
+  $$
+  s
+  $$
 
+En, resumen nuestra historia **El Caso del Zafiro Desaparecido** expresada en lenguaje formal, queda de la siguiente manera:
 
+$$
+\begin{array}{l}
+p \rightarrow q \\
+\neg q \\
+q \lor r \\
+r \rightarrow s \\
+\hline
+\therefore\ s
+\end{array}
+$$
 
----
+Si observamos lo anterior, desde la lógica proposicional, un argumento tiene una estructura lógica definida por:
+* **Premisas**: $P_1,P_2,...,P_n$, que representan los hechos, leyes o suposiciones iniciales.
+* **Conclusión**: $(Q)$, que es la afirmación que se pretende derivar a partir de las premisas.
 
-## 2. Verdad vs validez (sin confundir conceptos)
+De manera general, cualquier argumento puede representarse como:
 
-### 2.1 Verdad (depende del caso)
-Una proposición puede ser verdadera o falsa **según el escenario** (asignación de valores).
+$$
+\begin{array}{l}
+P_1 \\
+P_2 \\
+\vdots \\
+P_n \\
+\hline
+\therefore\ Q
+\end{array}
+$$
 
-### 2.2 Tautología (verdadera en todos los casos)
-Una proposición $P$ es una tautología si $P \equiv V$.
+Una vez que el argumento ha sido planteado, el siguiente paso es determinar si este es **válido o no**. Esto se logra mediante un proceso de inferencia lógica, el cual permite establecer si la conclusión se deduce necesariamente de las premisas. En el caso de nuestra historia, ya hemos identificado los indicios y la conclusión esperada; sin embargo, aún no hemos explicado el **porqué**. Antes de demostrarlo, haremos una aclaración sumamente importante en la siguiente sección.
 
-### 2.3 Validez (propiedad de argumentos)
-Un argumento:
+### Verdad vs validez (sin confundir conceptos)
 
-- Premisas: $P_1, P_2, \dots, P_n$
-- Conclusión: $C$
+En el lenguaje cotidiano, solemos usar las palabras *verdadero* y *válido* como si fueran sinónimos. Sin embargo, en **lógica**, representan conceptos distintos y no deben confundirse.
 
-es **válido** si es imposible que todas las premisas sean verdaderas y la conclusión sea falsa.
+#### ¿Qué significa que un argumento sea válido?
 
----
+Un **argumento es válido** cuando la conclusión **se sigue necesariamente** de las premisas. Es decir, si las premisas son verdaderas, entonces la conclusión **no puede ser falsa**.
+
+La validez no depende del contenido concreto de las afirmaciones, sino de su **estructura lógica**. En otras palabras, un argumento es válido si **no existe ningún caso posible** en el que todas las premisas sean verdaderas y la conclusión sea falsa al mismo tiempo.
+
+#### ¿Qué significa que una proposición sea verdadera?
+
+Una **proposición** es verdadera o falsa dependiendo de si describe correctamente la realidad. La verdad está relacionada con los hechos, la evidencia empírica o el contexto del mundo real.
+
+Por ejemplo, la proposición *“el mayordomo es cómplice”* puede ser verdadera o falsa dentro de la historia, pero ese no es el aspecto que analiza la lógica.
+
+#### Un argumento puede ser válido aunque sus premisas sean falsas
+
+Este punto suele resultar contraintuitivo, pero es fundamental.
+
+Considere el siguiente argumento:
+
+- Si la luna es de queso, entonces París está en Colombia.
+- La luna es de queso.
+- Por lo tanto, París está en Colombia.
+
+Este argumento es **lógicamente válido**, porque la conclusión se sigue correctamente de las premisas. Sin embargo, es **incorrecto desde el punto de vista factual**, porque sus premisas son falsas.
+
+Esto muestra que:
+- **validez no es lo mismo que verdad**, y
+- la lógica se ocupa principalmente de evaluar la **validez de los razonamientos**, no de verificar hechos.
+
+#### Aplicación al caso del zafiro
+
+Volviendo a *El Caso del Zafiro Desaparecido*, nuestra tarea no es decidir si, en la realidad, el mayordomo es culpable, sino responder la siguiente pregunta:
+
+**¿Se sigue necesariamente que “el mayordomo es cómplice” a partir de las premisas dadas?**
+
+Si la respuesta es afirmativa, entonces el argumento es **válido**, independientemente de que la historia sea ficticia.
+
+#### Idea clave
+
+Podemos resumir la diferencia de la siguiente manera:
+
+- **Verdad**: es una propiedad de las proposiciones individuales.
+- **Validez**: es una propiedad de los argumentos completos.
+
+Un argumento válido garantiza que **no se pueden aceptar las premisas y rechazar la conclusión sin caer en contradicción**.
+
+En la siguiente sección analizaremos si el argumento del zafiro es válido, aplicando **reglas de inferencia** para justificar cada paso del razonamiento.
+
 
 ## 3. Vocabulario operativo (lo usaremos todo el tiempo)
 {: .no_toc }
