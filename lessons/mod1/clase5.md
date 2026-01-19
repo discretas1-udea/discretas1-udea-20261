@@ -207,7 +207,7 @@ Ahora, expresando las premisas y la conclusion en lenguaje formal tenemos:
   3. "El ladron forzo la ventana o bien tenía la llave maestra."
      
      $$
-     q \lor r
+     p \lor r
      $$
 
   4. "Si el ladrón tenía la llave maestra, entonces el mayordomo es cómplice."
@@ -231,7 +231,7 @@ $$
 \begin{array}{l}
 p \rightarrow q \\
 \neg q \\
-q \lor r \\
+p \lor r \\
 r \rightarrow s \\
 \hline
 \therefore\ s
@@ -257,33 +257,107 @@ $$
 
 Una vez que el argumento ha sido planteado, el siguiente paso es determinar si este es **válido o no**. Esto se logra mediante un proceso de inferencia lógica, el cual permite establecer si la conclusión se deduce necesariamente de las premisas. En el caso de nuestra historia, ya hemos identificado los indicios y la conclusión esperada; sin embargo, aún no hemos explicado el **porqué**. Antes de demostrarlo, haremos una aclaración sumamente importante en la siguiente sección.
 
+**AGREGAR UNA SECCION DONDE SE MUESTREN OTRAS MANERAS DE REPRESENTAR EL ARGUMENTO**
+
 ### Verdad vs validez (sin confundir conceptos)
 
-En el lenguaje cotidiano, solemos usar las palabras *verdadero* y *válido* como si fueran sinónimos. Sin embargo, en **lógica**, representan conceptos distintos y no deben confundirse.
+En el lenguaje cotidiano, solemos usar las palabras *verdadero* y *válido* como si fueran sinónimos. Sin embargo, en **lógica** representan conceptos distintos y no deben confundirse.
 
-#### ¿Qué significa que un argumento sea válido?
+#### Sobre la verdad
 
-Un **argumento es válido** cuando la conclusión **se sigue necesariamente** de las premisas. Es decir, si las premisas son verdaderas, entonces la conclusión **no puede ser falsa**.
+El concepto de **verdad** se aplica a una **proposición** (un enunciado declarativo) y depende del **contexto** o de la **interpretación** que estemos usando. En particular, una proposición puede ser **verdadera** o **falsa** según si lo que afirma coincide con los hechos (o con el modelo) que estamos tomando como referencia.
 
-La validez no depende del contenido concreto de las afirmaciones, sino de su **estructura lógica**. En otras palabras, un argumento es válido si **no existe ningún caso posible** en el que todas las premisas sean verdaderas y la conclusión sea falsa al mismo tiempo.
+Por ejemplo, usando conocimiento básico de geografía (donde \(V\) = verdadero y \(F\) = falso):
 
-#### ¿Qué significa que una proposición sea verdadera?
+| Proposición | Representación | Valor de verdad | Justificación |
+|---|---:|:---:|---|
+| Medellín está en Colombia | $P_1$ | $V$ | Coincide con la realidad geográfica. |
+| Medellín está en Brasil   | $P_2$ | $F$ | No coincide con la realidad. |
 
-Una **proposición** es verdadera o falsa dependiendo de si describe correctamente la realidad. La verdad está relacionada con los hechos, la evidencia empírica o el contexto del mundo real.
+> En otras palabras, la **verdad** está relacionada con el **contenido** del enunciado respondiendo, dentro de un contexto, a la pregunta  
+**¿Coincide lo que afirma la proposición con los hechos (o el modelo) considerado?**
 
-Por ejemplo, la proposición *“el mayordomo es cómplice”* puede ser verdadera o falsa dentro de la historia, pero ese no es el aspecto que analiza la lógica.
+#### Sobre la validez
 
-#### Un argumento puede ser válido aunque sus premisas sean falsas
+A diferencia de la **verdad** que esta relacionada las proposiciones, la **validez** tiene que ver con el argumento. Mas exactamente, la **validez** es una propiedad de los argumentos que depende exclusivamente de su forma lógica y no de su contenido específico (contexto).
 
-Este punto suele resultar contraintuitivo, pero es fundamental.
+Previamente habiamos dicho que desde el punto de vista de la logica, un argumento esta compuesto por premisas y conclusión. En lo que respecta a la validez como propiedad, un argumento se considera valido si, y solo si, es imposible que su conclusión sea falsa dado que todas sus premisas sean verdaderas. 
 
-Considere el siguiente argumento:
+**Ejemplos**
 
-- Si la luna es de queso, entonces París está en Colombia.
-- La luna es de queso.
-- Por lo tanto, París está en Colombia.
+Los siguientes ejemplos buscan aclarar el concepto de **validez**.
 
-Este argumento es **lógicamente válido**, porque la conclusión se sigue correctamente de las premisas. Sin embargo, es **incorrecto desde el punto de vista factual**, porque sus premisas son falsas.
+1. En el argumento mostrado a continuación, la **forma** es válida (Modus Ponens). Además, en el contexto cotidiano, sus premisas y conclusión suelen ser verdaderas.
+
+  $$
+  \begin{array}{l}
+  \text{Si llueve, la calle se moja.}\\
+  \text{Llueve.}\\ \hline
+  \therefore\ \text{La calle se moja.}
+  \end{array}
+  $$
+
+  Del argumento anterior, se puede deducir a partir de los hechos que nos dan que cuando hay lluvia la calle se moja.
+
+2. En el siguiente argumento notese que teniendo en cuenta el contexto (nuestro conocimiento real sobre la luna y los ratones), las premisas son falsas. Sin embargo, la validez no exige que las premisas sean reales, sino que el argumento esta bien construido (tiene una estructura correca) lo cual se cumple en el ejemplo:
+  
+  $$
+  \begin{array}{l}
+  \text{Si la Luna es de queso, entonces hay ratones astronautas.}\\
+  \text{La Luna es de queso.}\\ \hline
+  \therefore\ \text{Hay ratones astronautas.}
+  \end{array}
+  $$
+  
+  Si aceptamos que las premisas son ciertas, vemos que *la forma* en que se infiere a la conclusión es correcta por lo tanto el argumento es **valido** aunque desde la realidad, lo que aqui se dice sea un disparate.
+
+  {: tip. }
+  > **Validez** no significa que lo que dices sea verdad en la vida real. Significa que, si aceptamos las premisas (aunque sean locas), la conclusión es inevitable.
+
+3. El siguiente argumento es **invalido** y es una tipo de falacia conocida **afirmar el consecuente**.
+  
+  $$
+  \begin{array}{l}
+  \text{Si estudio, apruebo.}\\
+  \text{Apruebo.}\\ \hline
+  \therefore\ \text{Estudio.}
+  \end{array}
+  $$
+
+  En este caso llegar a la coclusión de que *estudie* para lograr el resultado de *apruebar* no es clara; de hecho hay otras formas de haber *aprobado* sin haber *estudiado* (causa) que pueden ser tenidas en cuenta: hacer trampa, el examen estaba muy facil, etc. Note que la estructura del argumento da lugar a probar las otros posibles antecedentes que hagan que el consecuente sea falso, de modo que reducir la conclusión a solo *estudiar*, como se muestra en el ejemplo, no es valido.
+
+  {: tip. }
+  > La falacia de **afirmar el consecuente** consiste en ver el resultado y asumir erróneamente que solo hay una causa posible, ignorando que muchas otras cosas podrían haber provocado ese mismo resultado.
+  
+Según lo anterior, podemos concluir que:
+- **Validez** no es lo mismo que **verdad**
+- La lógica se ocupa principalmente de evaluar la **validez de los razonamientos**, no de verificar hechos.
+
+Para construir algumentos validos se utilizan **reglas de inferencia**, mediante estas, es como construimos el camino para llegar de manera logica a una concluión a partir de las premidas.
+
+### Reglas de inferencia
+
+Recordemos que un argumento es un tipo de razonamiento compuesto por unas premisas y una conclusion y que la relacion entre estas puede ser valida o invalida como se mostro previamente, sin embargo, teniendo en cuenta que la relacion de validez depende de la estructura del argumento. ¿Como podemos saber si un argumento es valido o no de una manera mas formal?, ¿existe algun tipo de reglas y metodos similares a las que empleamos para demostrar equivalencia que podamos usar?
+
+Pues bien, nuestro objetivo en esta sección es tratar de responder a estas preguntas. 
+
+| Nombre | Regla (Forma Visual) | Descripción Intuitiva |
+| :--- | :---: | :--- |
+| **Modus Ponens (MP)** | $\begin{array}{@{}l@{}} p \to q \\\\ p \\\\ \hline \therefore\ q \end{array}$ | Si tienes el ticket ($p$), pasas ($q$). Tienes el ticket. Por tanto, pasas. |
+| **Modus Tollens (MT)** | $\begin{array}{@{}l@{}} p \to q \\\\ \neg q \\\\ \hline \therefore\ \neg p \end{array}$ | Si llueve, el suelo se moja. El suelo NO está mojado. Por tanto, NO llovió. |
+| **Silogismo Hipotético (SH)** | $\begin{array}{@{}l@{}} p \to q \\\\ q \to r \\\\ \hline \therefore\ p \to r \end{array}$ | Transitividad (cadena de consecuencias). |
+| **Silogismo Disyuntivo (SD)** | $\begin{array}{@{}l@{}} p \lor q \\\\ \neg p \\\\ \hline \therefore\ q \end{array}$ | Es A o B. No es A. Entonces tiene que ser B. |
+| **Simplificación (Simp)** | $\begin{array}{@{}l@{}} p \land q \\\\ \hline \therefore\ p \end{array}$ | Si tienes manzanas y peras, seguro tienes manzanas. |
+| **Adición (Ad)** | $\begin{array}{@{}l@{}} p \\\\ \hline \therefore\ p \lor q \end{array}$ | Si $p$ es verdad, “$p$ o lo que sea” también es verdad. |
+| **Conjunción (Conj)** | $\begin{array}{@{}l@{}} p \\\\ q \\\\ \hline \therefore\ p \land q \end{array}$ | Puedes unir dos verdades con una “y”. |
+
+
+
+
+
+
+
+
 
 Esto muestra que:
 - **validez no es lo mismo que verdad**, y
