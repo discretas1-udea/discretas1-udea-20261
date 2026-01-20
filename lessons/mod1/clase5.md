@@ -279,7 +279,8 @@ Por ejemplo, usando conocimiento básico de geografía (donde \(V\) = verdadero 
 
 #### Sobre la validez
 
-A diferencia de la **verdad** que esta relacionada las proposiciones, la **validez** tiene que ver con el argumento. Mas exactamente, la **validez** es una propiedad de los argumentos que depende exclusivamente de su forma lógica y no de su contenido específico (contexto).
+A diferencia de la **verdad**, que está relacionada con las proposiciones, la **validez** tiene que ver con los argumentos. Más exactamente, la **validez** es una propiedad de los argumentos que depende exclusivamente de su forma lógica y no de su contenido específico (contexto).
+
 
 Previamente habiamos dicho que desde el punto de vista de la logica, un argumento esta compuesto por premisas y conclusión. En lo que respecta a la validez como propiedad, un argumento se considera valido si, y solo si, es imposible que su conclusión sea falsa dado que todas sus premisas sean verdaderas. 
 
@@ -311,7 +312,7 @@ Los siguientes ejemplos buscan aclarar el concepto de **validez**.
   
   Si aceptamos que las premisas son ciertas, vemos que *la forma* en que se infiere a la conclusión es correcta por lo tanto el argumento es **valido** aunque desde la realidad, lo que aqui se dice sea un disparate.
 
-  {: tip. }
+  {: .tip }
   > **Validez** no significa que lo que dices sea verdad en la vida real. Significa que, si aceptamos las premisas (aunque sean locas), la conclusión es inevitable.
 
 3. El siguiente argumento es **invalido** y es una tipo de falacia conocida **afirmar el consecuente**.
@@ -326,7 +327,7 @@ Los siguientes ejemplos buscan aclarar el concepto de **validez**.
 
   En este caso llegar a la coclusión de que *estudie* para lograr el resultado de *apruebar* no es clara; de hecho hay otras formas de haber *aprobado* sin haber *estudiado* (causa) que pueden ser tenidas en cuenta: hacer trampa, el examen estaba muy facil, etc. Note que la estructura del argumento da lugar a probar las otros posibles antecedentes que hagan que el consecuente sea falso, de modo que reducir la conclusión a solo *estudiar*, como se muestra en el ejemplo, no es valido.
 
-  {: tip. }
+  {: .tip }
   > La falacia de **afirmar el consecuente** consiste en ver el resultado y asumir erróneamente que solo hay una causa posible, ignorando que muchas otras cosas podrían haber provocado ese mismo resultado.
   
 Según lo anterior, podemos concluir que:
@@ -335,11 +336,127 @@ Según lo anterior, podemos concluir que:
 
 Para construir algumentos validos se utilizan **reglas de inferencia**, mediante estas, es como construimos el camino para llegar de manera logica a una concluión a partir de las premidas.
 
-### Reglas de inferencia
+## Reglas de inferencia
 
-Recordemos que un argumento es un tipo de razonamiento compuesto por unas premisas y una conclusion y que la relacion entre estas puede ser valida o invalida como se mostro previamente, sin embargo, teniendo en cuenta que la relacion de validez depende de la estructura del argumento. ¿Como podemos saber si un argumento es valido o no de una manera mas formal?, ¿existe algun tipo de reglas y metodos similares a las que empleamos para demostrar equivalencia que podamos usar?
+Recordemos que un **argumento** es un razonamiento compuesto por unas **premisas** y una **conclusión**, y que la relación entre ellas puede ser **válida** o **inválida**. Como vimos, la validez depende de la forma lógica del argumento, no del contenido.
 
-Pues bien, nuestro objetivo en esta sección es tratar de responder a estas preguntas. 
+Esto abre preguntas naturales:
+- Si un argumento es "válido por su estructura", **¿cómo podemos verificar esa validez de manera formal?**
+- **¿Existe un procedimiento sistemático** (no solo intuición) para decidir si las premisas obligan a la conclusión?
+- Así como para la equivalencia lógica usamos métodos mecánicos (por ejemplo, tablas de verdad o transformaciones), **¿qué métodos existen para validar argumentos?**
+- Y cuando el argumento tiene muchas variables (y la tabla de verdad se vuelve enorme), **¿cómo razonamos paso a paso sin perdernos?**
+
+El objetivo de esta sección es responder estas preguntas de forma progresiva: primero veremos un método **semántico** (validación con tablas de verdad) y luego un método **sintáctico** (prueba formal), donde cada paso se justifica mediante **reglas de inferencia**.
+
+### Validación por fuerza bruta (enfoque basado en modelos o tablas de verdad)
+
+Hasta aquí ya sabemos **qué** es un argumento (premisas + conclusión) y **qué** significa que sea válido (no depende del contenido, sino de la forma). La pregunta ahora es:
+
+**¿Cómo determinamos formalmente si un argumento es válido o inválido?**
+
+La primera respuesta es un método directo, mecánico y sin ambigüedades: **las tablas de verdad**.  
+A este enfoque lo llamaremos **fuerza bruta**, porque revisa sistemáticamente *todos* los casos posibles.
+
+Recordemos la forma formal de un argumento esta dada por:
+
+$$
+\begin{array}{l}
+P_1 \\
+P_2 \\
+\vdots \\
+P_n \\
+\hline
+\therefore\ Q
+\end{array}
+$$
+
+Teniendo en cuenta que *un argumento es válido si no existe ningún escenario donde las premisas sean verdaderas y la conclusión falsa*, podemos construir una tabla de verdad para la implicación asociada al argumento para evaluarlo mediante la siguiente expresión:
+
+$$
+(P_1 \land P_2 \land \dots \land P_n) \to Q
+$$
+
+Para determinar si un argumento es valido, una vez que la tabla ha sido construida para todos valores de entrada posibles, debemos restringir el analisis a los **renglones criticos**. Un reglon critico, es una fila de la tabla en la cual todas las premisas $P_1, P_2,\dots, P_n$ son verdaderas simultaneamende. La valides dependiende del valor de la conclusión para los renglones criticos de tal manera que el argumento es:
+* **Valido**: si para todos los valores de los renglones criticos la conclusión es verdadera.
+* **Invalido**: Si existe al menos un renglón crítico donde la conclusión sea falsa.
+
+El problema de usar tabla de verdad para demostrar la validez (al igual que con las equivalencias) es la **escalabilidad** pues a mas variables proposicionales ($n$) mayor numero de filas ($2^n$) lo cual es impractico para mas de 5 variables en terminos de eficiencia.
+
+{: .note }
+> En las tablas de verdad usaremos la codificación: **1 = Verdadero** y **0 = Falso**.
+
+
+#### Ejemplo
+{: .no_toc }
+
+Retomemos nuevamente al **Caso del Zafiro Desaparecido** cuyo argumento expresado en lenguaje formal era el siguiente:
+
+$$
+\begin{array}{l}
+p \rightarrow q \\
+\neg q \\
+p \lor r \\
+r \rightarrow s \\
+\hline
+\therefore\ s
+\end{array}
+$$
+
+Para evaluar la validez por fuerza bruta, seguimos los siguientes pasos:
+1. **Identificar las proposiciones atómicas del argumento**: En este caso que estas son $p, q, r$ y $s$.
+2. **Construir la tabla de verdad con todas las combinaciones posibles**: El numero de variables es $n = 4$ de modo combinaciones posible es $filas = 2^n = 2 ^ 4 = 16$:
+   
+    | # | $p$ | $q$ | $r$ | $s$ | $p \to q$ | $\neg q$ | $p \lor r$ | $r \to s$ | Premisas <br> $(p \to q)\land(\neg q)\land(p \lor r)\land(r \to s)$ | Conclusión <br> $s$ |
+    |---:|---:|---:|---:|---:|---:|---:|---:|---:|:---:|:---:|
+    | 1  | 0 | 0 | 0 | 0 |  |  |  |  |  |  |
+    | 2  | 0 | 0 | 0 | 1 |  |  |  |  |  |  |
+    | 3  | 0 | 0 | 1 | 0 |  |  |  |  |  |  |
+    | 4  | 0 | 0 | 1 | 1 |  |  |  |  |  |  |
+    | 5  | 0 | 1 | 0 | 0 |  |  |  |  |  |  |
+    | 6  | 0 | 1 | 0 | 1 |  |  |  |  |  |  |
+    | 7  | 0 | 1 | 1 | 0 |  |  |  |  |  |  |
+    | 8  | 0 | 1 | 1 | 1 |  |  |  |  |  |  |
+    | 9  | 1 | 0 | 0 | 0 |  |  |  |  |  |  |
+    | 10 | 1 | 0 | 0 | 1 |  |  |  |  |  |  |
+    | 11 | 1 | 0 | 1 | 0 |  |  |  |  |  |  |
+    | 12 | 1 | 0 | 1 | 1 |  |  |  |  |  |  |
+    | 13 | 1 | 1 | 0 | 0 |  |  |  |  |  |  |
+    | 14 | 1 | 1 | 0 | 1 |  |  |  |  |  |  |
+    | 15 | 1 | 1 | 1 | 0 |  |  |  |  |  |  |
+    | 16 | 1 | 1 | 1 | 1 |  |  |  |  |  |  |
+    
+    
+3. **Calcular el valor de cada premisa y de la conclusión en cada fila**:
+   
+    | # | $p$ | $q$ | $r$ | $s$ | $p \to q$ | $\neg q$ | $p \lor r$ | $r \to s$ | Premisas <br> $(p \to q)\land(\neg q)\land(p \lor r)\land(r \to s)$ | Conclusión <br> $s$ |
+    |---:|---:|---:|---:|---:|---:|---:|---:|---:|:---:|:---:|
+    | 1  | 0 | 0 | 0 | 0 | 1 | 1 | 0 | 1 | 0 | 0 |
+    | 2  | 0 | 0 | 0 | 1 | 1 | 1 | 0 | 1 | 0 | 1 |
+    | 3  | 0 | 0 | 1 | 0 | 1 | 1 | 1 | 0 | 0 | 0 |
+    | **4**  | **0** | **0** | **1** | **1** | **1** | **1** | **1** | **1** | **1** | **1** |
+    | 5  | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 |
+    | 6  | 0 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 0 | 1 |
+    | 7  | 0 | 1 | 1 | 0 | 1 | 0 | 1 | 0 | 0 | 0 |
+    | 8  | 0 | 1 | 1 | 1 | 1 | 0 | 1 | 1 | 0 | 1 |
+    | 9  | 1 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 0 | 0 |
+    | 10 | 1 | 0 | 0 | 1 | 0 | 1 | 1 | 1 | 0 | 1 |
+    | 11 | 1 | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | 0 |
+    | 12 | 1 | 0 | 1 | 1 | 0 | 1 | 1 | 1 | 0 | 1 |
+    | 13 | 1 | 1 | 0 | 0 | 1 | 0 | 1 | 1 | 0 | 0 |
+    | 14 | 1 | 1 | 0 | 1 | 1 | 0 | 1 | 1 | 0 | 1 |
+    | 15 | 1 | 1 | 1 | 0 | 1 | 0 | 1 | 0 | 0 | 0 |
+    | 16 | 1 | 1 | 1 | 1 | 1 | 0 | 1 | 1 | 0 | 1 |
+
+4. **Inspeccionar los renglones críticos para determinar la validez del argumento**: En la tabla anterior, la única fila donde la columna **Premisas** vale **1** es la **fila 4** (es decir, todas las premisas son verdaderas simultáneamente). En esa misma fila, la conclusión también vale **1** (es decir, $s$ es verdadera).  
+
+   Por lo tanto, **no existe** un renglón crítico con premisas verdaderas y conclusión falsa, y el argumento es **válido**.  
+   
+   En términos del caso, Sherlock Holmes concluye que **“el mayordomo es cómplice”**.
+
+En conclusión, validar con tablas de verdad consiste en evaluar **todos** los escenarios posibles para verificar que **no existe** ninguno en el que las premisas se cumplan y la conclusión falle. Por eso decimos que este método **no apela a la intuición**, sino a un criterio **formal, mecánico y verificable**.
+
+---
+
 
 | Nombre | Regla (Forma Visual) | Descripción Intuitiva |
 | :--- | :---: | :--- |
@@ -351,6 +468,99 @@ Pues bien, nuestro objetivo en esta sección es tratar de responder a estas preg
 | **Adición (Ad)** | $\begin{array}{@{}l@{}} p \\\\ \hline \therefore\ p \lor q \end{array}$ | Si $p$ es verdad, “$p$ o lo que sea” también es verdad. |
 | **Conjunción (Conj)** | $\begin{array}{@{}l@{}} p \\\\ q \\\\ \hline \therefore\ p \land q \end{array}$ | Puedes unir dos verdades con una “y”. |
 
+----
+
+## ChatGPT
+
+Recordemos que un **argumento** es un razonamiento compuesto por **premisas** y una **conclusión**, y que la relación entre ellas puede ser **válida** o **inválida**. Como vimos, la validez depende de la **forma lógica** del argumento, no del contenido.
+
+Esto abre preguntas naturales:
+
+- Si un argumento es “válido por su estructura”, **¿cómo podemos verificar esa validez de manera formal?**
+- **¿Existe un procedimiento sistemático** (no solo intuición) para decidir si las premisas obligan a la conclusión?
+- Así como para la equivalencia lógica usamos métodos mecánicos (por ejemplo, tablas de verdad o transformaciones), **¿qué métodos existen para validar argumentos?**
+- Y cuando el argumento tiene muchas variables (y la tabla de verdad se vuelve enorme), **¿cómo razonamos paso a paso sin perdernos?**
+
+El objetivo de esta sección es responder estas preguntas de forma progresiva: primero veremos un método **semántico** (validación con tablas de verdad) y luego un método **sintáctico** (prueba formal), donde cada paso se justifica mediante **reglas de inferencia**.
+
+
+----
+
+## GEMINI
+
+Existen, fundamentalmente, dos caminos para responder a estas inquietudes: el camino de la **fuerza bruta** (semántico) y el camino de la **deducción formal** (sintáctico).
+
+### Enfoque 1: Fuerza Bruta (Tablas de Verdad)
+
+Tal como vimos en la diapositiva de repaso, la validez se define rigurosamente: *un argumento es válido si no existe ningún escenario donde las premisas sean verdaderas y la conclusión falsa*.
+
+Por lo tanto, para validar un argumento de la forma $P_1, P_2, \dots, P_n \therefore C$, podemos construir una tabla de verdad para la implicación gigante:
+
+$$(P_1 \land P_2 \land \dots \land P_n) \to C$$
+
+* Si el resultado es una **Tautología** (todo $V$), el argumento es **Válido**.
+* Si aparece al menos un $F$, el argumento es **Inválido**.
+
+**El problema:** Al igual que con las equivalencias, este método no es escalable. Si nuestro argumento tiene 5 variables proposicionales, tendríamos que analizar 32 filas. Necesitamos algo más eficiente.
+
+### Enfoque 2: Reglas de Inferencia (Deducción Natural)
+
+Aquí entra la respuesta a su segunda pregunta. Al igual que en el álgebra usamos reglas como "lo que está sumando pasa a restar" para no probar números al azar, en lógica utilizamos **Reglas de Inferencia**.
+
+Estas reglas son "moldes" o esquemas de argumentos simples que ya han sido demostrados como válidos (son tautologías fundamentales). Si nuestro razonamiento complejo se puede descomponer en pasos que encajan en estos moldes, entonces la validez está garantizada por la forma.
+
+#### Notación Estándar
+
+Antes de ver las reglas, entendamos la notación vertical que usaremos:
+
+$$
+\begin{array}{l}
+P_1 \\
+P_2 \\
+\vdots \\
+\hline
+\therefore\ C
+\end{array}
+$$
+
+* **Arriba de la línea:** Las Premisas (lo que sabemos o asumimos como cierto).
+* **La línea horizontal:** Significa "por lo tanto" o "se deduce que".
+* **Abajo ($\therefore C$):** La Conclusión (el nuevo conocimiento que generamos).
+
+#### Catálogo de Reglas de Inferencia
+
+A continuación, presentamos las reglas esenciales aceptadas en la lógica clásica. Estas son las herramientas que usaremos para construir demostraciones paso a paso.
+
+| Nombre | Regla (Forma Visual) | Descripción Intuitiva |
+| :--- | :---: | :--- |
+| **Modus Ponens (MP)** | $\begin{array}{l} p \to q \\\\ p \\\\ \hline \therefore\ q \end{array}$ | **Afirmando el antecedente:** Si tienes el ticket ($p$), entras ($q$). Tienes el ticket. Por tanto, entras. |
+| **Modus Tollens (MT)** | $\begin{array}{l} p \to q \\\\ \neg q \\\\ \hline \therefore\ \neg p \end{array}$ | **Negando el consecuente:** Si llueve, hay nubes. No hay nubes. Por tanto, no llueve. |
+| **Silogismo Hipotético (SH)** | $\begin{array}{l} p \to q \\\\ q \to r \\\\ \hline \therefore\ p \to r \end{array}$ | **La Cadena:** Transitividad de la implicación. Si A lleva a B, y B lleva a C, entonces A lleva a C. |
+| **Silogismo Disyuntivo (SD)** | $\begin{array}{l} p \lor q \\\\ \neg p \\\\ \hline \therefore\ q \end{array}$ | **Descarte:** Es A o B. Sabemos que no es A. Entonces, obligatoriamente es B. |
+| **Simplificación (Simp)** | $\begin{array}{l} p \land q \\\\ \hline \therefore\ p \end{array}$ | **Extracción:** Si tienes "pan y vino", seguro tienes "pan". |
+| **Adición (Ad)** | $\begin{array}{l} p \\\\ \hline \therefore\ p \lor q \end{array}$ | **Generalización:** Si $p$ es verdad, "$p$ o lo que sea" también es verdad (la disyunción es inclusiva). |
+| **Conjunción (Conj)** | $\begin{array}{l} p \\\\ q \\\\ \hline \therefore\ p \land q \end{array}$ | **Fusión:** Si tienes dos verdades por separado, puedes unirlas con una "y". |
+
+---
+
+### Un detalle crucial: Validez vs. Solidez
+
+Para cerrar esta sección teórica, debemos hacer una distinción fina que suele aparecer en contextos de debate y ciencia (mencionada en las diapositivas del curso).
+
+Un argumento puede ser matemáticamente perfecto (**Válido**), pero estar basado en mentiras.
+
+* **Argumento Válido:** La estructura es correcta. Si las premisas fueran verdad, la conclusión también lo sería.
+* **Argumento Sólido (Sound):** Es un argumento Válido **Y ADEMÁS** sus premisas son verdaderas en la realidad.
+
+{: .info }
+> **Ejemplo de Validez sin Solidez:**
+> 1.  Si soy humano, puedo volar. (Premisa Falsa)
+> 2.  Soy humano. (Premisa Verdadera)
+> 3.  $\therefore$ Puedo volar.
+>
+> Este argumento es **VÁLIDO** (aplica Modus Ponens perfectamente), pero **NO ES SÓLIDO** (la conclusión es falsa porque la primera premisa es falsa).
+>
+> **En este curso nos centraremos casi exclusivamente en la VALIDEZ (la estructura lógica).**
 
 
 
