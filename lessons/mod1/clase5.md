@@ -565,145 +565,125 @@ Por tanto, el argumento es **válido**.
 {: .note }
 > Observe que esta demostración evita construir la tabla de verdad completa: en lugar de revisar $2^n$ escenarios, construimos una cadena corta de pasos justificados.
 
-## Dos caminos para una misma garantía
+## Ejemplos de repaso
 
-| Enfoque | ¿Qué hace? | ¿Qué intenta encontrar? | Resultado típico |
-|---|---|---|---|
-| **Tablas (modelos)** | Explora escenarios | Un **contraejemplo** | Si lo encuentra ⇒ inválido |
-| **Reglas (derivación)** | Encadena pasos válidos | Una **prueba** hacia $C$ | Si la construye ⇒ válido |
+1. Dado el siguiente argumento:
+   
+    $$
+    \begin{array}{l}
+    p \rightarrow q \lor r \\
+    q \rightarrow p \land r \\
+    \hline
+    \therefore\ p \rightarrow r
+    \end{array}
+    $$
+    
+    Determine la validez empleando el metodo basado en modelos (tablas de verdad).
 
----
+2. Empleando el enfoque axiomatico, demuestre que el siguiente argumendo es valido:
 
-## 4.5 De argumento a una sola fórmula (el puente con Clase 04)
-{: .no_toc }
+    $$
+    \bigl[p \land (p \to q) \land (s \lor r) \land (r \to \neg q)\bigr] \to (s \lor t)
+    $$   
 
-En Clase 04 trabajamos con equivalencias del tipo $P \equiv Q$ (reescritura sin cambiar significado).
-Hoy vamos a usar esa misma idea para transformar un **argumento** en una **fórmula única**.
+3. Demuestre que el siguiente argumento lógico es valido:
+   
+   $$
+   \begin{array}{l}
+   (\neg p \lor q) \to r \\
+   r \to (s \lor t) \\
+   \neg s \land \neg u \\
+   \neg u \to \neg t \\
+   \hline
+   \therefore\ p
+   \end{array}
+   $$
 
-Sea un argumento con premisas $P_1, P_2, \dots, P_n$ y conclusión $C$:
+**Solución**:
 
-$$
-P_1,\ P_2,\ \dots,\ P_n \ \therefore\ C
-$$
+1. Recordemos el argumento sobre el cual debemos demostrar validez:
+   
+    $$
+    \begin{array}{l}
+    p \rightarrow q \lor \neg r \\
+    q \rightarrow p \land r \\
+    \hline
+    \therefore\ p \rightarrow r
+    \end{array}
+    $$
+   
+    **Solución empleando tablas de verdad**:
+   
+    | # | $p$ | $q$ | $r$ | $\neg r$ | $q \lor \neg r$ | $p \to (q \lor \neg r)$ | $p \land r$ | $q \to (p \land r)$ | Premisas <br> $(p \to (q \lor \neg r))\land(q \to (p \land r))$ | Conclusión <br> $p \to r$ |
+    |---:|---:|---:|---:|---:|---:|---:|---:|---:|:---:|:---:|
+    | **1** | **0** | **0** | **0** | **1** | **1** | **1** | **0** | **1** | **1** | **1** |
+    | **2** | **0** | **0** | **1** | **0** | **0** | **1** | **0** | **1** | **1** | **1** |
+    | 3 | 0 | 1 | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 1 |
+    | 4 | 0 | 1 | 1 | 0 | 1 | 1 | 0 | 0 | 0 | 1 |
+    | **5** | **1** | **0** | **0** | **1** | **1** | **1** | **0** | **1** | **1** | **0** |
+    | 6 | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 1 | 0 | 1 |
+    | 7 | 1 | 1 | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 0 |
+    | **8** | **1** | **1** | **1** | **0** | **1** | **1** | **1** | **1** | **1** | **1** |
+     
+     > **Conclusión**: el argumento es **inválido**, porque existe un renglón crítico para el cual las premisas arrojan una conclución cuyo valor es falso (fila 5).
 
-### Forma 1: Condicional del argumento
+2. Para resolver este ejercicio primero expresemos el argumento en notación estandar:
+   
+   $$
+   \begin{array}{l}
+   p\\
+   p \to q\\
+   s \lor r\\
+   r \to \neg q\\
+   \hline
+   \therefore\ s \lor t
+   \end{array}
+   $$
+   
+   A continuación se demuestra la validez del argumento mediante el uso de reglas de inferencia:
 
-Agrupamos premisas con $\land$ y construimos un condicional:
+   | Paso | Proposición | Justificación |
+   | :---: | :--- | :--- |
+   | **1** | $p$ | Premisa |
+   | **2** | $p \to q$ | Premisa |
+   | **3** | $s \lor r$ | Premisa |
+   | **4** | $r \to \neg q$ | Premisa |
+   | **5** | **$q$** | **Modus Ponens** en 1 y 2. |
+   | **6** | **$\neg r$** | **Modus Tollens** en 4 y 5. |
+   | **7** | **$s$** | **Silogismo Disyuntivo** en 3 y 6. |
+   | **8** | **$s \lor t$** | **Adición** en 7. |
 
-$$
-(P_1 \land P_2 \land \cdots \land P_n) \to C
-$$
+3. Recordemos nuevamente el argumento a demostrar:
 
-**Criterio:**  
-El argumento es **válido** si y solo si esa fórmula es una **tautología**.
+   $$
+   \begin{array}{l}
+   (\neg p \lor q) \to r \\
+   r \to (s \lor t) \\
+   \neg s \land \neg u \\
+   \neg u \to \neg t \\
+   \hline
+   \therefore\ p
+   \end{array}
+   $$
 
-> Intuición: si todas las premisas son verdaderas, entonces la conclusión no puede fallar.
+   A continuación, se muestra el procedimiento de deducción logica paso a paso:
 
-### Forma 2: Búsqueda de contraejemplo (fila crítica)
-
-La forma anterior se conecta con el método de tablas así:
-
-- Una **fila crítica** es una fila donde $(P_1 \land \cdots \land P_n)=V$.
-- Un **contraejemplo** ocurre si además $C=F$.
-- Equivalentemente, un contraejemplo es una fila donde
-  $(P_1 \land \cdots \land P_n)\to C = F$.
-
-**Chequeo rápido:**  
-¿Cuándo un condicional $A \to B$ es falso?  
-*(Respuesta esperada: cuando $A=V$ y $B=F$.)*
-
----
-
-## 5. Ruta A: Validez con tablas (enfoque basado en modelos)
-
-### Procedimiento (búsqueda de fila crítica)
-
-1. Identifique las variables atómicas.
-2. Construya la tabla (o columnas mínimas necesarias).
-3. Evalúe premisas y conclusión.
-4. Marque filas críticas: $(P_1 \land \cdots \land P_n)=V$.
-5. Si alguna fila crítica tiene $C=F$, hay contraejemplo ⇒ argumento inválido.
-
----
-
-## 6. Ruta B: Validez con reglas (enfoque sintáctico)
-
-### Plantilla de demostración (estándar)
-
-| Línea | Enunciado | Regla | Referencias |
-|---:|---|---|---|
-| 1 | (premisa) | Premisa | — |
-| 2 | (premisa) | Premisa | — |
-| ... | ... | ... | ... |
-| k | $C$ | (regla) | (líneas usadas) |
-
-> Idea clave: si cada paso es correcto, toda la cadena lo es.
-
----
-
-## 7. Kit mínimo de reglas de inferencia (las más productivas)
-
-| Regla | Esquema |
-|---|---|
-| Modus Ponens (MP) | $p \to q,\ p \ \therefore q$ |
-| Modus Tollens (MT) | $p \to q,\ \neg q \ \therefore \neg p$ |
-| Silogismo disyuntivo (SD) | $p \lor q,\ \neg p\ \therefore q$ |
-| Simplificación (Simp) | $p \land q\ \therefore p$ |
-| Conjunción (Conj) | $p,\ q\ \therefore p \land q$ |
-
----
-
-## 8. Un mismo argumento, dos métodos (comparación directa)
-
-Usaremos este argumento:
-
-1. $p \lor q$
-2. $\neg p$
-∴ $q$
-
-### 8.1 Método A: tablas (buscando contraejemplo)
-
-**Pregunta guía:**  
-¿Puede existir un escenario donde $(p \lor q)=V$ y $\neg p=V$, pero $q=F$?
-
-- Si $q=F$, para que $(p \lor q)=V$ tendría que ocurrir $p=V$.
-- Pero $\neg p=V$ exige $p=F$.
-
-Contradicción en el escenario: no puede existir ese caso.  
-**No hay contraejemplo ⇒ el argumento es válido.**
-
-*(En clase puedes mostrar la mini-tabla de 2 variables solo para confirmar.)*
-
-### 8.2 Método B: derivación (reglas)
-
-| Línea | Enunciado | Regla | Referencias |
-|---:|---|---|---|
-| 1 | $p \lor q$ | Premisa | — |
-| 2 | $\neg p$ | Premisa | — |
-| 3 | $q$ | SD | (1,2) |
-
-**Conclusión:** el argumento es válido (hay derivación).
-
----
-
-## 9. Conclusiones prácticas: ¿cuándo usar cada enfoque?
-- **Tablas**: pocas variables, quiero detectar contraejemplos rápido.
-- **Derivación**: muchas variables, quiero una prueba formal clara.
-- **Equivalencias (Clase 04)**: me ayudan a *reescribir* premisas/conclusión para que el argumento sea más manejable.
-
----
-
-## 10. Puente a la Clase 06: demostración directa
-Hoy demostramos **validez de argumentos**.
-
-En la **Clase 06** cambia el objeto:
-- ya no probaremos “premisas ⇒ conclusión”,
-- sino **enunciados matemáticos** del tipo “Si ..., entonces ...”.
-
-La herramienta mental que se mantiene es:
-
-> Una demostración es una secuencia de pasos justificados.  
-> En la demostración directa, partimos de las **hipótesis** y llegamos a la **tesis**.
+   | Paso | Proposición | Justificación |
+   | :---: | :--- | :--- |
+   | **1** | $(\neg p \lor q) \to r$ | Premisa |
+   | **2** | $r \to (s \lor t)$ | Premisa |
+   | **3** | $\neg s \land \neg u$ | Premisa |
+   | **4** | $\neg u \to \neg t$ | Premisa |
+   | **5** | **$\neg u$** | **Simplificación** en 3. |
+   | **6** | **$\neg t$** | **Modus Ponens** en 4 y 5. |
+   | **7** | **$\neg s$** | **Simplificación** en 3. |
+   | **8** | **$\neg s \land \neg t$** | **Conjunción** en 7 y 6. |
+   | **9** | **$\neg (s \lor t)$** | **Ley de De Morgan** en 8. |
+   | **10** | **$\neg r$** | **Modus Tollens** en 2 y 9. |
+   | **11** | **$\neg (\neg p \lor q)$** | **Modus Tollens** en 1 y 10. |   
+   | **12** | **$\neg( \neg p) \land \neg q$** | **Ley de De Morgan** en 11. |
+   | **13** | **$p \land \neg q$** | **Doble negación** en 12. |
+   | **14** | **$p$** | **Simplificación** en 13. |   
 
 ---
 
