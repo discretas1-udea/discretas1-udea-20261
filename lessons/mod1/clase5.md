@@ -10,41 +10,11 @@ math: mathjax
 # Clase 05 – Validez e Inferencia: Tablas (Modelos) vs Reglas (Derivación)
 {: .no_toc }
 
-**ESTAS SON LAS NOTAS DE CLASE ORIGINALES**
-
 En la clase anterior aprendimos a simplificar expresiones usando axiomas de equivalencia ($A \equiv B$). Hoy daremos un paso más allá: no solo queremos saber si dos cosas son iguales, queremos saber si **una conclusión se sigue necesariamente de unas premisas**.
 
 Entramos al corazón de la lógica matemática: la **Argumentación**.
 
-
-## Hook: En seguridad, “casi siempre” es lo mismo que “inseguro”
-{: .no_toc }
-
-En ciberseguridad no existe la frase “es seguro en el 99% de los casos”.  
-Si existe **un solo escenario** en el que un atacante entra, el sistema es vulnerable.
-
-Ese es exactamente el corazón de la **validez** en lógica:
-
-- Un argumento es **inválido** si existe **un solo caso** donde las premisas son verdaderas y la conclusión es falsa.
-- Un argumento es **válido** si **no existe** ese caso.
-
-> Hoy veremos dos formas de manejar esa garantía:
-> - **Tablas/modelos:** buscar sistemáticamente ese “caso atacante” (contraejemplo).
-> - **Reglas de inferencia:** construir una prueba paso a paso donde la conclusión queda asegurada.
-
 ---
-
-## Objetivos de la clase
-{: .no_toc }
-
-Al finalizar esta sesión usted será capaz de:
-
-1. Distinguir **verdad**, **tautología** y **validez**.
-2. Formalizar un **argumento** (premisas/conclusión) en notación simbólica.
-3. Probar validez por dos rutas:
-   - (A) **Enfoque semántico:** tablas de verdad (modelos).
-   - (B) **Enfoque sintáctico:** reglas de inferencia (derivación).
-4. Comparar métodos y concluir **cuándo conviene usar cada uno**.
 
 ## Tabla de contenidos
 {: .no_toc .text-delta }
@@ -257,7 +227,72 @@ $$
 
 Una vez que el argumento ha sido planteado, el siguiente paso es determinar si este es **válido o no**. Esto se logra mediante un proceso de inferencia lógica, el cual permite establecer si la conclusión se deduce necesariamente de las premisas. En el caso de nuestra historia, ya hemos identificado los indicios y la conclusión esperada; sin embargo, aún no hemos explicado el **porqué**. Antes de demostrarlo, haremos una aclaración sumamente importante en la siguiente sección.
 
-**AGREGAR UNA SECCION DONDE SE MUESTREN OTRAS MANERAS DE REPRESENTAR EL ARGUMENTO**
+### Representación de Argumentos
+
+Una vez que hemos identificado las premisas y la conclusión en lenguaje natural, es fundamental organizarlas formalmente para evitar ambigüedades. En la lógica matemática y las ciencias de la computación, utilizamos tres notaciones estándar para representar argumentos.
+
+Es importante que se familiarice con ellas, ya que las usaremos indistintamente a lo largo del curso según el contexto (demostración manual, enunciado de examen o validación algorítmica).
+
+#### 1. Forma Estándar (Vertical)
+{: .no_toc }
+
+Es la notación clásica utilizada para realizar **demostraciones paso a paso**. Se listan las premisas numeradas una debajo de otra, se traza una línea horizontal (que representa la inferencia) y se escribe la conclusión al final.
+
+**Estructura:**
+
+$$
+\begin{array}{ll}
+P_1 \\
+P_2 \\
+\vdots \\
+P_n \\
+\hline
+\therefore & Q
+\end{array}
+$$
+
+* **$P_1, P_2, \dots, P_n$:** Son las premisas (hipótesis).
+* **Línea horizontal:** Delimita el fin de las premisas y el inicio de la deducción.
+* **$\therefore$**: Símbolo matemático que se lee *"Por lo tanto"*.
+* **$Q$:** Es la conclusión.
+
+#### 2. Forma Horizontal (Notación de Secuente)
+{: .no_toc }
+
+Esta notación es muy compacta y se utiliza frecuentemente en libros de texto o para enunciar problemas donde el espacio es limitado. Utiliza el símbolo **$\vdash$** (llamado *deductor* o *turnstile*) para separar el conjunto de premisas de la conclusión.
+
+**Estructura:**
+
+$$
+P_1, P_2, \dots, P_n \vdash Q
+$$
+
+* **Lectura:** *"Del conjunto de premisas $P_1$ hasta $P_n$ se deduce (es válido inferir) $Q$".*
+
+#### 3. Forma Condicional (La "Gran Implicación")
+{: .no_toc }
+
+Esta forma es crucial para verificar la validez mediante **Tablas de Verdad** o métodos computacionales. Convertimos todo el argumento en una única fórmula lógica condicional.
+
+**Estructura:**
+
+$$
+(P_1 \land P_2 \land \dots \land P_n) \to Q
+$$
+
+* **Interpretación:** *"Si todas las premisas son verdaderas simultáneamente (conjunción), entonces la conclusión debe ser verdadera".*
+* **Criterio de Validez:** Para que el argumento sea válido, esta fórmula debe ser una **Tautología** (siempre verdadera).
+
+#### Ejemplo Comparativo
+{: .no_toc }
+
+La siguiente tabla retoma nuevamente el argumento previamente obtenido para *El Caso del Zafiro Desaparecido* para el caso estandar y lo compara con las otras .
+
+| Formato | Representación | Uso Principal |
+| :--- | :--- | :--- |
+| **Estándar** | $\begin{array}{l} p \rightarrow q \\\\ \neg q \\\\ p \lor r \\\\ r \rightarrow s \\\\ \hline \therefore\ s \end{array}$ | Ideal para aplicar reglas de inferencia paso a paso. |
+| **Horizontal** | $p \rightarrow q, \neg q, p \lor r, r \vdash s$ | Ideal para enunciados compactos. |
+| **Condicional** | $[(p \rightarrow q) \land (\neg q) \land (p \lor r) \land r] \to s$ | Ideal para validación por **Tabla de Verdad**. |
 
 ### Verdad vs validez (sin confundir conceptos)
 
@@ -336,7 +371,7 @@ Según lo anterior, podemos concluir que:
 
 Para construir algumentos validos se utilizan **reglas de inferencia**, mediante estas, es como construimos el camino para llegar de manera logica a una concluión a partir de las premidas.
 
-## Reglas de inferencia
+## Métodos de validación de argumentos
 
 Recordemos que un **argumento** es un razonamiento compuesto por unas **premisas** y una **conclusión**, y que la relación entre ellas puede ser **válida** o **inválida**. Como vimos, la validez depende de la forma lógica del argumento, no del contenido.
 
@@ -455,162 +490,82 @@ Para evaluar la validez por fuerza bruta, seguimos los siguientes pasos:
 
 En conclusión, validar con tablas de verdad consiste en evaluar **todos** los escenarios posibles para verificar que **no existe** ninguno en el que las premisas se cumplan y la conclusión falle. Por eso decimos que este método **no apela a la intuición**, sino a un criterio **formal, mecánico y verificable**.
 
----
+### Validación mediante reglas de inferencia (enfoque axiomatico o sintactico)
+
+La validación con tablas de verdad es un método **infalible**: revisa todos los escenarios posibles y comprueba que no existan renglones críticos donde la conclusión falle. Sin embargo, su principal desventaja es la **escalabilidad**: con $n$ variables proposicionales, la tabla tiene $2^n$ filas.
+
+En otras palabras, el método semántico (basado en modelos) responde la pregunta:
+
+> "¿El argumento es válido en **todos** los escenarios posibles?"
+
+Debido al alto costo de emplear tablas de verdad, existe un método alternativo cuyo enfoque es el **sintáctico**. En este, en vez de evaluar el argumento en todos los modelos, construimos una **demostración** donde cada línea está justificada por una **regla válida**.
+
+De manera similar a como empleamos **leyes de equivalencia** para transformar (y simplificar) expresiones lógicas, para **validar argumentos** de manera eficiente empleamos **reglas de inferencia**.
 
 
-| Nombre | Regla (Forma Visual) | Descripción Intuitiva |
+{: .def }
+> **Definición**: Una **regla de inferencia** es un esquema de razonamiento **válido** que nos permite pasar de unas premisas a una conclusión de forma segura.
+
+El uso de las **reglas de inferencia** (moldes) para *"construir un camino"* desde las Premisas hasta la Conclusión es conocido como **Prueba Formal** o **Demostración Deductiva**. Estas reglas no dicen *qué es verdadero en el mundo*, simplemente dicen qué pasos están **permitidos** para que una conclusión se siga **necesariamente** de lo anterior.
+
+A continuación, se presentan las **reglas de inferencia** que vamos a usar. Asuma que todo lo que está sobre la línea son verdades que usted ya posee, y lo que está debajo es lo que tiene permiso de escribir como nueva verdad.
+
+| Nombre | Regla (Esquema) | Descripción Intuitiva |
 | :--- | :---: | :--- |
-| **Modus Ponens (MP)** | $\begin{array}{@{}l@{}} p \to q \\\\ p \\\\ \hline \therefore\ q \end{array}$ | Si tienes el ticket ($p$), pasas ($q$). Tienes el ticket. Por tanto, pasas. |
-| **Modus Tollens (MT)** | $\begin{array}{@{}l@{}} p \to q \\\\ \neg q \\\\ \hline \therefore\ \neg p \end{array}$ | Si llueve, el suelo se moja. El suelo NO está mojado. Por tanto, NO llovió. |
-| **Silogismo Hipotético (SH)** | $\begin{array}{@{}l@{}} p \to q \\\\ q \to r \\\\ \hline \therefore\ p \to r \end{array}$ | Transitividad (cadena de consecuencias). |
-| **Silogismo Disyuntivo (SD)** | $\begin{array}{@{}l@{}} p \lor q \\\\ \neg p \\\\ \hline \therefore\ q \end{array}$ | Es A o B. No es A. Entonces tiene que ser B. |
-| **Simplificación (Simp)** | $\begin{array}{@{}l@{}} p \land q \\\\ \hline \therefore\ p \end{array}$ | Si tienes manzanas y peras, seguro tienes manzanas. |
-| **Adición (Ad)** | $\begin{array}{@{}l@{}} p \\\\ \hline \therefore\ p \lor q \end{array}$ | Si $p$ es verdad, “$p$ o lo que sea” también es verdad. |
-| **Conjunción (Conj)** | $\begin{array}{@{}l@{}} p \\\\ q \\\\ \hline \therefore\ p \land q \end{array}$ | Puedes unir dos verdades con una “y”. |
+| **Modus Ponens (MP)** | $\begin{array}{l} p \to q \\\\ p \\\\ \hline \therefore\ q \end{array}$ | **Causa-Efecto:** Si se da la causa, ocurre el efecto. |
+| **Modus Tollens (MT)** | $\begin{array}{l} p \to q \\\\ \neg q \\\\ \hline \therefore\ \neg p \end{array}$ | **Descarte:** Si no veo el efecto, no pudo haber ocurrido la causa. |
+| **Silogismo Hipotético (SH)** | $\begin{array}{l} p \to q \\\\ q \to r \\\\ \hline \therefore\ p \to r \end{array}$ | **Cadena:** Si $p$ lleva a $q$ y $q$ lleva a $r$, entonces $p$ lleva a $r$. |
+| **Silogismo Disyuntivo (SD)** | $\begin{array}{l} p \lor q \\\\ \neg p \\\\ \hline \therefore\ q \end{array}$ | **Eliminación:** Si tengo dos opciones y descarto una, me toca la otra. |
+| **Simplificación (Simp)** | $\begin{array}{l} p \land q \\\\ \hline \therefore\ p \end{array}$ | **Extracción:** Si tengo todo, tengo una parte. |
+| **Adición (Ad)** | $\begin{array}{l} p \\\\ \hline \therefore\ p \lor q \end{array}$ | **Generalización:** Si algo es verdad, esa cosa "o cualquier otra" también lo es. |
+| **Conjunción (Conj)** | $\begin{array}{l} p \\\\ q \\\\ \hline \therefore\ p \land q \end{array}$ | **Fusión:** Puedo unir dos verdades independientes. |
+| **Resolución (Res)** | $\begin{array}{l} p \lor q \\\\ \neg p \lor r \\\\ \hline \therefore\ q \lor r \end{array}$ | **Eliminación de una opción:** una cláusula contiene $p$ y otra contiene $\neg p$; al combinarse, "se elimina" esa variable y quedan las alternativas restantes ($q \lor r$). |
+| **División por Casos** | $\begin{array}{l} p \lor q \\\\ p \to r \\\\ q \to r \\\\ \hline \therefore\ r \end{array}$ | **Todos los caminos llevan a Roma:** Si mis opciones son A o B, y ambas llevan al mismo resultado, el resultado es seguro. |
 
-----
+Para validar un argumento mediante reglas de inferencia listadas anteriormente se sugiere aplicar los siguientes pasos:
+1. **Listar las Premisas**: Escriba numeradas todas las afirmaciones iniciales que le da el problema.
+2. **Identificar la Meta**: Tenga clara cuál es la proposición conclusión a la que debe llegar.
+3. **Reconocimiento de Patrones**: Busque entre sus premisas dos (o una) que encajen visualmente con alguna de las reglas de la tabla anterior.
+4. **Derivación**: Aplique la regla y escriba la nueva proposición resultante en un nuevo renglón, indicando qué regla y qué líneas usó (Ej: "Modus Ponens en 1 y 3").
+5. **Iteración**: Repita el proceso usando las nuevas líneas generadas hasta que obtenga la conclusión deseada (meta).
 
-## ChatGPT
+#### Ejemplo
+{: .no_toc }
 
-Recordemos que un **argumento** es un razonamiento compuesto por **premisas** y una **conclusión**, y que la relación entre ellas puede ser **válida** o **inválida**. Como vimos, la validez depende de la **forma lógica** del argumento, no del contenido.
-
-Esto abre preguntas naturales:
-
-- Si un argumento es “válido por su estructura”, **¿cómo podemos verificar esa validez de manera formal?**
-- **¿Existe un procedimiento sistemático** (no solo intuición) para decidir si las premisas obligan a la conclusión?
-- Así como para la equivalencia lógica usamos métodos mecánicos (por ejemplo, tablas de verdad o transformaciones), **¿qué métodos existen para validar argumentos?**
-- Y cuando el argumento tiene muchas variables (y la tabla de verdad se vuelve enorme), **¿cómo razonamos paso a paso sin perdernos?**
-
-El objetivo de esta sección es responder estas preguntas de forma progresiva: primero veremos un método **semántico** (validación con tablas de verdad) y luego un método **sintáctico** (prueba formal), donde cada paso se justifica mediante **reglas de inferencia**.
-
-
-----
-
-## GEMINI
-
-Existen, fundamentalmente, dos caminos para responder a estas inquietudes: el camino de la **fuerza bruta** (semántico) y el camino de la **deducción formal** (sintáctico).
-
-### Enfoque 1: Fuerza Bruta (Tablas de Verdad)
-
-Tal como vimos en la diapositiva de repaso, la validez se define rigurosamente: *un argumento es válido si no existe ningún escenario donde las premisas sean verdaderas y la conclusión falsa*.
-
-Por lo tanto, para validar un argumento de la forma $P_1, P_2, \dots, P_n \therefore C$, podemos construir una tabla de verdad para la implicación gigante:
-
-$$(P_1 \land P_2 \land \dots \land P_n) \to C$$
-
-* Si el resultado es una **Tautología** (todo $V$), el argumento es **Válido**.
-* Si aparece al menos un $F$, el argumento es **Inválido**.
-
-**El problema:** Al igual que con las equivalencias, este método no es escalable. Si nuestro argumento tiene 5 variables proposicionales, tendríamos que analizar 32 filas. Necesitamos algo más eficiente.
-
-### Enfoque 2: Reglas de Inferencia (Deducción Natural)
-
-Aquí entra la respuesta a su segunda pregunta. Al igual que en el álgebra usamos reglas como "lo que está sumando pasa a restar" para no probar números al azar, en lógica utilizamos **Reglas de Inferencia**.
-
-Estas reglas son "moldes" o esquemas de argumentos simples que ya han sido demostrados como válidos (son tautologías fundamentales). Si nuestro razonamiento complejo se puede descomponer en pasos que encajan en estos moldes, entonces la validez está garantizada por la forma.
-
-#### Notación Estándar
-
-Antes de ver las reglas, entendamos la notación vertical que usaremos:
+Retomemos nuevamente al **Caso del Zafiro Desaparecido**:
 
 $$
 \begin{array}{l}
-P_1 \\
-P_2 \\
-\vdots \\
+p \rightarrow q \\
+\neg q \\
+p \lor r \\
+r \rightarrow s \\
 \hline
-\therefore\ C
+\therefore\ s
 \end{array}
 $$
 
-* **Arriba de la línea:** Las Premisas (lo que sabemos o asumimos como cierto).
-* **La línea horizontal:** Significa "por lo tanto" o "se deduce que".
-* **Abajo ($\therefore C$):** La Conclusión (el nuevo conocimiento que generamos).
+La meta es derivar la conclusión $s$ (el mayordomo es cómplice) a partir de las premisas, justificando cada paso con una **regla de inferencia**.
 
-#### Catálogo de Reglas de Inferencia
+A continuación se realiza a cabo la deducción formal (derivación paso a paso):
 
-A continuación, presentamos las reglas esenciales aceptadas en la lógica clásica. Estas son las herramientas que usaremos para construir demostraciones paso a paso.
+| # | Proposición | Justificación |
+|---:|---|---|
+| 1 | $p \to q$ | Premisa |
+| 2 | $\neg q$ | Premisa |
+| 3 | $p \lor r$ | Premisa |
+| 4 | $r \to s$ | Premisa |
+| 5 | $\neg p$ | **Modus Tollens (MT)** en 1 y 2 |
+| 6 | $r$ | **Silogismo Disyuntivo (SD)** en 3 y 5 |
+| 7 | $s$ | **Modus Ponens (MP)** en 4 y 6 |
 
-| Nombre | Regla (Forma Visual) | Descripción Intuitiva |
-| :--- | :---: | :--- |
-| **Modus Ponens (MP)** | $\begin{array}{l} p \to q \\\\ p \\\\ \hline \therefore\ q \end{array}$ | **Afirmando el antecedente:** Si tienes el ticket ($p$), entras ($q$). Tienes el ticket. Por tanto, entras. |
-| **Modus Tollens (MT)** | $\begin{array}{l} p \to q \\\\ \neg q \\\\ \hline \therefore\ \neg p \end{array}$ | **Negando el consecuente:** Si llueve, hay nubes. No hay nubes. Por tanto, no llueve. |
-| **Silogismo Hipotético (SH)** | $\begin{array}{l} p \to q \\\\ q \to r \\\\ \hline \therefore\ p \to r \end{array}$ | **La Cadena:** Transitividad de la implicación. Si A lleva a B, y B lleva a C, entonces A lleva a C. |
-| **Silogismo Disyuntivo (SD)** | $\begin{array}{l} p \lor q \\\\ \neg p \\\\ \hline \therefore\ q \end{array}$ | **Descarte:** Es A o B. Sabemos que no es A. Entonces, obligatoriamente es B. |
-| **Simplificación (Simp)** | $\begin{array}{l} p \land q \\\\ \hline \therefore\ p \end{array}$ | **Extracción:** Si tienes "pan y vino", seguro tienes "pan". |
-| **Adición (Ad)** | $\begin{array}{l} p \\\\ \hline \therefore\ p \lor q \end{array}$ | **Generalización:** Si $p$ es verdad, "$p$ o lo que sea" también es verdad (la disyunción es inclusiva). |
-| **Conjunción (Conj)** | $\begin{array}{l} p \\\\ q \\\\ \hline \therefore\ p \land q \end{array}$ | **Fusión:** Si tienes dos verdades por separado, puedes unirlas con una "y". |
+Hemos obtenido $s$ a partir de las premisas aplicando únicamente reglas de inferencia válidas.  
+Por tanto, el argumento es **válido**.
 
----
+{: .note }
+> Observe que esta demostración evita construir la tabla de verdad completa: en lugar de revisar $2^n$ escenarios, construimos una cadena corta de pasos justificados.
 
-### Un detalle crucial: Validez vs. Solidez
-
-Para cerrar esta sección teórica, debemos hacer una distinción fina que suele aparecer en contextos de debate y ciencia (mencionada en las diapositivas del curso).
-
-Un argumento puede ser matemáticamente perfecto (**Válido**), pero estar basado en mentiras.
-
-* **Argumento Válido:** La estructura es correcta. Si las premisas fueran verdad, la conclusión también lo sería.
-* **Argumento Sólido (Sound):** Es un argumento Válido **Y ADEMÁS** sus premisas son verdaderas en la realidad.
-
-{: .info }
-> **Ejemplo de Validez sin Solidez:**
-> 1.  Si soy humano, puedo volar. (Premisa Falsa)
-> 2.  Soy humano. (Premisa Verdadera)
-> 3.  $\therefore$ Puedo volar.
->
-> Este argumento es **VÁLIDO** (aplica Modus Ponens perfectamente), pero **NO ES SÓLIDO** (la conclusión es falsa porque la primera premisa es falsa).
->
-> **En este curso nos centraremos casi exclusivamente en la VALIDEZ (la estructura lógica).**
-
-
-
-
-
-
-
-
-Esto muestra que:
-- **validez no es lo mismo que verdad**, y
-- la lógica se ocupa principalmente de evaluar la **validez de los razonamientos**, no de verificar hechos.
-
-#### Aplicación al caso del zafiro
-
-Volviendo a *El Caso del Zafiro Desaparecido*, nuestra tarea no es decidir si, en la realidad, el mayordomo es culpable, sino responder la siguiente pregunta:
-
-**¿Se sigue necesariamente que “el mayordomo es cómplice” a partir de las premisas dadas?**
-
-Si la respuesta es afirmativa, entonces el argumento es **válido**, independientemente de que la historia sea ficticia.
-
-#### Idea clave
-
-Podemos resumir la diferencia de la siguiente manera:
-
-- **Verdad**: es una propiedad de las proposiciones individuales.
-- **Validez**: es una propiedad de los argumentos completos.
-
-Un argumento válido garantiza que **no se pueden aceptar las premisas y rechazar la conclusión sin caer en contradicción**.
-
-En la siguiente sección analizaremos si el argumento del zafiro es válido, aplicando **reglas de inferencia** para justificar cada paso del razonamiento.
-
-
-## 3. Vocabulario operativo (lo usaremos todo el tiempo)
-{: .no_toc }
-
-- **Caso/Escenario:** una asignación de valores a las variables ($p=V$, $q=F$, ...).
-- **Fila crítica:** un caso (fila de tabla) donde **todas las premisas** valen $V$.
-- **Contraejemplo:** una fila crítica donde la **conclusión** vale $F$.
-
-> **Regla de oro:**  
-> Un argumento es **inválido** si existe al menos un **contraejemplo**.  
-> Un argumento es **válido** si **no existe** ningún contraejemplo.
-
-**Chequeo rápido:**  
-¿Qué debe cumplirse para que una fila sea “crítica”?  
-*(Respuesta esperada: premisas = V.)*
-
----
-
-## 4. Dos caminos para una misma garantía
+## Dos caminos para una misma garantía
 
 | Enfoque | ¿Qué hace? | ¿Qué intenta encontrar? | Resultado típico |
 |---|---|---|---|
