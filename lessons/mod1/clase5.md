@@ -291,8 +291,8 @@ La siguiente tabla retoma nuevamente el argumento previamente obtenido para *El 
 | Formato | Representación | Uso Principal |
 | :--- | :--- | :--- |
 | **Estándar** | $\begin{array}{l} p \rightarrow q \\\\ \neg q \\\\ p \lor r \\\\ r \rightarrow s \\\\ \hline \therefore\ s \end{array}$ | Ideal para aplicar reglas de inferencia paso a paso. |
-| **Horizontal** | $p \rightarrow q, \neg q, p \lor r, r \vdash s$ | Ideal para enunciados compactos. |
-| **Condicional** | $[(p \rightarrow q) \land (\neg q) \land (p \lor r) \land r] \to s$ | Ideal para validación por **Tabla de Verdad**. |
+| **Horizontal** | $p \rightarrow q,\ \neg q,\ p \lor r,\ r \rightarrow s \ \vdash\ s$ | Ideal para enunciados compactos. |
+| **Condicional** | $\bigl[(p \rightarrow q)\land(\neg q)\land(p \lor r)\land(r \rightarrow s)\bigr] \to s$ | Ideal para validación por **Tabla de Verdad**. |
 
 ### Verdad vs validez (sin confundir conceptos)
 
