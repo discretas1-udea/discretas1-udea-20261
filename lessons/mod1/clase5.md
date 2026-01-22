@@ -884,9 +884,11 @@ Construimos la tabla de verdad:
 1. $A \to C$
 2. $\neg C \lor L$
 3. $A$
+
 **Conclusión:** $L$
 
 **Demostración:**
+
 | Paso | Proposición | Justificación |
 | :---: | :--- | :--- |
 | 1 | $A \to C$ | Premisa 1 |
