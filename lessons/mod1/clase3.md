@@ -694,37 +694,6 @@ Asuma que $V$ es una Tautología (siempre $V$) y $F$ es una Contradicción (siem
 
 ---
 
-## Autoevaluación
-
-Resuelva los siguientes retos antes de mirar las respuestas.
-
-### Reto 1: Traducción de enuciados
-
-Traduzca las siguientes sentencias a lógica proposicional, definiendo claramente sus variables atómicas. Preste especial atención a las condiciones de suficiencia y necesidad.
-1.  *"El servidor se reinicia solo si se detecta un error crítico".*
-2.  *"Para que el algoritmo termine, es necesario que la variable $i$ llegue a 10".*
-3.  *"Basta con que presiones el botón rojo para que se detenga la máquina".*
-4.  *"Un número es par si y solo si es divisible por 2".*
-
-### Reto 2: Analisis de equivalencia
-
-Utilizando **Tablas de Verdad**, determine si la siguiente afirmación es verdadera o falsa:\
-
-> *"La negación de una implicación $\neg(p \to q)$ es equivalente a afirmar el antecedente y negar el consecuente ($p \land \neg q$)."*
-
-$$\neg(p \to q) \overset{?}{\equiv} p \land \neg q$$
-
-### Reto 3: Identificación de Leyes
-
-Analice la siguiente simplificación paso a paso e indique **qué ley lógica** justifica cada paso:
-
-**Expresión inicial:** $(p \land q) \lor (p \land \neg q)$
-1.  $p \land (q \lor \neg q)$ $\longrightarrow$ **¿Ley?**
-2.  $p \land V$ $\longrightarrow$ **¿Ley?**
-3.  $p$ $\longrightarrow$ **¿Ley?**
-
----
-
 ## Resultados de aprendizaje
 
 Al finalizar esta clase, se espera que usted sea capaz de:
@@ -735,7 +704,42 @@ Al finalizar esta clase, se espera que usted sea capaz de:
 
 ---
 
+## Autoevaluación
+
+Resuelva los siguientes retos antes de mirar las respuestas.
+
+### Reto 1: Traducción de enuciados
+{: .no_toc }
+
+Traduzca las siguientes sentencias a lógica proposicional, definiendo claramente sus variables atómicas. Preste especial atención a las condiciones de suficiencia y necesidad.
+1.  *"El servidor se reinicia solo si se detecta un error crítico".*
+2.  *"Para que el algoritmo termine, es necesario que la variable $i$ llegue a 10".*
+3.  *"Basta con que presiones el botón rojo para que se detenga la máquina".*
+4.  *"Un número es par si y solo si es divisible por 2".*
+
+### Reto 2: Analisis de equivalencia
+{: .no_toc }
+
+Utilizando **Tablas de Verdad**, determine si la siguiente afirmación es verdadera o falsa:\
+
+> *"La negación de una implicación $\neg(p \to q)$ es equivalente a afirmar el antecedente y negar el consecuente ($p \land \neg q$)."*
+
+$$\neg(p \to q) \overset{?}{\equiv} p \land \neg q$$
+
+### Reto 3: Identificación de Leyes
+{: .no_toc }
+
+Analice la siguiente simplificación paso a paso e indique **qué ley lógica** justifica cada paso:
+
+**Expresión inicial:** $(p \land q) \lor (p \land \neg q)$
+1.  $p \land (q \lor \neg q)$ $\longrightarrow$ **¿Ley?**
+2.  $p \land V$ $\longrightarrow$ **¿Ley?**
+3.  $p$ $\longrightarrow$ **¿Ley?**
+
+---
+
 ## Solucionario de Autoevaluación
+{: .no_toc }
 
 Utilice esta sección para validar sus resultados después de completar la actividad.
 
@@ -744,6 +748,7 @@ Utilice esta sección para validar sus resultados después de completar la activ
 <br>
 
 ### Reto 1: Traducción de enuciados
+{: .no_toc }
 
 1.  **$R \to E$**
     * *Variables:* $R$: Servidor reinicia, $E$: Error crítico.
@@ -759,6 +764,7 @@ Utilice esta sección para validar sus resultados después de completar la activ
     * *Análisis:* "Si y solo si" indica bicondicional (identidad lógica).
 
 ### Reto 2: Analisis de equivalencia
+{: .no_toc }
 
 **VERDADERO.** La equivalencia es correcta. Esta es una forma muy común de negar un "Si... entonces".
 

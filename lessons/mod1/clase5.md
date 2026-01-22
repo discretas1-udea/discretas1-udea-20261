@@ -798,42 +798,89 @@ Por tanto, el argumento es **válido**.
 
 ## Resultados de aprendizaje
 
-
-
-
-## Ejercicios de autoevaluación (Retos)
-
-### Reto 1 (Tablas / contraejemplo)
-
-Determine si el argumento es válido:
-1. $p \to q$
-2. $q$
-∴ $p$
-
-### Reto 2 (Derivación)
-
-Demuestre validez:
-1. $p \to q$
-2. $\neg q$
-∴ $\neg p$
-
-### Reto 3 (Comparación)
-
-Para cada caso, indique qué método usaría y por qué:
-- (a) 2 variables.
-- (b) 6 variables.
+Al finalizar esta clase, usted será capaz de:
+* Distinguir sin ambigüedades entre la verdad de una proposición y la validez de un argumento.
+* Formalizar argumentos en lenguaje natural traduciéndolos a notación lógica estándar.
+* Demostrar la validez de un argumento utilizando reglas de inferencia paso a paso.
+* Identificar cuándo utilizar un enfoque semántico (tablas de verdad) frente a un enfoque sintáctico (reglas de inferencia).
 
 ---
 
-## Sección de respuestas
+## Ejercicios de autoevaluación (Retos)
+
+Ponga a prueba sus habilidades de detective lógico. Intente resolverlos antes de desplegar las respuestas.
+
+### Reto 1: ¿Válido o Inválido? (Método de Tablas)
+Analice el siguiente argumento pequeño. Construya su tabla de verdad, identifique las **filas críticas** y determine si es válido.
+
+> **Argumento:**
+> 1. $p \to q$
+> 2. $q$
+> 3. $\therefore p$
+
+### Reto 2: Derivación Formal (Método de Reglas)
+Demuestre paso a paso que el siguiente argumento es válido llegando a la conclusión $t$.
+
+**Premisas:**
+1. $r \to s$
+2. $r \land q$
+3. $s \to t$
+
+**Conclusión a demostrar:** $\vdash t$
+
+### Reto 3: El misterio del servidor caído
+Traduzca y demuestre la validez del siguiente argumento técnico:
+* "Si el tráfico es alto ($A$), entonces el servidor se calienta ($C$)."
+* "El servidor no se calienta ($\neg C$) o se activa la alarma ($L$)."
+* "El tráfico es alto ($A$)."
+* **Conclusión:** ¿Se activa la alarma ($L$)?
+
+---
+
+## Sección de Respuestas
 {: .no_toc }
 
 <details markdown="1">
-  <summary><b>Haga clic aquí para ver una guía (sin el desarrollo completo)</b></summary>
+  <summary><b>Haga clic aquí para ver las soluciones y justificaciones</b></summary>
 <br>
 
-- **Reto 1:** intente encontrar un escenario con $p=F$ y $q=V$. Si las premisas quedan V y la conclusión F, hay contraejemplo ⇒ inválido.
-- **Reto 2:** patrón de **Modus Tollens (MT)**.
-- **Reto 3:** compare costo $2^n$ vs número de pasos de una derivación.
+### Solución Reto 1: La Falacia de Afirmación del Consecuente
+Construimos la tabla de verdad:
+
+| $p$ | $q$ | $p \to q$ (P1) | $q$ (P2) | $p$ (Concl) | Análisis |
+| :-: | :-: | :-: | :-: | :-: | :--- |
+| V | V | **V** | **V** | **V** | Fila Crítica (Todo OK) |
+| V | F | F | F | V | No es fila crítica |
+| F | V | **V** | **V** | **F** | **¡Fila Crítica con Conclusión Falsa!** |
+| F | F | V | F | F | No es fila crítica |
+
+**Veredicto:** El argumento es **INVÁLIDO**. Note la tercera fila: las premisas son verdaderas, pero la conclusión es falsa. Esto se conoce como la *Falacia de afirmación del consecuente*.
+
+### Solución Reto 2: Derivación Formal
+| Paso | Proposición | Justificación |
+| :---: | :--- | :--- |
+| 1 | $r \to s$ | Premisa |
+| 2 | $r \land q$ | Premisa |
+| 3 | $s \to t$ | Premisa |
+| 4 | $r$ | **Simplificación** en 2 |
+| 5 | $s$ | **Modus Ponens** en 1 y 4 |
+| 6 | $t$ | **Modus Ponens** en 3 y 5 |
+
+### Solución Reto 3: El servidor caído
+**Formalización:**
+1. $A \to C$
+2. $\neg C \lor L$
+3. $A$
+**Conclusión:** $L$
+
+**Demostración:**
+| Paso | Proposición | Justificación |
+| :---: | :--- | :--- |
+| 1 | $A \to C$ | Premisa 1 |
+| 2 | $A$ | Premisa 3 |
+| 3 | $C$ | **Modus Ponens** en 1 y 2 |
+| 4 | $\neg(\neg C)$ | **Doble Negación** en 3 (Truco para ver el silogismo) |
+| 5 | $\neg C \lor L$ | Premisa 2 |
+| 6 | $L$ | **Silogismo Disyuntivo** en 5 y 4 |
 
 </details>
