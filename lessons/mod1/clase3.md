@@ -778,6 +778,7 @@ Utilice esta sección para validar sus resultados después de completar la activ
 | 1 | 1 | 1 | **0** | 0 | **0** | ✅ |
 
 ### Reto 3: Identificación de Leyes
+{: .no_toc }
 
 1.  **Ley Distributiva** (inversa, o factor común). Extraemos $p$.
 2.  **Ley del Inverso (o Negación)**. $(q \lor \neg q)$ siempre es Verdad ($V$).

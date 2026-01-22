@@ -395,14 +395,20 @@ Al finalizar esta clase, usted será capaz de:
 Ponga a prueba su dominio del álgebra lógica con los siguientes retos. Intente resolverlos en papel justificando cada paso antes de ver la solución.
 
 ### Reto 1: Simplificación Directa
+{: .no_toc }
+
 Simplifique la siguiente expresión hasta su mínima forma:
 $$(p \lor q) \land \neg p$$
 
 ### Reto 2: Eliminación de Condicionales
+{: .no_toc }
+
 Utilice las leyes de traducción y simplificación para demostrar que la siguiente expresión es una **Contradicción** ($F$):
 $$\neg(p \to (p \lor q))$$
 
 ### Reto 3: El desafío de la "Factorización"
+{: .no_toc }
+
 Simplifique la expresión aplicando la Ley Distributiva de forma inversa (identificando el término común):
 $$(p \land q) \lor (p \land \neg q)$$
 

@@ -811,6 +811,8 @@ Al finalizar esta clase, usted será capaz de:
 Ponga a prueba sus habilidades de detective lógico. Intente resolverlos antes de desplegar las respuestas.
 
 ### Reto 1: ¿Válido o Inválido? (Método de Tablas)
+{: .no_toc }
+
 Analice el siguiente argumento pequeño. Construya su tabla de verdad, identifique las **filas críticas** y determine si es válido.
 
 > **Argumento:**
@@ -819,6 +821,8 @@ Analice el siguiente argumento pequeño. Construya su tabla de verdad, identifiq
 > 3. $\therefore p$
 
 ### Reto 2: Derivación Formal (Método de Reglas)
+{: .no_toc }
+
 Demuestre paso a paso que el siguiente argumento es válido llegando a la conclusión $t$.
 
 **Premisas:**
@@ -829,6 +833,8 @@ Demuestre paso a paso que el siguiente argumento es válido llegando a la conclu
 **Conclusión a demostrar:** $\vdash t$
 
 ### Reto 3: El misterio del servidor caído
+{: .no_toc }
+
 Traduzca y demuestre la validez del siguiente argumento técnico:
 * "Si el tráfico es alto ($A$), entonces el servidor se calienta ($C$)."
 * "El servidor no se calienta ($\neg C$) o se activa la alarma ($L$)."
@@ -845,6 +851,8 @@ Traduzca y demuestre la validez del siguiente argumento técnico:
 <br>
 
 ### Solución Reto 1: La Falacia de Afirmación del Consecuente
+{: .no_toc }
+
 Construimos la tabla de verdad:
 
 | $p$ | $q$ | $p \to q$ (P1) | $q$ (P2) | $p$ (Concl) | Análisis |
@@ -857,6 +865,8 @@ Construimos la tabla de verdad:
 **Veredicto:** El argumento es **INVÁLIDO**. Note la tercera fila: las premisas son verdaderas, pero la conclusión es falsa. Esto se conoce como la *Falacia de afirmación del consecuente*.
 
 ### Solución Reto 2: Derivación Formal
+{: .no_toc }
+
 | Paso | Proposición | Justificación |
 | :---: | :--- | :--- |
 | 1 | $r \to s$ | Premisa |
@@ -867,7 +877,10 @@ Construimos la tabla de verdad:
 | 6 | $t$ | **Modus Ponens** en 3 y 5 |
 
 ### Solución Reto 3: El servidor caído
+{: .no_toc }
+
 **Formalización:**
+
 1. $A \to C$
 2. $\neg C \lor L$
 3. $A$
