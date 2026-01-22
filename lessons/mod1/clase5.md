@@ -325,42 +325,42 @@ Los siguientes ejemplos buscan aclarar el concepto de **validez**.
 
 1. En el argumento mostrado a continuación, la **forma** es válida (Modus Ponens). Además, en el contexto cotidiano, sus premisas y conclusión suelen ser verdaderas.
 
-  $$
-  \begin{array}{l}
-  \text{Si llueve, la calle se moja.}\\
-  \text{Llueve.}\\ \hline
-  \therefore\ \text{La calle se moja.}
-  \end{array}
-  $$
+   $$
+   \begin{array}{l}
+   \text{Si llueve, la calle se moja.}\\
+   \text{Llueve.}\\ \hline
+   \therefore\ \text{La calle se moja.}
+   \end{array}
+   $$
 
-  Del argumento anterior, se puede deducir a partir de los hechos que nos dan que cuando hay lluvia la calle se moja.
+   Del argumento anterior, se puede deducir a partir de los hechos que nos dan que cuando hay lluvia la calle se moja.
 
 2. En el siguiente argumento notese que teniendo en cuenta el contexto (nuestro conocimiento real sobre la luna y los ratones), las premisas son falsas. Sin embargo, la validez no exige que las premisas sean reales, sino que el argumento esta bien construido (tiene una estructura correca) lo cual se cumple en el ejemplo:
   
-  $$
-  \begin{array}{l}
-  \text{Si la Luna es de queso, entonces hay ratones astronautas.}\\
-  \text{La Luna es de queso.}\\ \hline
-  \therefore\ \text{Hay ratones astronautas.}
-  \end{array}
-  $$
+   $$
+   \begin{array}{l}
+   \text{Si la Luna es de queso, entonces hay ratones astronautas.}\\
+   \text{La Luna es de queso.}\\ \hline
+   \therefore\ \text{Hay ratones astronautas.}
+   \end{array}
+   $$
   
-  Si aceptamos que las premisas son ciertas, vemos que *la forma* en que se infiere a la conclusión es correcta por lo tanto el argumento es **valido** aunque desde la realidad, lo que aqui se dice sea un disparate.
+   Si aceptamos que las premisas son ciertas, vemos que *la forma* en que se infiere a la conclusión es correcta por lo tanto el argumento es **valido** aunque desde la realidad, lo que aqui se dice sea un disparate.
 
-  {: .tip }
-  > **Validez** no significa que lo que dices sea verdad en la vida real. Significa que, si aceptamos las premisas (aunque sean locas), la conclusión es inevitable.
+   {: .tip }
+   > **Validez** no significa que lo que dices sea verdad en la vida real. Significa que, si aceptamos las premisas (aunque sean locas), la conclusión es inevitable.
 
 3. El siguiente argumento es **invalido** y es una tipo de falacia conocida **afirmar el consecuente**.
   
-  $$
-  \begin{array}{l}
-  \text{Si estudio, apruebo.}\\
-  \text{Apruebo.}\\ \hline
-  \therefore\ \text{Estudio.}
-  \end{array}
-  $$
+   $$
+   \begin{array}{l}
+   \text{Si estudio, apruebo.}\\
+   \text{Apruebo.}\\ \hline
+   \therefore\ \text{Estudio.}
+   \end{array}
+   $$
 
-  En este caso llegar a la coclusión de que *estudie* para lograr el resultado de *apruebar* no es clara; de hecho hay otras formas de haber *aprobado* sin haber *estudiado* (causa) que pueden ser tenidas en cuenta: hacer trampa, el examen estaba muy facil, etc. Note que la estructura del argumento da lugar a probar las otros posibles antecedentes que hagan que el consecuente sea falso, de modo que reducir la conclusión a solo *estudiar*, como se muestra en el ejemplo, no es valido.
+   En este caso llegar a la coclusión de que *estudie* para lograr el resultado de *apruebar* no es clara; de hecho hay otras formas de haber *aprobado* sin haber *estudiado* (causa) que pueden ser tenidas en cuenta: hacer trampa, el examen estaba muy facil, etc. Note que la estructura del argumento da lugar a probar las otros posibles antecedentes que hagan que el consecuente sea falso, de modo que reducir la conclusión a solo *estudiar*, como se muestra en el ejemplo, no es valido.
 
   {: .tip }
   > La falacia de **afirmar el consecuente** consiste en ver el resultado y asumir erróneamente que solo hay una causa posible, ignorando que muchas otras cosas podrían haber provocado ese mismo resultado.
@@ -565,6 +565,8 @@ Por tanto, el argumento es **válido**.
 {: .note }
 > Observe que esta demostración evita construir la tabla de verdad completa: en lugar de revisar $2^n$ escenarios, construimos una cadena corta de pasos justificados.
 
+---
+
 ## Ejemplos de repaso
 
 1. Dado el siguiente argumento:
@@ -599,10 +601,27 @@ Por tanto, el argumento es **válido**.
    \end{array}
    $$
 
+4. Dado el siguiente argumento:
+
+   > "Si la ley no fue aprobada, entonces la constitución del país queda sin modificaciones. Si la constitución del país queda sin modificaciones no se puede elegir nuevos diputados. O se eligen nuevos diputados o el informe del presidente del país se retrasará. El informe no se retrasó un mes. Por lo que la ley fue aprobada".
+
+   Expresarlo en lenguaje formal y determinar su validez.
+
+5. Dada la siguiente información que:
+   
+   > Milhouse estaba a punto de salir para la escuela en la mañana y descubrió que no tenia puestas sus gafas. Si se sabe que los siguientes enunciados son verdaderos:
+   > * Si Milhouse estaba leyendo el periódico en la cocina, entonces, las gafas estaban sobre la mesa de la cocina.
+   > * Si las gafas estaban sobre la mesa de la cocina, entonces los Milhouse los vio al desayunar.
+   > * Milhouse no ha visto las gafas en el desayuno.
+   > * Milhouse estaba leyendo el periódico en la sala o estaba leyendo el periódico en la cocina.
+   > * Si Milhouse estaba leyendo el periódico en la sala entonces, sus gafas estaban sobre la mesa del café.
+
+   A partir de la información anterior: ¿Dónde estaban los lentes de Milhouse?
+   
 **Solución**:
 
 1. Recordemos el argumento sobre el cual debemos demostrar validez:
-   
+
     $$
     \begin{array}{l}
     p \rightarrow q \lor \neg r \\
@@ -685,7 +704,102 @@ Por tanto, el argumento es **válido**.
    | **13** | **$p \land \neg q$** | **Doble negación** en 12. |
    | **14** | **$p$** | **Simplificación** en 13. |   
 
+4. Retomemos el enunciado del argumento del problema dado en lenguaje natural:
+   
+   > "Si la ley no fue aprobada, entonces la constitución del país queda sin modificaciones. Si la constitución del país queda sin modificaciones no se puede elegir nuevos diputados. O se eligen nuevos diputados o el informe del presidente del país se retrasará. El informe no se retrasó un mes. **<u>Por lo que</u>** la ley fue aprobada".
+
+   Si observamos el enunciado, la secuencia de palabras **Por lo que** como un conector que une dos oraciones, donde la segunda es una consecuencia. De modo que este nos permite separar las premisas de la conclución:
+   * **Premisas**:
+     *  ***Si*** la ley ***<u>no</u>*** fue aprobada, ***entonces*** la constitución del país queda sin modificaciones.
+     *  ***Si*** la constitución del país queda sin modificaciones ***,*** ***<u>no</u>*** se puede elegir nuevos diputados.
+     *  ***O*** se eligen nuevos diputados ***o*** el informe del presidente del país se retrasará.
+     *  El informe ***<u>no</u>*** se retrasó un mes.
+   * **Conclusión**:
+     *  La ley fue aprobada.
+   
+   Una vez identificados los elementos del argumento, procedemos a identificar las proposiciones simples analizando cada uno de los enunciados anteriores (en los cuales se resaltaron los conectores)
+   * **Proposiciones simples**:
+     *  **$l$**: La ley fue aprobada.
+     *  **$c$**: La constitución del país quedará sin modificaciones.
+     *  **$p$**: Se pueden elegir nuevos diputados.
+     *  **$i$**: El informe del presidente se retrasará un mes.
+   
+   Ahora, al traducir las premisas y la conclusión del lenguaje natural, al lenguaje formal tenemos:
+
+   $$
+   \begin{array}{l}
+   \neg l \to c \\
+   c \to \neg d \\
+   d \lor i \\
+   \neg i \\
+   \hline
+   \therefore\ l
+   \end{array}
+   $$
+   
+   A continuación, muestra el proceso deductivo para comprobar la validez del argumento:
+
+   | Paso | Proposición | Justificación |
+   | :---: | :--- | :--- |
+   | **1** | $\neg l \to c$ | Premisa |
+   | **2** | $c \to \neg d$ | Premisa |
+   | **3** | $d \lor i$ | Premisa |
+   | **4** | $\neg i$ | Premisa |
+   | **5** | **$d$** | **Silogismo Disyuntivo** en 3 y 4. |
+   | **6** | **$\neg c$** | **Modus Tollens** en 2 y 5. |
+   | **7** | **$\neg (\neg l)$** | **Modus Tollens** en 1 y 6. |
+   | **8** | **$l$** | **Doble Negación** en 7. |
+
+5. Retomemos nuevamente las premisas del enunciado:
+   * ***Si*** Milhouse estaba leyendo el periódico en la cocina, ***entonces***, las gafas estaban sobre la mesa de la cocina.
+   * ***Si*** las gafas estaban sobre la mesa de la cocina, ***entonces*** los Milhouse los vio al desayunar.
+   * Milhouse ***<u>no</u>*** ha visto las gafas en el desayuno.
+   * Milhouse estaba leyendo el periódico en la sala ***o*** estaba leyendo el periódico en la cocina.
+   * ***Si*** Milhouse estaba leyendo el periódico en la sala ***entonces***, sus gafas estaban sobre la mesa de café.
+   
+   A partir de las premisas anteriores podemos obtener las **proposiciones simples** las cuales definimos a continuación:
+   * **$RK$**: Milhouse estaba leyendo el periódico en la cocina.
+   * **$GK$**: Las gafas de Milhouse estaban sobre la mesa de la cocina.
+   * **$SB$**: Milhouse vio las gafas en el desayuno
+   * **$LR$**: Milhouse estaba leyendo el periódico en la sala.
+   * **$GC$**: Las gafas de Milhouse estaban sobre la mesa de café.
+   
+   El argumento en lenguaje formal queda de la siguiente manera:
+
+   $$
+   \begin{array}{l}
+   RK \to GK \\
+   GK \to SB \\
+   \neg SB \\
+   LR \lor RK \\
+   LR \to GC \\
+   \hline
+   \therefore\ ?
+   \end{array}
+   $$
+
+   Donde la respuesta a la pregunta ¿Dónde estaban los lentes de Milhouse? teniendo en cuenta las premisas puede ser que las gafas esten sobre la mesa de la cocina ($GK$) o sobre la mesa de cafe ($GC$). A continuación se muestra la deducción realizada:
+
+   | Paso | Proposición | Justificación |
+   | :---: | :--- | :--- |
+   | **1** | $RK \to GK$ | Premisa |
+   | **2** | $GK \to SB$ | Premisa |
+   | **3** | $\neg SB$ | Premisa |
+   | **4** | $LR \lor RK$ | Premisa |
+   | **5** | $LR \to GC$ | Premisa |
+   | **6** | **$\neg GK$** | **Modus Tollens** en 2 y 3. |
+   | **7** | **$\neg RK$** | **Modus Tollens** en 1 y 6. |
+   | **8** | **$LR$** | **Silogismo Disyuntivo** en 4 y 7. |
+   | **9** | **$GC$** | **Modus Ponens** en 5 y 8. |
+    
+   De modo que la respuesta a la pregunta era que las gafas de Millhouse estaban sobre la mesa de café.
+
 ---
+
+## Resultados de aprendizaje
+
+
+
 
 ## Ejercicios de autoevaluación (Retos)
 
