@@ -21,26 +21,51 @@ Las matemáticas discretas son la base de la computación: desde la lógica que 
 
 <div style="display: flex; gap: 10px; margin: 20px 0;">
   <a href="about" class="btn btn-primary">📄 Ver Syllabus y Notas</a>
-  <a href="schedule" class="btn btn-success">📅 Ver Cronograma Semanal</a>
-  <a href="resources" class="btn btn-outline-primary">📚 Libros y Recursos</a>
+  <a href="calendar" class="btn btn-success">📅 Ver Cronograma Semanal</a>
+  <a href="lessons" class="btn btn-outline-primary">📚 Lecciones</a>
 </div>
 
 ---
 
-## 🎯 Objetivos de Aprendizaje
+## ¿Por dónde empezar?
 
-El curso se centra en tres pilares fundamentales para la formación del ingeniero:
-1.  **Lógica:** Formalización del lenguaje natural y métodos de demostración.
-2.  **Conjuntos y Relaciones:** Fundamentos de las estructuras de datos.
-3.  **Álgebra Booleana:** Bases teóricas de los circuitos digitales.
+1) Ve a **[Lessons](lessons/)** y abre la **Clase 1**.  
+2) Revisa el **[Cronograma Semanal](calendar)** para ubicarte por semanas.  
+3) Antes de cada sesión: lee la guía, intenta los ejercicios y llega con preguntas.
 
-## 👨‍🏫 Equipo Docente
+{: .highlight }
+**Regla de oro del curso:** no buscamos "respuestas rápidas", buscamos **razonamientos verificables**.
 
-| Rol | Nombre | Contacto |
-| :--- | :--- | :--- |
-| **Profesor** | [Nombre] | [Correo] |
-| **Horario** | [Días] | [Bloque/Salón] |
+## Qué vas a aprender
 
+- Formalizar oraciones y argumentos con **lógica proposicional** y **cuantificacional**.
+- Diferenciar **verdad** de **validez** y comprobar validez por modelos/reglas.
+- Demostrar resultados con técnicas clásicas (directa, contradicción, casos, etc.).
+- Trabajar con **conjuntos, relaciones, orden parcial** y **diagramas de Hasse**.
+- Simplificar con **álgebra booleana**, formas normales y tablas de verificación.
+- Conectar lógica con **circuitos** y **sistemas numéricos** (sumadores).
+
+## Contenido del curso
+
+A continuación encontrarás las clases organizadas por módulos.
+
+### Módulo 1 — Lógica (Semanas 1–8)
+
+- Empieza en **[Lessons](lessons/)**
+
+### Módulo 2 — Conjuntos y relaciones (Semanas 9–11)
+
+- Se habilitará en el calendario del curso a medida que avancemos.
+
+### Módulo 3 — Álgebra booleana y sistemas numéricos (Semanas 12–14)
+
+- Se habilitará en el calendario del curso a medida que avancemos.
+
+---
+
+## ¿Necesitas el programa oficial?
+- **About / Syllabus:** [ver aquí](about/)
+- **Microcurrículo (PDF):** [descargar aquí]({{ '/assets/pdf/2508207_matematicas_discretas_i.pdf' | relative_url }})
 
 
 <!--
