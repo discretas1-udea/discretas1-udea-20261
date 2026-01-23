@@ -1,8 +1,8 @@
 ---
-name: Henry Arcila
-role: Docente de catedra
-email: henry.arcila@udea.edu.co
-photo: raro.jpg
+name: Carlos Mario Sierra
+role: Docente de planta
+email: carlos.sierra@udea.edu.co
+photo: profile-picture.png
 meta:
   Office Hours: ---
 ---

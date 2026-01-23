@@ -6,9 +6,14 @@ description: A listing of all the course staff members.
 
 # Staff
 
-Staff information is stored in the `_staffers` directory and rendered according to the layout file, `_layouts/staffer.html`.
+## Docentes de planta
 
-## Docentes
+{% assign instructors = site.staffers | where: 'role', 'Docente de planta' %}
+{% for staffer in instructors %}
+{{ staffer }}
+{% endfor %}
+
+## Docentes de cátedra
 
 {% assign instructors = site.staffers | where: 'role', 'Docente de catedra' %}
 {% for staffer in instructors %}
