@@ -36,6 +36,37 @@ Las matemáticas discretas son la base de la computación: desde la lógica que 
 {: .highlight }
 **Regla de oro del curso:** no buscamos "respuestas rápidas", buscamos **razonamientos verificables**.
 
+## Para arrancar con energía: ansiedad matemática
+
+{: .highlight }
+Este video de **TED-Ed** se titula **“Why do people get so anxious about math?”** (*¿Por qué la gente se pone tan ansiosa con las matemáticas?*), presentado por **Orly Rubinsten**.
+
+Verás que:
+- La **ansiedad matemática** es real y puede afectar el rendimiento.
+- No significa que "seas malo": la ansiedad consume tu **memoria de trabajo**.
+- Influyen experiencias previas y la **presión por responder rápido**.
+- Hay estrategias concretas: **respiración**, **escribir preocupaciones**, **actividad física** y **mentalidad de crecimiento**.
+
+<div style="max-width: 900px; margin: 1rem auto;">
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/7snnRaC4t5c"
+      title="TED-Ed: Why do people get so anxious about math? — Orly Rubinsten"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+{: .note }
+**Mini-reto (opcional):** escribe en 3 líneas:  
+1) ¿Qué situación te genera más ansiedad? 
+2) ¿Qué estrategia vas a probar esta semana? 
+3) ¿Qué evidencia te dirá que funcionó?
+
+
 ## Qué vas a aprender
 
 - Formalizar oraciones y argumentos con **lógica proposicional** y **cuantificacional**.
