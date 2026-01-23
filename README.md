@@ -1,6 +1,7 @@
 ---
 layout: home
-title: Just the Class
+title: Matemáticas Discretas I
+nav_order: 1
 nav_exclude: true
 permalink: /:path/
 seo:
@@ -8,11 +9,37 @@ seo:
   name: Matematicas Discretas I
 ---
 
-# Matematicas Discretas I
+<div class="alert alert-info" role="alert">
+  <strong>📢 Próximo Evento:</strong> Inicio de clases la semana del [Fecha]. Revisar el <a href="schedule">Cronograma</a>.
+</div>
 
-## Bienvenido al curso de Matematicas Discretas I
+# Bienvenidos al curso
 
+Este es el sitio oficial del curso **Matemáticas Discretas I** para Ingeniería de Sistemas de la Universidad de Antioquia (2026-1). Aquí encontrarán el material de clase, talleres, fechas de evaluación y lecturas recomendadas.
 
+Las matemáticas discretas son la base de la computación: desde la lógica que ejecuta un procesador hasta los grafos que estructuran las redes sociales.
+
+<div style="display: flex; gap: 10px; margin: 20px 0;">
+  <a href="about" class="btn btn-primary">📄 Ver Syllabus y Notas</a>
+  <a href="schedule" class="btn btn-success">📅 Ver Cronograma Semanal</a>
+  <a href="resources" class="btn btn-outline-primary">📚 Libros y Recursos</a>
+</div>
+
+---
+
+## 🎯 Objetivos de Aprendizaje
+
+El curso se centra en tres pilares fundamentales para la formación del ingeniero:
+1.  **Lógica:** Formalización del lenguaje natural y métodos de demostración.
+2.  **Conjuntos y Relaciones:** Fundamentos de las estructuras de datos.
+3.  **Álgebra Booleana:** Bases teóricas de los circuitos digitales.
+
+## 👨‍🏫 Equipo Docente
+
+| Rol | Nombre | Contacto |
+| :--- | :--- | :--- |
+| **Profesor** | [Nombre] | [Correo] |
+| **Horario** | [Días] | [Bloque/Salón] |
 
 
 
